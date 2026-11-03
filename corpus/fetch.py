@@ -8,7 +8,7 @@
 
 A sources.yaml entry has a name and ONE of:
     url:        download it (optional  mirror: tried when url fails)
-    path:       a file already in the repo, e.g. corpus/SRD_CC_v5.1.pdf (copied into corpus/raw)
+    path:       a file already in the repo, e.g. corpus/raw/srd-5-1-2014.pdf (already in corpus/raw; re-recorded in the manifest)
 and optionally  rasterize: true  to turn a downloaded PDF into an image-only "scan"
 (pages rendered to pictures, no text layer), so the extract stage has to OCR it.
 
