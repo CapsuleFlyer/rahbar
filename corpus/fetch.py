@@ -124,8 +124,7 @@ def add_local(doc: dict, entries: list[dict]) -> None:
 
 def load_sources() -> list[dict]:
     if not SOURCES.exists():
-        sys.exit("corpus/sources.yaml not found. Copy corpus/sources.example.yaml to "
-                 "corpus/sources.yaml and keep the documents you want.")
+        sys.exit("corpus/sources.yaml not found: it lists the corpus documents.")
     data = yaml.safe_load(SOURCES.read_text(encoding="utf-8")) or {}
     docs = data.get("documents") or []
     for i, doc in enumerate(docs):

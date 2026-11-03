@@ -33,13 +33,13 @@ flowchart LR
 make cluster                       # minikube + Calico + metrics-server + ingress
 make images                        # build and load the 3 images
 kubectl apply -k k8s/overlays/dev  # namespace, config, chroma, redis, api, ui, ingress, indexer Job
-cp corpus/sources.example.yaml corpus/sources.yaml; make fetch   # download the corpus
+make fetch                         # download the corpus (or: python corpus/fetch.py)
 make corpus-load                   # copy it into the corpus PVC; the indexer Job starts reading it
 kubectl -n rahbar wait --for=condition=complete job/indexer --timeout=15m
 echo "$(minikube ip) rahbar.local" | sudo tee -a /etc/hosts
-make ask Q="What is the minimum attendance to sit the final exam?"
+make ask Q="What DC does the Hide action need?"
 ```
-The `dev` overlay starts in stub mode (dummy index); see `k8s/README.md` to switch to the real pipeline.
+The `dev` overlay runs the real pipeline: Chroma retrieval and Ollama on your laptop (`host.minikube.internal:11434`).
 Re-index with no redeploy: `kubectl create job --from=cronjob/reindex manual-reindex-1 -n rahbar`.
 LLM key (hosted mode only): `export LLM_API_KEY=...; make secret`. Secrets are never committed.
 
@@ -51,6 +51,4 @@ LLM key (hosted mode only): `export LLM_API_KEY=...; make secret`. Secrets are n
 | GET | /metrics | Prometheus metrics |
 | POST | /api/ask | `{"question": "..."}` returns a cited answer or an honest abstention |
 
-![screenshot](docs/evidence/screenshot.png)  <!-- TODO: add after the first run -->
-
-See `docs/` for corpus, pipeline, failure analysis, ADRs and engineering notes, and `MANUAL-STEPS.md` for what is still open.
+See `docs/` for corpus, pipeline, failure analysis, ADRs and engineering notes.
