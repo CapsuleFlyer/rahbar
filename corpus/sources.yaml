@@ -1,0 +1,62 @@
+# The RAHBAR corpus: Dungeons & Dragons 5th-edition rules. Run:  make fetch
+#
+# Every entry has a name and ONE of  url:  (download)  or  path:  (a file already in the
+# repo). doc_version and superseded become chunk metadata (section 3.1): they are how
+# the retriever tells the current rule from the repealed one.
+#
+# Convention for "superseded": the 2024 rules (SRD 5.2.1) are current. Everything written
+# for the 2014 rules is superseded: the SRD 5.1, the Sage Advice Compendium and the errata.
+# Questions about those documents must say that they mean the older rules (a year like 2014
+# or a word like "older"); see api/app/services/intent.py.
+#
+# Facts about the sources are in docs/CORPUS.md. The file name the indexer stores
+# (the `source` metadata) is the slug of `name`, e.g. "SRD 5.2.1 (2024)" -> srd-5-2-1-2024.pdf.
+
+documents:
+
+  # --- Properties 2, 4, 5, 7: the version pair. Public, CC-BY-4.0, committed in the repo. ---
+  - name: SRD 5.1 (2014)
+    path: corpus/SRD_CC_v5.1.pdf
+    doc_version: "5.1"
+    superseded: true
+    notes: 403 pages. 2014 rules. Two-column layout, hundreds of tables, long definitions.
+
+  - name: SRD 5.2.1 (2024)
+    path: corpus/SRD_CC_v5.2.1.pdf
+    doc_version: "5.2.1"
+    superseded: false
+    notes: 364 pages. 2024 rules; replaces the 5.1. Same topics, different numbers (exhaustion, hiding).
+
+  # --- Four more documents, same domain: official rulings and corrections for the 2014 rules.
+  # The three errata URLs are the ones the Compendium itself lists. Confirm each downloads:
+  #     python corpus/fetch.py --verify   (after a first run)  or  curl -sIL <url>
+
+  - name: Sage Advice Compendium v2.7 (2021)
+    url: https://media.wizards.com/2020/dnd/downloads/SA-Compendium.pdf
+    mirror: https://www.orkerhulen.dk/onewebmedia/SA-Compendium.pdf
+    doc_version: "2.7"
+    superseded: true
+    notes: Official Q&A rulings, 2014 rules. Long answers with reasoning (property 5).
+
+  # Property 3: the scanned PDF. Downloaded as a normal text PDF, then rendered to pictures so
+  # it has no text layer. Said plainly in docs/CORPUS.md: a simulated scan, not a photocopy.
+  - name: Player's Handbook Errata (2021, scanned copy)
+    url: https://media.wizards.com/2021/dnd/downloads/PH-Errata.pdf
+    rasterize: true
+    doc_version: "2021"
+    superseded: true
+    notes: Image-only after fetch; confirm with  pdffonts corpus/raw/<file>  (empty font list).
+
+  - name: Dungeon Master's Guide Errata (2021)
+    url: https://media.wizards.com/2021/dnd/downloads/DMG-Errata.pdf
+    doc_version: "2021"
+    superseded: true
+
+  - name: Monster Manual Errata (2018)
+    url: https://media.wizards.com/2018/dnd/downloads/MM-Errata.pdf
+    doc_version: "2018"
+    superseded: true
+
+  # --- Property 6: deliberately absent. Nothing here covers mind flayers, the 4e Warlord class
+  # or other game systems. Check after fetching:
+  #     for f in corpus/raw/*.pdf; do pdftotext -q "$f" - | grep -ci "mind flayer\|warlord"; done

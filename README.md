@@ -4,12 +4,18 @@
 
 Team: CapsuleFlyer and AbubakrQ.
 
-RAHBAR answers questions only from a real document corpus (FAST-NUCES policies), cites its sources and says
+RAHBAR answers questions only from a real document corpus (the D&D 5th-edition rules), cites its sources and says
 "the corpus does not cover this" when it cannot answer. It runs on Kubernetes: an indexer Job writes the vector
 store, an api reads it, and a semantic cache sits in Redis.
 
-Corpus: public FAST-NUCES documents. They are **not** committed; `corpus/sources.yaml` + `corpus/MANIFEST.md`
-(URLs and SHA-256) + `corpus/fetch.py` recreate them. Embeddings and generation go through Ollama on the host.
+Corpus: the D&D 5th-edition rules, all public. The two System Reference Documents (SRD 5.1, 2014 and
+SRD 5.2.1, 2024) are CC-BY-4.0 and committed in `corpus/`; the other four (Sage Advice Compendium and three
+errata PDFs) are **not** committed: `corpus/sources.yaml` + `corpus/MANIFEST.md` (URLs and SHA-256) +
+`corpus/fetch.py` recreate them. See `docs/CORPUS.md`. Embeddings and generation go through Ollama on the host.
+
+> This work includes material from the System Reference Document 5.1 ("SRD 5.1") and the System Reference
+> Document 5.2.1 ("SRD 5.2.1") by Wizards of the Coast LLC, licensed under the Creative Commons Attribution 4.0
+> International License (https://creativecommons.org/licenses/by/4.0/legalcode).
 
 ```mermaid
 flowchart LR

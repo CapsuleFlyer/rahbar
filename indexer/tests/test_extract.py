@@ -45,11 +45,11 @@ def test_table_to_markdown_normalises_cells() -> None:
 def test_pdf_text_is_extracted_page_by_page(tmp_path: Path) -> None:
     f = tmp_path / "rules.pdf"
     f.write_bytes(make_pdf([["1. Attendance", "Students need 80 percent attendance."],
-                            ["2. Warning", "CGPA below 2.00 means warning."]]))
+                            ["2. Warning", "DC 15 to hide in plain sight."]]))
     doc = extract(str(f), "2026-06", False)
     assert [p.page for p in doc.pages] == [1, 2]
     assert "80 percent" in doc.pages[0].text
-    assert "CGPA below 2.00" in doc.pages[1].text
+    assert "DC 15 to hide" in doc.pages[1].text
     assert not any(p.ocr for p in doc.pages)
 
 
