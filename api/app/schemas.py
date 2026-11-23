@@ -26,6 +26,9 @@ class Passage(BaseModel):
     section: str
     page: int | None = None
     score: float = Field(description="Similarity, higher is closer (1 - cosine distance).")
+    # Recorded in the trace (RAGOps D1): which version of the document this came from.
+    doc_version: str | None = None
+    superseded: bool | None = None
 
 
 class Citation(BaseModel):

@@ -99,3 +99,22 @@ Secrets are never committed.
 | POST | /api/ask | `{"question": "..."}` returns a cited answer or an honest abstention |
 
 See `docs/` for corpus, pipeline, failure analysis, ADRs and engineering notes.
+
+## RAGOps (Assignment 03)
+
+Commands for each part are added here as the parts are built. Everything below runs against the
+cluster from the sections above (`make cluster`, `make images`, `kubectl apply -k k8s/overlays/dev`).
+
+### Part D: traces and observability
+Every query writes one JSON trace line: to stdout (`kubectl logs`) and to `/traces/traces-<pod>.jsonl`
+on the `traces-data` PersistentVolumeClaim.
+
+```bash
+make ask Q="What DC does the Hide action need?"        # the reply ends with "trace: <id>"
+make trace ID=<id>                                      # D2: the exact context and prompt behind that answer
+make trace-report SINCE=1h                              # D3: cache hit rate, abstentions, top-1 similarity, p50/p95 per stage, injection flags
+kubectl -n rahbar logs -l app.kubernetes.io/name=api --tail=3 --prefix | grep '"msg": "trace"'   # F4
+kubectl -n rahbar port-forward svc/api 8000:8000 &  curl -s localhost:8000/metrics | grep rahbar_   # F4: metrics
+```
+Guardrail actions (D4) are recorded in the `guardrails` field of the trace and counted in
+`rahbar_injection_flagged_total`.

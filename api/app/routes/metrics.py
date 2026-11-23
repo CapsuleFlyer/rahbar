@@ -27,6 +27,18 @@ CACHE_REQUESTS = Counter(
     "rahbar_cache_requests_total", "Semantic cache lookups; hit ratio = hit / (hit + miss)",
     ["result"],
 )
+STAGE_LATENCY = Histogram(
+    "rahbar_stage_seconds", "Latency of each query-pipeline stage (embed, cache, retrieve, generate)",
+    ["stage"], buckets=(0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2, 5, 10, 30, 60),
+)
+TOP1_SCORE = Histogram(
+    "rahbar_top1_similarity", "Similarity of the best retrieved chunk, per question",
+    buckets=(0.3, 0.4, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 1.0),
+)
+INJECTION_FLAGGED = Counter(
+    "rahbar_injection_flagged_total", "Prompt-injection patterns flagged, by where they were found",
+    ["target"],
+)
 ABSTENTIONS = Counter("rahbar_abstentions_total", "Questions the corpus could not answer")
 FALLBACKS = Counter(
     "rahbar_fallbacks_total", "Canned fallback answers, by reason", ["reason"]

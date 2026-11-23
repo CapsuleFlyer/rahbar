@@ -7,6 +7,7 @@ Nothing here is baked into the image, so one image runs in every environment.
 from __future__ import annotations
 
 import os
+import socket
 from dataclasses import dataclass, field
 
 
@@ -65,6 +66,11 @@ class Settings:
 
     log_level: str = "INFO"
 
+    # Trace records (RAGOps D1): always on stdout; also appended to a file under trace_dir
+    # (a PersistentVolumeClaim on the cluster) when it is set. One file per pod.
+    trace_dir: str = ""              # TRACE_DIR
+    pod_name: str = ""               # POD_NAME (downward API); names this pod's trace file
+
 
 def get_settings() -> Settings:
     return Settings(
@@ -91,4 +97,6 @@ def get_settings() -> Settings:
         redis_port=_int("REDIS_PORT", 6379),
         ready_checks=os.environ.get("READY_CHECKS", "auto").strip().lower(),
         log_level=os.environ.get("LOG_LEVEL", "INFO"),
+        trace_dir=os.environ.get("TRACE_DIR", ""),
+        pod_name=os.environ.get("POD_NAME") or socket.gethostname(),
     )

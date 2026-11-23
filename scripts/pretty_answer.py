@@ -58,6 +58,8 @@ def main() -> int:
              f"confidence={r.get('confidence')}", f"cached={r.get('cached')}",
              f"provider={r.get('provider')}"]
     print("\n" + " · ".join(flags))
+    if r.get("request_id"):
+        print(f"trace: {r['request_id']}   (make trace ID=<that id>)")
     return 0
 
 

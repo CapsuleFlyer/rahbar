@@ -1,0 +1,16 @@
+# Trace records (RAGOps D1, F4): every api pod appends one JSON line per query to its own file
+# on this volume (traces-<pod>.jsonl). The same lines go to stdout for `kubectl logs`.
+# ReadWriteOnce is fine on minikube and kind (one node); on a multi-node cluster use a
+# ReadWriteMany class so pods on different nodes can mount it.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: traces-data
+  namespace: rahbar
+  labels:
+    app.kubernetes.io/name: api
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 1Gi

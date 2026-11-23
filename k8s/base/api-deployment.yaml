@@ -32,6 +32,7 @@ spec:
         runAsNonRoot: true
         runAsUser: 10001
         runAsGroup: 10001
+        fsGroup: 10001                 # the traces volume must be writable by uid 10001
         seccompProfile:
           type: RuntimeDefault
       containers:
@@ -47,6 +48,13 @@ spec:
             - secretRef:
                 name: rahbar-secret
                 optional: true            # stub and ollama modes need no key
+          env:
+            - name: TRACE_DIR              # RAGOps D1/F4: trace records are also written here
+              value: /traces
+            - name: POD_NAME               # names this pod's trace file
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
           # Three probes with three different jobs (handout 4.3).
           startupProbe:                   # finished booting? liveness/readiness wait for it
             httpGet:
@@ -91,6 +99,11 @@ spec:
           volumeMounts:
             - name: tmp
               mountPath: /tmp
+            - name: traces
+              mountPath: /traces
       volumes:
         - name: tmp
           emptyDir: {}
+        - name: traces
+          persistentVolumeClaim:
+            claimName: traces-data
