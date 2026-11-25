@@ -1,0 +1,41 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 446 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+56 740 Td
+(Exploration quick reference. A party explores one location at a time.) Tj T*
+(Scouts move ahead of the group and report what they see to the party.) Tj T*
+(Each hour of careful search reveals hidden doors in one room of the dungeon.) Tj T*
+(Torches burn for one hour and lanterns burn for six hours on one flask of oil.) Tj T*
+(A party resting in a dungeon is interrupted on a roll of 1 on a six-sided die.) Tj T*
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000185 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+808
+%%EOF

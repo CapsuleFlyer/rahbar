@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 from dataclasses import replace
 from pathlib import Path
 
@@ -188,13 +189,15 @@ def test_store_refuses_bad_input(chunks: list[Chunk], vectors: list[list[float]]
 
 # ---------------------------------------------------------------- end to end on the fixtures
 def test_run_pipeline_indexes_the_fixture_corpus_with_correct_flags(
-        monkeypatch: pytest.MonkeyPatch) -> None:
+        monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
     def fake_embed(texts: list[str], _settings: IndexerSettings) -> list[list[float]]:
         return [[float(len(t) % 7), 1.0] for t in texts]
 
     monkeypatch.setattr("pipeline.embed.embed", fake_embed)
     client = FakeClient()
-    cfg = replace(get_settings(), corpus_dir=str(FIXTURES), embed_model="nomic-embed-text")
+    lake = tmp_path / "lake"
+    shutil.copytree(FIXTURES, lake)             # the run writes reports/ and may move files
+    cfg = replace(get_settings(), corpus_dir=str(lake), embed_model="nomic-embed-text")
     count = run_module.run_pipeline(cfg, client)
     rows = client.collections[cfg.collection].rows
     assert count == len(rows) > 5

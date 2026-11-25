@@ -1,0 +1,58 @@
+{
+  "hirelings-and-mercenaries.md": {
+    "outcome": "indexed",
+    "planted": "clean"
+  },
+  "downtime-activities.md": {
+    "outcome": "indexed",
+    "planted": "clean"
+  },
+  "travel-pace-table.md": {
+    "outcome": "indexed",
+    "planted": "clean"
+  },
+  "exploration-quick-reference.pdf": {
+    "outcome": "indexed",
+    "planted": "clean"
+  },
+  "retired-hirelings-and-mercenaries.md": {
+    "outcome": "quarantined",
+    "check": "uniqueness",
+    "planted": "exact duplicate"
+  },
+  "retired-downtime-activities.md": {
+    "outcome": "quarantined",
+    "check": "uniqueness",
+    "planted": "exact duplicate"
+  },
+  "variant-travel-pace-table.md": {
+    "outcome": "quarantined",
+    "check": "uniqueness",
+    "planted": "near-duplicate"
+  },
+  "ruins-survey-truncated.pdf": {
+    "outcome": "quarantined",
+    "check": "completeness",
+    "planted": "truncated file"
+  },
+  "weather-hazards-no-metadata.md": {
+    "outcome": "quarantined",
+    "check": "completeness",
+    "planted": "missing metadata"
+  },
+  "scan-notes-garbled.md": {
+    "outcome": "quarantined",
+    "check": "quality",
+    "planted": "garbled text"
+  },
+  "sage-advice-compendium-v2-8.md": {
+    "outcome": "indexed",
+    "planted": "newer version",
+    "also": "archives sage-advice-compendium-v2-7-2021.pdf"
+  },
+  "homebrew-optional-rules.md": {
+    "outcome": "indexed",
+    "planted": "injected instruction",
+    "also": "warning in the report; flagged at query time"
+  }
+}

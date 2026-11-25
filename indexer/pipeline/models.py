@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 
+import hashlib
 from dataclasses import dataclass, field
+
+
+def text_hash(text: str) -> str:
+    """Identity of a chunk's content (whitespace-insensitive): equal text means equal vector."""
+    return hashlib.sha256(" ".join(text.split()).encode("utf-8")).hexdigest()[:20]
 
 
 @dataclass
@@ -32,13 +38,25 @@ class Chunk:
     page: int
     doc_version: str
     superseded: bool
+    doc_sha256: str = ""     # SHA-256 of the source file: unchanged file, nothing to redo
+    config_sig: str = ""     # chunking and embedding settings it was built with
+
+    @property
+    def chash(self) -> str:
+        return text_hash(self.text)
 
     def metadata(self) -> dict[str, str | int | bool]:
         """Chroma metadata values must be str, int, float or bool."""
-        return {
+        meta: dict[str, str | int | bool] = {
             "source": self.source,
             "section": self.section,
             "page": self.page,
             "doc_version": self.doc_version,
             "superseded": self.superseded,
+            "chash": self.chash,
         }
+        if self.doc_sha256:
+            meta["doc_sha256"] = self.doc_sha256
+        if self.config_sig:
+            meta["config_sig"] = self.config_sig
+        return meta

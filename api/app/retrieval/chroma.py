@@ -105,6 +105,10 @@ class ChromaRetriever(ChromaInspector):
                     section=str(meta.get("section", "")),
                     page=int(page) if page is not None else None,
                     score=1.0 - float(distance),   # Chroma returns cosine distance
+                    doc_version=(str(meta["doc_version"]) if meta.get("doc_version") is not None
+                                 else None),
+                    superseded=(bool(meta["superseded"]) if meta.get("superseded") is not None
+                                else None),
                 )
             )
         passages.sort(key=lambda p: p.score, reverse=True)

@@ -13,7 +13,7 @@ INGRESS_IP ?= $(shell minikube ip 2>/dev/null)
 HOST ?= rahbar.local
 
 .DEFAULT_GOAL := help
-.PHONY: help install test lint dev cluster images apply secret index ask fetch eval eval-fixtures check
+.PHONY: help install test lint dev cluster images apply secret index ask batch-load ingest ops trace trace-report fetch eval eval-fixtures check
 
 help: ## list the targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  make %-14s %s\n", $$1, $$2}'
@@ -64,6 +64,23 @@ ask: ## ask through the Ingress: make ask Q="What DC does the Hide action need?"
 	@curl -s -X POST "http://$(INGRESS_IP)/api/ask" -H "Host: $(HOST)" \
 	  -H 'Content-Type: application/json' -d "$$(Q="$(Q)" $(PY) -c 'import json,os; print(json.dumps({"question": os.environ["Q"]}))')" \
 	  | $(if $(RAW),$(PY) -m json.tool,Q="$(Q)" $(PY) scripts/pretty_answer.py)
+
+batch-load: ## put a batch of new documents in the data lake: make batch-load DIR=eval/batch_b/docs
+	scripts/load-corpus.sh $(DIR)
+
+ingest: ## run the ingestion Job now (verify, quarantine, incremental) and print its report
+	@n=ingest-$$(date +%s); kubectl create job --from=cronjob/reindex $$n -n $(NS) >/dev/null && echo "running $$n ..." && \
+	  (kubectl wait --for=condition=complete job/$$n -n $(NS) --timeout=$(or $(WAIT),3600s) || true) && \
+	  kubectl logs job/$$n -n $(NS) | grep -v '^{"ts"'; kubectl logs job/$$n -n $(NS) | grep '"ingest summary"' | cut -c1-700
+
+ops: ## data-lake commands: make ops ARGS="list" | ARGS="counts --source X" | ARGS="rollback NAME"
+	NS=$(NS) TAG=$(TAG) scripts/ops.sh $(ARGS)
+
+trace: ## everything behind one answer (RAGOps D2): make trace ID=<trace id or prefix>
+	@kubectl -n $(NS) exec deploy/api -- sh -c 'cat /traces/*.jsonl' | $(PY) scripts/trace_show.py $(ID) -
+
+trace-report: ## summarise the trace log (RAGOps D3): make trace-report SINCE=1h
+	@kubectl -n $(NS) exec deploy/api -- sh -c 'cat /traces/*.jsonl' | $(PY) scripts/trace_report.py - --since $(or $(SINCE),24h)
 
 fetch: ## download the documents listed in corpus/sources.yaml
 	$(BIN)/python corpus/fetch.py

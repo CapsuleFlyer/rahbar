@@ -14,6 +14,6 @@ router = APIRouter(prefix="/api")
 def ask(body: AskRequest, request: Request, response: Response) -> AskResponse:
     state = request.app.state
     result = answer_question(body.question, state.retriever, state.provider, state.settings,
-                             getattr(state, "cache", None))
+                             getattr(state, "cache", None), getattr(state, "trace", None))
     response.headers["X-Cache"] = "HIT" if result.cached else "MISS"
     return result

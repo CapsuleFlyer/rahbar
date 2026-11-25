@@ -24,6 +24,7 @@ from .providers.llm import get_provider
 from .retrieval import get_retriever
 from .routes import ask, health, metrics
 from .services.cache import SemanticCache
+from .trace import TraceWriter
 
 log = logging.getLogger("rahbar.api")
 
@@ -42,6 +43,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     app.state.settings = settings
     app.state.retriever = get_retriever(settings)
     app.state.provider = get_provider(settings)
+    app.state.trace = TraceWriter(settings.trace_dir, settings.pod_name)
     # Read-only handles for readiness and the cache. This process never indexes (4.2):
     # the indexer Job is the only writer.
     app.state.chroma = None
@@ -65,7 +67,8 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         extra={"retriever": settings.retriever, "llm_provider": settings.llm_provider,
                "embed_model": settings.embed_model, "top_k": settings.top_k,
                "relevance_floor": settings.relevance_floor, "temperature": settings.temperature,
-               "cache": app.state.cache is not None, "ready_checks": checks_on},
+               "cache": app.state.cache is not None, "ready_checks": checks_on,
+               "trace_file": str(app.state.trace.path) if app.state.trace.path else None},
     )
     if checks_on:
         # Log the embedding-pin verdict once at startup; /readyz repeats it on every probe.
