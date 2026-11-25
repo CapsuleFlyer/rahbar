@@ -15,7 +15,7 @@ spec:
       restartPolicy: OnFailure
       serviceAccountName: rahbar-indexer
       automountServiceAccountToken: false
-      securityContext: {runAsNonRoot: true, runAsUser: 10001, runAsGroup: 10001, seccompProfile: {type: RuntimeDefault}}
+      securityContext: {runAsNonRoot: true, runAsUser: 10001, runAsGroup: 10001, fsGroup: 10001, seccompProfile: {type: RuntimeDefault}}
       containers:
         - name: indexer
           image: rahbar-indexer:base
@@ -32,8 +32,8 @@ spec:
             limits: {cpu: "1", memory: 1536Mi}
           securityContext: {allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: {drop: [ALL]}}
           volumeMounts:
-            - {name: corpus, mountPath: /corpus, readOnly: true}
+            - {name: corpus, mountPath: /corpus}   # the data lake: quarantine/, archive/, reports/ live here
             - {name: tmp, mountPath: /tmp}
       volumes:
-        - {name: corpus, persistentVolumeClaim: {claimName: corpus-data, readOnly: true}}
+        - {name: corpus, persistentVolumeClaim: {claimName: corpus-data}}
         - {name: tmp, emptyDir: {}}

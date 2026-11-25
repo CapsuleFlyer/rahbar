@@ -22,6 +22,9 @@ class IndexerSettings:
     embed_batch_size: int = 16          # EMBED_BATCH_SIZE
     ocr_lang: str = "eng"               # OCR_LANG
     ocr_dpi: int = 300                  # OCR_DPI
+    near_dup_threshold: float = 0.95    # NEAR_DUP_THRESHOLD: cosine at or above = near-duplicate
+    min_chars_per_page: int = 40        # MIN_CHARS_PER_PAGE: below this a document is empty
+    min_wordlike_ratio: float = 0.55    # MIN_WORDLIKE_RATIO: below this the text is garbled
 
 
 def get_settings() -> IndexerSettings:
@@ -40,4 +43,7 @@ def get_settings() -> IndexerSettings:
         embed_batch_size=int(os.environ.get("EMBED_BATCH_SIZE", 16)),
         ocr_lang=os.environ.get("OCR_LANG", "eng"),
         ocr_dpi=int(os.environ.get("OCR_DPI", 300)),
+        near_dup_threshold=float(os.environ.get("NEAR_DUP_THRESHOLD", 0.95)),
+        min_chars_per_page=int(os.environ.get("MIN_CHARS_PER_PAGE", 40)),
+        min_wordlike_ratio=float(os.environ.get("MIN_WORDLIKE_RATIO", 0.55)),
     )

@@ -54,5 +54,9 @@ data:
   CHUNK_SIZE: "400"
   CHUNK_OVERLAP: "50"
   CHUNK_STRATEGY: "structure"      # structure | fixed (fixed is for the failure analysis)
+  # Verification (RAGOps A1): a document failing any of these is quarantined, not indexed.
+  NEAR_DUP_THRESHOLD: "0.95"       # cosine of document vectors at or above this = near-duplicate
+  MIN_CHARS_PER_PAGE: "40"         # below this a document counts as empty
+  MIN_WORDLIKE_RATIO: "0.55"       # below this share of word-like tokens the text is garbled
 
   LOG_LEVEL: "INFO"

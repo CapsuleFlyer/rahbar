@@ -30,17 +30,28 @@ def _log(msg: str, **fields: object) -> None:
 def collection_metadata(chunks: list[Chunk], dimension: int,
                         settings: IndexerSettings) -> dict[str, str | int | float | bool]:
     """The pin and provenance the API reads at startup (section 4.4)."""
+    return collection_metadata_for(len(chunks), dimension, settings)
+
+
+def collection_metadata_for(count: int, dimension: int,
+                            settings: IndexerSettings) -> dict[str, str | int | float | bool]:
     return {
         "hnsw:space": "cosine",
         "embed_model": settings.embed_model,
         "dimension": dimension,
         "index_id": uuid.uuid4().hex,   # new on every run: the API's cache keys on it
         "indexed_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "chunk_count": len(chunks),
+        "chunk_count": count,
         "chunk_size": settings.chunk_size,
         "chunk_overlap": settings.chunk_overlap,
         "chunk_strategy": settings.chunk_strategy,
     }
+
+
+def refreshable(metadata: dict[str, Any]) -> dict[str, Any]:
+    """Collection metadata for `modify()`: Chroma refuses any change that mentions the distance
+    function (`hnsw:space`), even to the same value, so it is only ever set when creating."""
+    return {k: v for k, v in metadata.items() if k != "hnsw:space"}
 
 
 def _get_existing(client: Any, name: str) -> Any | None:
@@ -110,7 +121,7 @@ def store(chunks: list[Chunk], vectors: list[list[float]], settings: IndexerSett
     stale = [i for i in existing.get(include=[])["ids"] if i not in keep]
     for start in range(0, len(stale), BATCH):
         existing.delete(ids=stale[start:start + BATCH])
-    existing.modify(metadata=metadata)
+    existing.modify(metadata=refreshable(metadata))
     _log("updated collection", collection=settings.collection, chunks=len(chunks),
          pruned=len(stale))
     return int(existing.count())
