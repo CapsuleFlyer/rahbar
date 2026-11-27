@@ -11,6 +11,9 @@ identical text keeps its vector, only new text is embedded, and chunks that no l
 deleted. A document that disappeared leaves no orphan chunks. An old version is archived: its
 file moves to archive/ and its chunks stay, flagged `superseded`, so retrieval skips them but a
 rollback can bring them back. The Job is still the only writer to Chroma.
+
+Files are moved only after Chroma has been written, so a run that fails (the embedding service
+is down, say) leaves the lake as it was and the retry reports every document again.
 """
 
 from __future__ import annotations
@@ -18,18 +21,25 @@ from __future__ import annotations
 import json
 import time
 from dataclasses import dataclass, field, replace
+from pathlib import Path
 from typing import Any
 
 from . import embed as embed_mod
 from . import verify
 from .chunk import amplification, chunk, count_tokens
 from .config import IndexerSettings
-from .corpus import Candidate, discover_entries
+from .corpus import (
+    DOC_SUFFIXES,
+    Candidate,
+    discover_entries,
+    discover_unsupported,
+    index_entries,
+)
 from .lake import Lake
 from .models import Chunk, Document, text_hash
 from .store import _get_existing, collection_metadata_for, refreshable, store
 
-EXTRACT_VERSION = "2"      # bump when extract, clean or chunk logic changes: re-chunks everything
+EXTRACT_VERSION = "3"      # bump when extract, clean or chunk logic changes: re-chunks everything
 PAGE = 2000
 BATCH = 100
 
@@ -238,24 +248,38 @@ def run_ingestion(settings: IndexerSettings, client: Any) -> int:
     def version_of(c: Candidate) -> str:
         return meta[c.source]["doc_version"] or "unknown"
 
+    history = lake.verified_rows(sig, shas)
+    active = {c.source for c in candidates}
+    # chunks that stay after this run; everything else stored belongs to a document that left
+    kept = active | lake.archived_names() | lake.quarantined_names()
+
     unchanged: list[Candidate] = []
     flips: list[Candidate] = []
     to_verify: list[Candidate] = []
     for c in candidates:
         st = states.get(c.source)
         same_file = bool(st and st.count and st.sha == {shas[c.source]} and st.sigs == {sig})
-        if same_file and st and st.versions == {version_of(c)} and st.superseded == {c.superseded}:
+        if same_file and writable and c.source not in history:
+            to_verify.append(c)                    # its earlier results are gone: check it again
+        elif (same_file and st and st.versions == {version_of(c)}
+                and st.superseded == {c.superseded}):
             unchanged.append(c)
         elif same_file:
             flips.append(c)
         else:
             to_verify.append(c)
 
+    def rank(c: Candidate) -> int:
+        """0: the stored file itself, 1: an edit of an indexed document, 2: a new arrival."""
+        st = states.get(c.source)
+        if not (st and st.count):
+            return 2
+        return 0 if st.sha in ({shas[c.source]}, {""}) else 1
+
     def peer(c: Candidate, text_sha: str = "") -> verify.Peer:
         m = meta[c.source]
-        st = states.get(c.source)
         return verify.Peer(c.source, m["title"], m["doc_version"], m["date"], shas[c.source],
-                           text_sha, c.superseded, bool(st and st.count))
+                           text_sha, c.superseded, rank(c))
 
     # ---------------------------------------------------------------- A1: verify new or changed
     infos: dict[str, verify.DocInfo] = {}
@@ -265,30 +289,64 @@ def run_ingestion(settings: IndexerSettings, client: Any) -> int:
     text_shas: dict[str, str] = {}
     batch_vectors: dict[str, tuple[list[float], str]] = {}
     store_vectors: dict[str, tuple[list[float], str]] | None = None
-    for c in sorted(to_verify, key=lambda x: x.source):
+
+    # stored vectors of a file that has since been edited describe text that is being replaced
+    stale = {c.source for c in to_verify if rank(c) == 1}
+
+    def stored_peer(source: str) -> verify.Peer:
+        """Title, version and date of an indexed document that is no longer active."""
+        info = lake.archived_info(source)
+        path = lake.archive / source
+        if not path.is_file():
+            path = next((copy for name, copy, _ in lake.quarantine_records() if name == source),
+                        path)
+        found = {"title": "", "doc_version": "", "date": ""}
+        if path.is_file():                        # its .meta.json stays in the lake root
+            found = verify.read_metadata(
+                path, index_entries(settings.corpus_dir).get(source),
+                sidecar=lake.root / f"{source}.meta.json")
+        versions = states[source].versions - {"", "unknown"}
+        return verify.Peer(source, str(info.get("title") or found["title"]),
+                           found["doc_version"] or next(iter(sorted(versions)), ""),
+                           found["date"], "")
+
+    by_source = {c.source: c for c in candidates}
+    for c in sorted(to_verify, key=lambda x: (rank(x), x.source)):
         info, doc = verify.load(c, settings)
-        info.indexed = bool(states.get(c.source) and states[c.source].count)
+        info.rank = rank(c)
         infos[c.source], docs[c.source] = info, doc
         text_shas[c.source] = info.text_sha256
         st = states.get(c.source)
         legacy = bool(st and st.count and st.sha <= {""})       # indexed before verification existed
         near: dict[str, float] = {}
-        if doc is not None and not legacy:
+        established = bool(st and st.count and st.sha == {shas[c.source]})  # passed when indexed
+        if doc is not None and not legacy and not established:
             passages = verify.sample_passages(info.text)
             if passages:
                 mean = verify.mean_vector(embed_mod.embed(passages, settings))
                 if existing is not None and store_vectors is None:
-                    store_vectors = verify.store_doc_vectors(existing, list(states))
-                others = {s: v for s, v in (store_vectors or {}).items() if s != c.source}
-                near = verify.near_in_batch(mean, info.text, {**others, **batch_vectors},
-                                            settings.near_dup_threshold)
-                batch_vectors[c.source] = (mean, info.text)
+                    store_vectors = verify.store_doc_vectors(
+                        existing, [s for s in states if s in kept and s not in stale])
+                others = {
+                    s: v for s, v in {**(store_vectors or {}), **batch_vectors}.items()
+                    if s != c.source and not verify.other_version(
+                        info, peer(by_source[s]) if s in by_source else stored_peer(s))
+                }
+                near = verify.near_in_batch(mean, info.text, others, settings.near_dup_threshold)
+                # a broken file must not make its intact copy look like the duplicate
+                if (verify.check_quality(info, settings).passed
+                        and verify.check_completeness(info).passed):
+                    batch_vectors[c.source] = (mean, info.text)
         peers = [peer(o, text_shas.get(o.source, "")) for o in candidates if o.source != c.source]
         checks[c.source] = {
             "quality": verify.check_quality(info, settings),
             "completeness": verify.check_completeness(info),
             "uniqueness": verify.check_uniqueness(info, peers, near, settings.near_dup_threshold),
         }
+        if established and checks[c.source]["uniqueness"].passed:
+            checks[c.source]["uniqueness"].reason = (
+                "no exact duplicate; the file is unchanged since it was indexed, so the "
+                "near-duplicate comparison was not repeated")
         w = verify.injection_warning(info.text)
         warnings[c.source] = [w] if w else []
 
@@ -305,9 +363,9 @@ def run_ingestion(settings: IndexerSettings, client: Any) -> int:
     for source in checks:
         checks[source]["recency"] = recency[source]
 
-    # ---------------------------------------------------------------- verdicts and file moves
+    # ---------------------------------------------------------------- verdicts (files move later)
     rows: list[dict[str, Any]] = []
-    quarantined: set[str] = set()
+    quarantined: dict[str, tuple[Path, dict[str, str]]] = {}
     archived_now: dict[str, str] = {}
     to_index: list[Candidate] = []
     for c in candidates:
@@ -321,8 +379,17 @@ def run_ingestion(settings: IndexerSettings, client: Any) -> int:
         }
         if source not in checks:                                  # unchanged or flag-only
             rec = recency[source]
-            row["checks"] = {"recency": {"passed": rec.passed, "reason": rec.reason}}
-            row["note"] = "same file and settings as the indexed version: not re-verified"
+            past = history.get(source)
+            if past:
+                row["checks"] = dict(past["checks"])
+                row["warnings"] = list(past.get("warnings", []))
+                row["verified_in"] = past["run_id"]
+                row["note"] = ("same file and settings as the indexed version: quality, "
+                               f"completeness and uniqueness carried forward from run "
+                               f"{past['run_id']}")
+            else:                                  # only possible when the lake is read-only
+                row["note"] = "same file and settings as the indexed version: not re-verified"
+            row["checks"]["recency"] = {"passed": rec.passed, "reason": rec.reason}
             if not rec.passed:
                 archived_now[source] = str(rec.extra["superseded_by"])
                 row["outcome"] = "archived (old version)"
@@ -343,9 +410,8 @@ def run_ingestion(settings: IndexerSettings, client: Any) -> int:
                 outcome = "quarantine"
         if outcome == "quarantine":
             reasons = {n: x.reason for n, x in checks[source].items() if not x.passed}
-            moved = lake.quarantine_file(c.path, reasons)
-            quarantined.add(source)
-            row["outcome"] = "quarantined" if moved else "quarantine (not moved: read-only)"
+            quarantined[source] = (c.path, reasons)
+            row["outcome"] = "quarantined"
             row["note"] = ("; ".join(f"{n}: {r}" for n, r in reasons.items()))
         elif outcome == "archive":
             archived_now[source] = str(recency[source].extra["superseded_by"])
@@ -354,13 +420,20 @@ def run_ingestion(settings: IndexerSettings, client: Any) -> int:
             to_index.append(c)
             row["outcome"] = "indexed"
         rows.append(row)
-    for source, newer_source in archived_now.items():
-        c = next(x for x in candidates if x.source == source)
-        moved = lake.archive_file(c.path, newer_source, version_of(c))
-        log("archived", source=source, superseded_by=newer_source, moved=bool(moved))
-    for row in rows:
-        if row["source"] in quarantined:
-            log("quarantined", source=row["source"], reasons=row["note"])
+
+    unsupported = discover_unsupported(settings.corpus_dir)
+    seen = {sha: source for source, sha in shas.items()}
+    for path in unsupported:
+        sha = verify.file_sha256(path)
+        found = verify.unsupported_checks(path.suffix.lower(), sorted(DOC_SUFFIXES),
+                                          seen.get(sha, ""))
+        seen.setdefault(sha, path.name)
+        reasons = {x.name: x.reason for x in found if not x.passed}
+        quarantined[path.name] = (path, reasons)
+        rows.append({"source": path.name, "title": "", "doc_version": "unknown", "date": "",
+                     "sha256": sha, "warnings": [], "outcome": "quarantined",
+                     "checks": {x.name: {"passed": x.passed, "reason": x.reason} for x in found},
+                     "note": "; ".join(f"{n}: {r}" for n, r in reasons.items())})
 
     # ---------------------------------------------------------------- chunk what passed
     pieces_by_source: dict[str, list[Chunk]] = {}
@@ -383,10 +456,8 @@ def run_ingestion(settings: IndexerSettings, client: Any) -> int:
     per_doc: dict[str, dict[str, int]] = {}
     total_chunks = 0
 
-    if full:
-        all_chunks = [p for pieces in pieces_by_source.values() for p in pieces]
-        if not all_chunks:
-            raise SystemExit("no document passed verification: nothing to index")
+    all_chunks = [p for pieces in pieces_by_source.values() for p in pieces]
+    if full and all_chunks:
         vectors = embed_mod.embed([p.text for p in all_chunks], settings)
         stored_words = sum(count_tokens(p.text) for p in all_chunks)
         log("embedded", chunks=len(all_chunks), dimension=embed_mod.embedding_dimension(vectors),
@@ -398,7 +469,7 @@ def run_ingestion(settings: IndexerSettings, client: Any) -> int:
         counts["embedded"] = len(all_chunks)
         for source, pieces in pieces_by_source.items():
             per_doc[source] = {"chunks": len(pieces), "embedded": len(pieces)}
-    else:
+    elif not full:
         assert existing is not None
         plans = [plan_document(existing, source, pieces)
                  for source, pieces in pieces_by_source.items()]
@@ -424,15 +495,13 @@ def run_ingestion(settings: IndexerSettings, client: Any) -> int:
         for source in archived_now:                             # old versions: superseded, kept
             if source in states:
                 counts["metadata_updated"] += set_flags(existing, source, "", True)
-        for source in lake.archived_names():
+        for source in lake.archived_names() - active:   # an active file may reuse the name
             if source in states and states[source].superseded != {True}:
                 counts["metadata_updated"] += set_flags(existing, source, "", True)
         # a document that left the lake leaves no chunks behind (a quarantined one keeps its
-        # last good version until someone decides)
-        active = {c.source for c in candidates}
-        keep = active | lake.archived_names() | lake.quarantined_names() | quarantined
+        # last good version until it passes again or someone deletes it)
         for source, st in states.items():
-            if source and source not in keep:
+            if source and source not in kept | set(quarantined):
                 existing.delete(where={"source": source})
                 counts["orphans_removed"] += st.count
                 log("orphans removed", source=source, chunks=st.count)
@@ -443,9 +512,23 @@ def run_ingestion(settings: IndexerSettings, client: Any) -> int:
                 int(existing.count()), dimension, settings)))
         total_chunks = int(existing.count())
 
-    summary = {"documents": len(candidates), "verified": len(to_verify), "unchanged": len(unchanged),
-               "flag_only": len(flips), "indexed": len(to_index), "quarantined": len(quarantined),
-               "archived": len(archived_now)}
+    # ---------------------------------------------------------------- file moves, after the store
+    by_row = {r["source"]: r for r in rows}
+    for source, newer_source in archived_now.items():
+        c = by_source[source]
+        moved = lake.archive_file(c.path, newer_source, version_of(c), meta[source]["title"])
+        log("archived", source=source, superseded_by=newer_source, moved=bool(moved))
+    for source, (path, reasons) in quarantined.items():
+        if not lake.quarantine_file(path, reasons):
+            by_row[source]["outcome"] = "quarantine (not moved: read-only)"
+        log("quarantined", source=source, reasons=by_row[source]["note"])
+    if not full or all_chunks:                    # these passed: old failures no longer count
+        for source in active - set(quarantined):
+            lake.resolve_quarantine(source, f"a later file passed in run {run_id}")
+
+    summary = {"documents": len(rows), "verified": len(to_verify) + len(unsupported),
+               "unchanged": len(unchanged), "flag_only": len(flips), "indexed": len(to_index),
+               "quarantined": len(quarantined), "archived": len(archived_now)}
     report = {"run_id": run_id, "corpus_dir": settings.corpus_dir, "config_sig": sig,
               "mode": "full" if full else "incremental",
               "thresholds": {"near_dup": settings.near_dup_threshold,
@@ -455,6 +538,8 @@ def run_ingestion(settings: IndexerSettings, client: Any) -> int:
     markdown = render_markdown(report)
     paths = lake.write_report(run_id, report, markdown)
     print("\n" + markdown, flush=True)
+    if full and not all_chunks:
+        raise SystemExit("no document passed verification: nothing to index")
     log("ingest summary", seconds=round(time.perf_counter() - began, 1), chunks_in_store=total_chunks,
         report=paths, **{f"docs_{k}": v for k, v in summary.items()},
         **{f"chunks_{k}": v for k, v in counts.items()})

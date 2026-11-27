@@ -19,6 +19,9 @@ from pathlib import Path
 from typing import Any
 
 DOC_SUFFIXES = {".pdf", ".md", ".html", ".htm", ".txt"}
+# files that belong beside documents (metadata, config, operating-system litter): never reported
+IGNORED_SUFFIXES = {".json", ".yaml", ".yml"}
+IGNORED_NAMES = {"thumbs.db", "desktop.ini"}
 
 
 @dataclass(frozen=True)
@@ -47,6 +50,14 @@ def front_matter(path: Path) -> dict[str, str]:
     return meta
 
 
+def index_entries(corpus_dir: str) -> dict[str, dict[str, Any]]:
+    """The `_index.json` rows by file name, including files that have since left the root."""
+    index = Path(corpus_dir) / "_index.json"
+    if not index.exists():
+        return {}
+    return {str(e["file"]): e for e in json.loads(index.read_text(encoding="utf-8"))}
+
+
 def discover_entries(corpus_dir: str) -> list[Candidate]:
     """Every active document: the ones `_index.json` lists (and that still exist), then any
     other document file in the root, with its metadata from front matter."""
@@ -68,6 +79,21 @@ def discover_entries(corpus_dir: str) -> list[Candidate]:
         meta = front_matter(path) if path.suffix.lower() == ".md" else {}
         version = meta.get("doc_version") or meta.get("version") or "unknown"
         found.append(Candidate(path, version, meta.get("superseded", "false").lower() == "true"))
+    return found
+
+
+def discover_unsupported(corpus_dir: str) -> list[Path]:
+    """Files in the lake root that look like documents but cannot be read (a .docx, say). They
+    are verified like any other arrival, so they are quarantined and reported, never skipped."""
+    root = Path(corpus_dir)
+    listed = {c.path.name for c in discover_entries(corpus_dir)}
+    found = []
+    for path in sorted(root.glob("*")):
+        name = path.name.lower()
+        if (path.is_file() and path.name not in listed and path.suffix.lower() not in DOC_SUFFIXES
+                and path.suffix.lower() not in IGNORED_SUFFIXES and name not in IGNORED_NAMES
+                and not name.startswith((".", "readme"))):
+            found.append(path)
     return found
 
 

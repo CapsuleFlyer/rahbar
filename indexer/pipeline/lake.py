@@ -56,7 +56,8 @@ class Lake:
                        indent=2), encoding="utf-8")
         return str(target)
 
-    def archive_file(self, path: Path, superseded_by: str, doc_version: str) -> str | None:
+    def archive_file(self, path: Path, superseded_by: str, doc_version: str,
+                     title: str = "") -> str | None:
         if not self.writable:
             return None
         target = self.archive / path.name
@@ -65,7 +66,8 @@ class Lake:
         shutil.move(str(path), str(target))
         Path(str(target) + ".archived.json").write_text(
             json.dumps({"file": path.name, "archived_at": _now(), "doc_version": doc_version,
-                        "superseded_by": superseded_by}, indent=2), encoding="utf-8")
+                        "title": title, "superseded_by": superseded_by}, indent=2),
+            encoding="utf-8")
         return str(target)
 
     def archived_names(self) -> set[str]:
@@ -74,10 +76,39 @@ class Lake:
         return {p.name for p in self.archive.iterdir()
                 if p.is_file() and not p.name.endswith(".archived.json")}
 
-    def quarantined_names(self) -> set[str]:
+    def quarantine_records(self) -> list[tuple[str, Path, dict[str, Any]]]:
+        """Open quarantine records as (document name, quarantined copy, record). A second failure
+        of the same name is stored as <name>.1, so the name comes from the record itself."""
+        records: list[tuple[str, Path, dict[str, Any]]] = []
         if not self.quarantine.is_dir():
-            return set()
-        return {p.name.split(".reason.json")[0] for p in self.quarantine.glob("*.reason.json")}
+            return records
+        for sidecar in sorted(self.quarantine.glob("*.reason.json")):
+            copy = sidecar.with_name(sidecar.name.removesuffix(".reason.json"))
+            try:
+                data = dict(json.loads(sidecar.read_text(encoding="utf-8")))
+            except ValueError:
+                data = {}
+            records.append((str(data.get("file") or copy.name), copy, data))
+        return records
+
+    def quarantined_names(self) -> set[str]:
+        return {name for name, _, _ in self.quarantine_records()}
+
+    def resolve_quarantine(self, name: str, why: str) -> int:
+        """Close a document's open records (it passed, or was deleted). The bad copy and the
+        record are kept as <copy>.resolved.json, but no longer protect the old chunks."""
+        if not self.writable:
+            return 0
+        closed = 0
+        for found, copy, data in self.quarantine_records():
+            if found != name:
+                continue
+            data.update({"resolved_at": _now(), "resolution": why})
+            Path(str(copy) + ".resolved.json").write_text(json.dumps(data, indent=2),
+                                                          encoding="utf-8")
+            Path(str(copy) + ".reason.json").unlink()
+            closed += 1
+        return closed
 
     def archived_info(self, name: str) -> dict[str, Any]:
         sidecar = self.archive / (name + ".archived.json")
@@ -102,12 +133,40 @@ class Lake:
                                                doc_version="rolled back")
         return {"restored": name, "archived": newer if archived_newer else None}
 
+    def verified_rows(self, config_sig: str, wanted: dict[str, str]) -> dict[str, dict[str, Any]]:
+        """For each wanted document (name -> file SHA-256), the newest earlier report row in which
+        that exact file passed quality, completeness and uniqueness under the same settings."""
+        found: dict[str, dict[str, Any]] = {}
+        if not self.reports.is_dir():
+            return found
+        for path in sorted(self.reports.glob("verification-*.json"), reverse=True):
+            if len(found) == len(wanted):
+                break
+            try:
+                report = json.loads(path.read_text(encoding="utf-8"))
+                if report.get("config_sig") != config_sig:
+                    continue
+                for row in report["documents"]:
+                    name = row["source"]
+                    if name in found or wanted.get(name) != row["sha256"]:
+                        continue
+                    if all(row["checks"].get(n, {}).get("passed")
+                           for n in ("quality", "completeness", "uniqueness")):
+                        found[name] = {**row, "run_id": row.get("verified_in") or report["run_id"]}
+            except (ValueError, KeyError, TypeError, AttributeError):
+                continue                       # a damaged report is simply not carried forward
+        return found
+
     def write_report(self, run_id: str, report: dict[str, Any], markdown: str) -> list[str]:
         if not self.writable:
             return []
+        name, n = f"verification-{run_id}", 1
+        while (self.reports / f"{name}.json").exists():       # two runs within one second
+            n += 1
+            name = f"verification-{run_id}_{n}"               # "_" sorts after the first one
         written = []
         for suffix, body in ((".json", json.dumps(report, indent=2)), (".md", markdown)):
-            path = self.reports / f"verification-{run_id}{suffix}"
+            path = self.reports / f"{name}{suffix}"
             path.write_text(body, encoding="utf-8")
             written.append(str(path))
         return written

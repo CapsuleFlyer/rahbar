@@ -13,7 +13,7 @@ INGRESS_IP ?= $(shell minikube ip 2>/dev/null)
 HOST ?= rahbar.local
 
 .DEFAULT_GOAL := help
-.PHONY: help install test lint dev cluster images apply secret index ask batch-load ingest ops trace trace-report fetch eval eval-fixtures check
+.PHONY: help install test lint dev cluster images apply secret index ask batch-load ingest reports ops trace trace-report fetch eval eval-fixtures check
 
 help: ## list the targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  make %-14s %s\n", $$1, $$2}'
@@ -72,6 +72,9 @@ ingest: ## run the ingestion Job now (verify, quarantine, incremental) and print
 	@n=ingest-$$(date +%s); kubectl create job --from=cronjob/reindex $$n -n $(NS) >/dev/null && echo "running $$n ..." && \
 	  (kubectl wait --for=condition=complete job/$$n -n $(NS) --timeout=$(or $(WAIT),3600s) || true) && \
 	  kubectl logs job/$$n -n $(NS) | grep -v '^{"ts"'; kubectl logs job/$$n -n $(NS) | grep '"ingest summary"' | cut -c1-700
+
+reports: ## copy the verification reports from the cluster into eval/results/ (commit them)
+	NS=$(NS) scripts/copy-reports.sh
 
 ops: ## data-lake commands: make ops ARGS="list" | ARGS="counts --source X" | ARGS="rollback NAME"
 	NS=$(NS) TAG=$(TAG) scripts/ops.sh $(ARGS)

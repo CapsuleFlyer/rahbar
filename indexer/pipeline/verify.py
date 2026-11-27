@@ -39,6 +39,9 @@ SAMPLES = 3
 _WORDLIKE = re.compile(r"^[(\[\"'“‘]*[A-Za-z][A-Za-z'’/\-]*[)\]\"'”’.,;:!?%]*$")
 _NUMBERLIKE = re.compile(r"^[(\[]*\d[\d.,:/%+\-×x]*[)\].,;:!?%]*$")
 _NEUTRAL = re.compile(r"^[\W_]+$")                 # |, ---, bullets: table and layout marks
+_LIST_ITEM = re.compile(r"^\s*(?:[-*+•●▪]|\d{1,3}[.)]|\(\w{1,4}\))\s+\S")
+# a list item that ends on one of these was cut off, full stop or not
+_DANGLING = {"a", "an", "the", "and", "or", "of", "to", "with", "for"}
 _INJECTION = re.compile(
     r"\b(?:ignore|disregard|forget|override)\b.{0,40}\b(?:previous|prior|above|earlier|all|your)\b"
     r".{0,40}\b(?:instruction|prompt|rule|message)s?\b|\byou are now\b|</?\s*evidence\b",
@@ -61,7 +64,7 @@ class DocInfo:
     doc_version: str = ""
     date: str = ""
     superseded: bool = False             # flagged in _index.json or front matter
-    indexed: bool = False                # already has chunks in the vector store
+    rank: int = 2                        # 0 unchanged and indexed, 1 edited, 2 new arrival
     sha256: str = ""
     text: str = ""
     text_sha256: str = ""
@@ -99,15 +102,15 @@ def _fill(meta: dict[str, str], title: str = "", version: str = "", date: str = 
         meta["date"] = str(date).strip()
 
 
-def read_metadata(path: Path, entry: dict[str, Any] | None,
-                  index_version: str = "") -> dict[str, str]:
+def read_metadata(path: Path, entry: dict[str, Any] | None, index_version: str = "",
+                  sidecar: Path | None = None) -> dict[str, str]:
     """Title, version and date, from the first place that has each: the _index.json row, a
     `<file>.meta.json` sidecar, Markdown front matter or its first heading, the PDF's own info."""
     meta = {"title": "", "doc_version": "", "date": ""}
     if entry:
         _fill(meta, str(entry.get("name", "")), str(entry.get("doc_version", "")),
               str(entry.get("date", "")))
-    sidecar = Path(str(path) + ".meta.json")
+    sidecar = sidecar or Path(str(path) + ".meta.json")
     if sidecar.exists():
         try:
             data = json.loads(sidecar.read_text(encoding="utf-8"))
@@ -200,6 +203,19 @@ def check_quality(info: DocInfo, settings: IndexerSettings) -> Check:
                                   f"{100 * ratio:.0f}% word-like tokens")
 
 
+def ends_in_list_item(text: str) -> bool:
+    """Is the last line a list item, or the indented continuation of one?"""
+    block = re.split(r"\n\s*\n", text.rstrip())[-1].split("\n")
+    if block[-1].split()[-1].lower() in _DANGLING:
+        return False
+    for line in reversed(block):
+        if _LIST_ITEM.match(line):
+            return True
+        if not line[:1].isspace():
+            return False
+    return False
+
+
 def truncation(info: DocInfo) -> str:
     suffix = info.path.suffix.lower()
     if suffix == ".pdf":
@@ -210,6 +226,8 @@ def truncation(info: DocInfo) -> str:
                 return "the PDF is cut off: its end-of-file marker is missing"
         return ""
     stripped = info.text.rstrip()
+    if stripped and stripped[-1].isalnum() and ends_in_list_item(stripped):
+        return ""                              # list items usually carry no full stop
     if stripped and (stripped[-1].isalnum() or stripped[-1] in ",;"):
         return f"the text stops mid-sentence (last words: ...{stripped[-30:]!r})"
     return ""
@@ -248,7 +266,7 @@ class Peer:
     sha256: str
     text_sha256: str = ""
     superseded: bool = False
-    indexed: bool = False
+    rank: int = 2
 
     @property
     def key(self) -> str:
@@ -270,6 +288,19 @@ def newer(a: Peer | DocInfo, b: Peer | DocInfo) -> bool | None:
     return None
 
 
+def other_version(a: Peer | DocInfo, b: Peer | DocInfo) -> bool:
+    """Are these two editions of one document (so their shared wording is expected)? The titles
+    must match and the version numbers differ. Without two version numbers the dates must differ
+    and the titles be written identically, so "Title (reworded)" is still compared."""
+    if not a.key or a.key != b.key:
+        return False
+    va, vb = _nums(a.doc_version), _nums(b.doc_version)
+    if va and vb:
+        return va != vb
+    da, db = _nums(a.date), _nums(b.date)
+    return bool(da and db and da != db) and a.title.strip().lower() == b.title.strip().lower()
+
+
 def check_recency(info: DocInfo | Peer, peers: list[Peer]) -> Check:
     later = [p for p in peers if p.source != info.source and p.key == title_key(info.title)
              and newer(p, info)]
@@ -287,8 +318,8 @@ def check_recency(info: DocInfo | Peer, peers: list[Peer]) -> Check:
 def check_uniqueness(info: DocInfo, peers: list[Peer],
                      near: dict[str, float], threshold: float) -> Check:
     for p in peers:
-        if p.source == info.source or not (p.indexed or p.source < info.source):
-            continue                            # the earlier or already-indexed copy is the original
+        if p.source == info.source or (p.rank, p.source) > (info.rank, info.source):
+            continue          # the original: indexed and unchanged, then edited, then first by name
         if p.sha256 == info.sha256:
             return Check("uniqueness", False,
                          f"exact duplicate of {p.source} (same SHA-256 {info.sha256[:12]})")
@@ -368,6 +399,22 @@ def near_in_batch(vector: list[float], text: str, others: dict[str, tuple[list[f
 def injection_warning(text: str) -> str:
     return ("an instruction-like passage was found (a prompt-injection pattern); the document "
             "is indexed and the query-time guardrail will flag it") if _INJECTION.search(text) else ""
+
+
+def unsupported_checks(suffix: str, supported: list[str], duplicate_of: str) -> list[Check]:
+    """The four results for a file type extraction cannot read: it cannot pass, and says why."""
+    kind = suffix or "(no extension)"
+    return [
+        Check("quality", False, f"unsupported file type {kind}: no text can be extracted "
+                                f"(supported: {', '.join(supported)})"),
+        Check("completeness", False, "title, version and page count cannot be read from this "
+                                     "file type"),
+        Check("recency", True, "no version information can be read, so no newer version is "
+                               "detected"),
+        Check("uniqueness", not duplicate_of,
+              f"exact duplicate of {duplicate_of} (same SHA-256)" if duplicate_of
+              else "no exact duplicate by SHA-256 (there is no text to compare)"),
+    ]
 
 
 def verdict(checks: list[Check]) -> str:

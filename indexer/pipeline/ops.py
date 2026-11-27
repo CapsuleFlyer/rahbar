@@ -5,7 +5,9 @@
   rollback NAME             bring an archived version back and archive the version that
                             superseded it; the next ingestion run flips the chunk flags
   delete NAME               remove a document from the lake; the next ingestion run deletes
-                            its chunks, leaving no orphans (check with `counts --source NAME`)
+                            its chunks, leaving no orphans (check with `counts --source NAME`).
+                            Also works for a quarantined document whose last good version is
+                            still indexed
 
 Nothing here writes to Chroma. `rollback` only moves files, and the ingestion Job (the single
 writer) applies the change to the vector store on its next run.
@@ -14,7 +16,6 @@ writer) applies the change to the vector store on its next run.
 from __future__ import annotations
 
 import argparse
-import json
 from typing import Any
 
 from .config import IndexerSettings, get_settings
@@ -33,9 +34,8 @@ def cmd_list(settings: IndexerSettings, _args: argparse.Namespace) -> int:
         print(f"  {name:<52} superseded by {info.get('superseded_by', '?')}  "
               f"archived {info.get('archived_at', '?')}")
     print("QUARANTINE")
-    for name in sorted(lake.quarantined_names()):
-        side = lake.quarantine / (name + ".reason.json")
-        failed = json.loads(side.read_text(encoding="utf-8")).get("failed_checks", {})
+    for name, _copy, record in lake.quarantine_records():
+        failed = record.get("failed_checks", {})
         print(f"  {name:<52} {'; '.join(f'{k}: {v}' for k, v in failed.items())[:160]}")
     return 0
 
@@ -75,11 +75,17 @@ def cmd_delete(settings: IndexerSettings, args: argparse.Namespace) -> int:
 
     root = Path(settings.corpus_dir)
     target = root / args.name
-    if not target.is_file():
-        print(f"{args.name} is not an active document in {root}")
+    lake = Lake(settings.corpus_dir)
+    quarantined = args.name in lake.quarantined_names()
+    if not target.is_file() and not quarantined:
+        print(f"{args.name} is not an active or quarantined document in {root}")
         return 1
-    target.unlink()
+    if quarantined and not lake.prepare():
+        print(f"{root} is not writable: cannot delete")
+        return 1
+    target.unlink(missing_ok=True)
     (root / (args.name + ".meta.json")).unlink(missing_ok=True)
+    lake.resolve_quarantine(args.name, "deleted by the operator")
     print(f"deleted {args.name}; run the ingestion Job (make ingest) to prune its chunks")
     return 0
 

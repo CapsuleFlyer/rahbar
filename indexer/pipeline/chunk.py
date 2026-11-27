@@ -16,6 +16,7 @@ break-one-stage experiment in docs/FAILURE-ANALYSIS.md.
 
 from __future__ import annotations
 
+import hashlib
 import os
 import re
 from dataclasses import dataclass, field
@@ -157,8 +158,10 @@ def _split_table(text: str, limit: int) -> list[str]:
 
 
 def _slug(source: str) -> str:
-    stem = source.rsplit(".", 1)[0] if "." in source else source
-    return re.sub(r"[^a-z0-9]+", "-", stem.lower()).strip("-") or "doc"
+    """A readable id prefix that is unique per file name. The hash keeps weather.md apart from
+    weather.txt, Weather.md or a-b.md from a_b.md: names that read the same once simplified."""
+    readable = re.sub(r"[^a-z0-9]+", "-", source.lower()).strip("-") or "doc"
+    return f"{readable}-{hashlib.sha256(source.encode('utf-8')).hexdigest()[:8]}"
 
 
 def _make_chunk(doc: Document, ordinal: int, section: str, page: int, text: str) -> Chunk:
