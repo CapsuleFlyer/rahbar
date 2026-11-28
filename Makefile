@@ -70,9 +70,7 @@ batch-load: ## put a batch of new documents in the data lake: make batch-load DI
 	scripts/load-corpus.sh $(DIR)
 
 ingest: ## run the ingestion Job now (verify, quarantine, incremental) and print its report
-	@n=ingest-$$(date +%s); kubectl create job --from=cronjob/reindex $$n -n $(NS) >/dev/null && echo "running $$n ..." && \\
-	  (kubectl wait --for=condition=complete job/$$n -n $(NS) --timeout=$(or $(WAIT),3600s) || true) && \\
-	  kubectl logs job/$$n -n $(NS) | grep -v '^{\"ts\"'; kubectl logs job/$$n -n $(NS) | grep '\"ingest summary\"' | cut -c1-700
+	@set -e; n=ingest-$(shell date +%s); kubectl create job $$n --from=cronjob/reindex -n $(NS) >/dev/null; echo "running $$n ..."; if ! kubectl wait --for=condition=complete job/$$n -n $(NS) --timeout=$(or $(WAIT),3600s); then kubectl describe job/$$n -n $(NS); kubectl logs job/$$n -n $(NS) || true; exit 1; fi; kubectl logs job/$$n -n $(NS) | grep -v '^{\"ts\"'; kubectl logs job/$$n -n $(NS) | grep '\"ingest summary\"' | cut -c1-700
 
 reports: ## copy the verification reports from the cluster into eval/results/ (commit them)
 	NS=$(NS) scripts/copy-reports.sh
