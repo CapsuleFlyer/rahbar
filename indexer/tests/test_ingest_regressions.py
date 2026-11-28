@@ -20,7 +20,7 @@ from tests.pdfutil import make_pdf
 
 from pipeline import ops, verify
 from pipeline.config import IndexerSettings
-from pipeline.ingest import run_ingestion, source_counts
+from pipeline.ingest import fetch_vectors, run_ingestion, source_counts
 from pipeline.lake import Lake
 
 CHECK_NAMES = set(verify.CHECKS)
@@ -142,6 +142,19 @@ def test_ops_delete_removes_a_quarantined_documents_old_chunks(
     run_ingestion(env["cfg"], env["client"])
     assert "alpha.md" not in sources(env)
     assert ops.main(["delete", "alpha.md"]) == 1
+
+
+# ---------------------------------------------------------------- vector reuse
+def test_fetch_vectors_deduplicates_ids_before_querying_chroma() -> None:
+    class DuplicateRejectingCollection:
+        def get(self, ids: list[str], include: list[str]) -> dict[str, Any]:
+            assert len(ids) == len(set(ids))
+            assert include == ["embeddings"]
+            return {"ids": ids, "embeddings": [[1.0, 2.0] for _ in ids]}
+
+    vectors = fetch_vectors(DuplicateRejectingCollection(),
+                            ["old-1", "old-1", "old-2", "old-1"])
+    assert vectors == {"old-1": [1.0, 2.0], "old-2": [1.0, 2.0]}
 
 
 # ---------------------------------------------------------------- chunk ids

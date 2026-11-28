@@ -101,8 +101,11 @@ def source_states(collection: Any) -> dict[str, SourceState]:
 
 def fetch_vectors(collection: Any, ids: list[str]) -> dict[str, list[float]]:
     found: dict[str, list[float]] = {}
-    for start in range(0, len(ids), 500):
-        res = collection.get(ids=ids[start:start + 500], include=["embeddings"])
+    # Several new chunks can have the same text hash and reuse one old chunk's vector.
+    # Chroma requires IDs in a single get() request to be unique.
+    unique_ids = list(dict.fromkeys(ids))
+    for start in range(0, len(unique_ids), 500):
+        res = collection.get(ids=unique_ids[start:start + 500], include=["embeddings"])
         embeddings = res.get("embeddings")
         if embeddings is None:
             continue
