@@ -22,7 +22,7 @@ from ..logjson import request_id_var
 from ..providers.llm.base import LLMProvider, Usage
 from ..retrieval.base import Retriever
 from ..routes import metrics
-from ..schemas import Answer, AskResponse, Passage, RetrievedRef
+from ..schemas import Answer, AskResponse, EvidenceText, Passage, RetrievedRef
 from ..trace import TraceWriter
 from . import cache as cache_mod
 from .grounding import (
@@ -119,6 +119,8 @@ def answer_question(
     settings: Settings,
     cache: cache_mod.SemanticCache | None = None,
     trace: TraceWriter | None = None,
+    no_cache: bool = False,
+    include_evidence: bool = False,
 ) -> AskResponse:
     began = time.perf_counter()
     followup = is_followup(question)
@@ -167,7 +169,8 @@ def answer_question(
     _note_index(tr, retriever, vector)
 
     # 2. cache check (skipped for follow-ups and when there is no vector)
-    if cache is not None and vector is not None and not followup:
+    use_cache = cache is not None and not no_cache
+    if cache is not None and use_cache and vector is not None and not followup:
         cache_started = time.perf_counter()
         hit = cache.lookup(vector, include_old)
         metrics.STAGE_LATENCY.labels(stage="cache").observe(time.perf_counter() - cache_started)
@@ -189,8 +192,9 @@ def answer_question(
                               "confidence": response.confidence}
             return done(response, "cache_hit")
     else:
-        tr["cache"] = {"result": "skipped",
-                       "reason": "followup" if followup else "cache off or no embedding"}
+        reason = "no_cache requested" if no_cache else (
+            "followup" if followup else "cache off or no embedding")
+        tr["cache"] = {"result": "skipped", "reason": reason}
 
     # 4. retrieve (superseded documents filtered unless the user asked about an old version)
     retrieve_started = time.perf_counter()
@@ -277,12 +281,16 @@ def answer_question(
     # 8. store the turn in the cache, if it is safe to serve to everyone
     response = _response(answer, retrieved, provider.name)
     stored = False
-    if (cache is not None and vector is not None
+    if (cache is not None and use_cache and vector is not None
             and cache_mod.should_cache(answer.answered_from_context, outcome.fallback_reason,
                                        followup)):
         cache.store(vector, include_old, response.model_dump())
         stored = True
     tr["cache"]["stored"] = stored
+    if include_evidence:
+        response = response.model_copy(update={"evidence": [
+            EvidenceText(chunk_id=p.chunk_id, source=p.source, section=p.section, page=p.page,
+                         text=p.text) for p in evidence]})
     return done(response, label)
 
 

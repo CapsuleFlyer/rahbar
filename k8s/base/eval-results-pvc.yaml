@@ -1,0 +1,14 @@
+# Result files of the RAGOps test suite (eval/results): written by the eval Job, so they
+# survive the Job's pod. `make eval-results` copies them to eval/results/ in the repository.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: eval-results
+  namespace: rahbar
+  labels:
+    app.kubernetes.io/name: eval
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 1Gi

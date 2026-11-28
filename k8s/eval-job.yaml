@@ -1,0 +1,39 @@
+# The RAGOps test suite as a Kubernetes Job (part F2): kubectl apply -f k8s/eval-job.yaml
+# (or `make eval-suite`). It calls the API Service, writes eval/results files to the
+# eval-results volume, and prints the summary table to its log.
+# Re-run it: kubectl -n rahbar delete job eval-suite --ignore-not-found, then apply again.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: eval-suite
+  namespace: rahbar
+  labels: {app.kubernetes.io/name: eval, app.kubernetes.io/part-of: rahbar}
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels: {app.kubernetes.io/name: eval, app.kubernetes.io/part-of: rahbar}
+    spec:
+      restartPolicy: Never
+      serviceAccountName: rahbar-eval
+      automountServiceAccountToken: false
+      securityContext: {runAsNonRoot: true, runAsUser: 10001, runAsGroup: 10001, fsGroup: 10001, seccompProfile: {type: RuntimeDefault}}
+      containers:
+        - name: eval
+          image: rahbar-eval:dev
+          imagePullPolicy: IfNotPresent
+          args: ["python", "-m", "eval.suite", "--api", "http://api:8000", "--out", "/results", "--delay", "3", "--repeat", "2"]
+          envFrom:
+            - configMapRef: {name: rahbar-config}        # OLLAMA_URL, EMBED_MODEL, HOSTED_BASE_URL, LLM_MODEL
+            - secretRef: {name: rahbar-secret, optional: true}   # LLM_API_KEY: the faithfulness judge
+          securityContext: {allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: {drop: [ALL]}}
+          resources:
+            requests: {cpu: 50m, memory: 96Mi}
+            limits: {cpu: 500m, memory: 256Mi}
+          volumeMounts:
+            - {name: results, mountPath: /results}
+            - {name: tmp, mountPath: /tmp}
+      volumes:
+        - {name: results, persistentVolumeClaim: {claimName: eval-results}}
+        - {name: tmp, emptyDir: {}}

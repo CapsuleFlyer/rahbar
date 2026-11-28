@@ -9,6 +9,7 @@ resources:
   - configmap.yaml
   - corpus-pvc.yaml
   - traces-pvc.yaml
+  - eval-results-pvc.yaml
   - chroma-statefulset.yaml
   - redis.yaml
   - api-deployment.yaml

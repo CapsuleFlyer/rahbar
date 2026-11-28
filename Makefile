@@ -13,8 +13,7 @@ INGRESS_IP ?= $(shell minikube ip 2>/dev/null)
 HOST ?= rahbar.local
 
 .DEFAULT_GOAL := help
-.PHONY: help install test lint dev cluster images apply secret index ask batch-load ingest reports ops trace trace-report fetch eval eval-fixtures check
-
+.PHONY: help install test lint dev cluster images apply secret index ask batch-load ingest reports ops eval-suite eval-results golden-check trace trace-report fetch eval eval-fixtures check
 help: ## list the targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  make %-14s %s\n", $$1, $$2}'
 
@@ -44,9 +43,11 @@ images: ## build the three images and load them into minikube (needs yours: Dock
 	docker build -t rahbar-api:$(TAG) api
 	docker build -t rahbar-indexer:$(TAG) indexer
 	docker build -t rahbar-ui:$(TAG) ui
+	docker build -t rahbar-eval:$(TAG) eval
 	minikube image load rahbar-api:$(TAG)
 	minikube image load rahbar-indexer:$(TAG)
 	minikube image load rahbar-ui:$(TAG)
+	minikube image load rahbar-eval:$(TAG)
 
 apply: ## apply the dev overlay (needs yours: manifests)
 	kubectl apply -k k8s/overlays/dev
@@ -78,6 +79,16 @@ reports: ## copy the verification reports from the cluster into eval/results/ (c
 
 ops: ## data-lake commands: make ops ARGS="list" | ARGS="counts --source X" | ARGS="rollback NAME"
 	NS=$(NS) TAG=$(TAG) scripts/ops.sh $(ARGS)
+
+eval-suite: ## run the RAGOps test suite as a Job (part B, F2); WAIT=1800s to change the timeout
+	@kubectl -n $(NS) delete job eval-suite --ignore-not-found >/dev/null; kubectl apply -f k8s/eval-job.yaml >/dev/null && echo "running eval-suite ..." && \
+	(kubectl -n $(NS) wait --for=condition=complete job/eval-suite --timeout=$(or $(WAIT),3600s) || true) && kubectl -n $(NS) logs job/eval-suite | tail -60
+
+eval-results: ## copy the suite result files from the cluster into eval/results/
+	NS=$(NS) scripts/fetch-results.sh
+
+golden-check: ## check eval/golden.jsonl against the handout rules
+	$(PY) eval/golden_lint.py
 
 trace: ## everything behind one answer (RAGOps D2): make trace ID=<trace id or prefix>
 	@kubectl -n $(NS) exec deploy/api -- sh -c 'cat /traces/*.jsonl' | $(PY) scripts/trace_show.py $(ID) -

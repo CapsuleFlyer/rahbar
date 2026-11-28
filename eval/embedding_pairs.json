@@ -1,0 +1,134 @@
+{
+ "paraphrase": [
+  [
+   "A creature that reaches zero hit points must make death saving throws.",
+   "When your hit points drop to 0 you roll saving throws against dying."
+  ],
+  [
+   "A long rest lasts at least eight hours and restores your hit points.",
+   "After sleeping for eight hours or more you get all your hit points back."
+  ],
+  [
+   "The Dodge action makes attack rolls against you harder until your next turn.",
+   "If you dodge, enemies have a worse chance to hit you until the start of your next turn."
+  ],
+  [
+   "Hiding requires a Dexterity check while you are out of sight of enemies.",
+   "To hide you must succeed on a Stealth roll and no enemy may see you."
+  ],
+  [
+   "A grappled creature has a Speed of zero.",
+   "While you are grappled you cannot move at all."
+  ],
+  [
+   "Plate armor is the heaviest armor and costs 1,500 gold pieces.",
+   "The most protective armor, plate, is priced at fifteen hundred gold."
+  ],
+  [
+   "A rogue deals extra damage once per turn when the attack has advantage.",
+   "Sneak attack adds bonus damage a single time each turn if you have advantage."
+  ],
+  [
+   "Fireball explodes in a sphere and deals fire damage to everything inside.",
+   "The fireball spell blasts a spherical area, burning each creature in it."
+  ],
+  [
+   "Casting a spell that needs concentration ends your previous concentration spell.",
+   "You can hold only one concentration spell, so starting another stops the first."
+  ],
+  [
+   "A prone creature has disadvantage on its attack rolls.",
+   "Lying on the ground makes your own attacks harder to land."
+  ],
+  [
+   "Exhaustion lowers the d20 rolls of a creature for each level it has.",
+   "Every level of exhaustion subtracts from the creature's d20 tests."
+  ],
+  [
+   "The Help action lets you aid an ally's ability check.",
+   "You can assist a friend on a skill check by taking the help action."
+  ],
+  [
+   "A shield adds two to your armor class while you hold it.",
+   "Carrying a shield raises your AC by 2."
+  ],
+  [
+   "Bonus actions are limited to one per turn.",
+   "You may take only a single bonus action on your turn."
+  ],
+  [
+   "Difficult terrain costs extra movement to cross.",
+   "Moving through rough ground uses up more of your speed."
+  ],
+  [
+   "A creature that is stable does not need to make death saving throws.",
+   "Once you are stabilised you stop rolling against death."
+  ]
+ ],
+ "unrelated": [
+  [
+   "A creature that reaches zero hit points must make death saving throws.",
+   "Simmer the tomato sauce for twenty minutes before adding basil."
+  ],
+  [
+   "A long rest lasts at least eight hours and restores your hit points.",
+   "The central bank raised interest rates by a quarter point on Tuesday."
+  ],
+  [
+   "The Dodge action makes attack rolls against you harder until your next turn.",
+   "Heavy rain is expected across the northern valleys through the weekend."
+  ],
+  [
+   "Hiding requires a Dexterity check while you are out of sight of enemies.",
+   "The quarterly report shows revenue growth of eight percent."
+  ],
+  [
+   "A grappled creature has a Speed of zero.",
+   "Our football team won the championship after a late penalty."
+  ],
+  [
+   "Plate armor is the heaviest armor and costs 1,500 gold pieces.",
+   "Install the printer driver before connecting the cable to the laptop."
+  ],
+  [
+   "A rogue deals extra damage once per turn when the attack has advantage.",
+   "Bake the bread at 220 degrees until the crust turns golden brown."
+  ],
+  [
+   "Fireball explodes in a sphere and deals fire damage to everything inside.",
+   "The museum opens at nine and closes at five on weekdays."
+  ],
+  [
+   "Casting a spell that needs concentration ends your previous concentration spell.",
+   "A shield adds two to your armor class while you hold it."
+  ],
+  [
+   "A prone creature has disadvantage on its attack rolls.",
+   "Rations are measured in pounds and a day of water is one gallon."
+  ],
+  [
+   "Exhaustion lowers the d20 rolls of a creature for each level it has.",
+   "Fireball explodes in a sphere and deals fire damage to everything inside."
+  ],
+  [
+   "The Help action lets you aid an ally's ability check.",
+   "Difficult terrain costs extra movement to cross."
+  ],
+  [
+   "A shield adds two to your armor class while you hold it.",
+   "A long rest lasts at least eight hours and restores your hit points."
+  ],
+  [
+   "Bonus actions are limited to one per turn.",
+   "Plate armor is the heaviest armor and costs 1,500 gold pieces."
+  ],
+  [
+   "Difficult terrain costs extra movement to cross.",
+   "A creature that is stable does not need to make death saving throws."
+  ],
+  [
+   "A creature that is stable does not need to make death saving throws.",
+   "Hiding requires a Dexterity check while you are out of sight of enemies."
+  ]
+ ]
+}

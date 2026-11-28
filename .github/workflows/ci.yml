@@ -25,6 +25,7 @@ jobs:
       # stub provider only: no network, no model
       - run: cd api && pytest -q --cov=app --cov-fail-under=60
       - run: cd indexer && pytest -q
+      - run: pip install httpx && python -m pytest eval/tests -q
   manifests:
     runs-on: ubuntu-24.04
     steps:
@@ -44,14 +45,15 @@ jobs:
           docker build -t rahbar-api:ci api
           docker build -t rahbar-indexer:ci indexer
           docker build -t rahbar-ui:ci ui
-          docker save rahbar-api:ci rahbar-indexer:ci rahbar-ui:ci -o images.tar
+          docker build -t rahbar-eval:ci eval
+          docker save rahbar-api:ci rahbar-indexer:ci rahbar-ui:ci rahbar-eval:ci -o images.tar
       - uses: actions/upload-artifact@v4
         with: {name: images, path: images.tar, retention-days: 1}
   scan:
     needs: [build]
     runs-on: ubuntu-24.04
     strategy:
-      matrix: {image: [rahbar-api, rahbar-indexer, rahbar-ui]}
+      matrix: {image: [rahbar-api, rahbar-indexer, rahbar-ui, rahbar-eval]}
     steps:
       - uses: actions/download-artifact@v4
         with: {name: images}

@@ -1,0 +1,3254 @@
+{
+  "run_id": "20261128T060853Z",
+  "started_at": "2026-11-28T06:30:33.108331+00:00",
+  "config": {
+    "api": "http://api:8000",
+    "embed_model": "nomic-embed-text",
+    "llm_model": "openai/gpt-oss-20b",
+    "judge": true,
+    "seed": 42,
+    "repeat": 2,
+    "tolerance": 1,
+    "batch_b": false,
+    "levels": [
+      "module",
+      "component",
+      "e2e"
+    ],
+    "delay": 3.0
+  },
+  "golden": {
+    "total": 39,
+    "active": 35
+  },
+  "runs": [
+    {
+      "module": {
+        "paraphrase_pairs": 16,
+        "unrelated_pairs": 16,
+        "paraphrase_mean": 0.8674938883455142,
+        "unrelated_mean": 0.5851440368089631,
+        "gap": 0.2823498515365511,
+        "paraphrase_min": 0.7371976067304382,
+        "unrelated_max": 0.6636635342660279,
+        "ranked_correctly": 1.0,
+        "ms_per_chunk": 333.5816316875011,
+        "chunk_words_mean": 142.5625,
+        "determinism_max_abs_diff": 0.0
+      },
+      "component": {
+        "overall": {
+          "recall@3": 0.8833333333333333,
+          "recall@5": 0.9166666666666666,
+          "mrr": 0.7844444444444445,
+          "ndcg@5": 0.9791354414894186,
+          "questions": 30
+        },
+        "by_type": {
+          "answerable": {
+            "recall@3": 0.88,
+            "recall@5": 0.92,
+            "mrr": 0.8079999999999999,
+            "ndcg@5": 1.0092892065549086,
+            "questions": 25
+          },
+          "hard": {
+            "recall@3": 0.9,
+            "recall@5": 0.9,
+            "mrr": 0.6666666666666667,
+            "ndcg@5": 0.8283666161619674,
+            "questions": 5
+          }
+        },
+        "by_tag": {
+          "exact": {
+            "recall@3": 0.8,
+            "recall@5": 0.8,
+            "mrr": 0.6666666666666667,
+            "ndcg@5": 1.0182469959554035,
+            "questions": 5
+          },
+          "injection": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "multi-chunk": {
+            "recall@3": 0.75,
+            "recall@5": 0.75,
+            "mrr": 0.75,
+            "ndcg@5": 0.812025260001919,
+            "questions": 2
+          },
+          "older-edition": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.6666666666666666,
+            "ndcg@5": 0.75,
+            "questions": 2
+          },
+          "ordinary": {
+            "recall@3": 0.875,
+            "recall@5": 0.9375,
+            "mrr": 0.8458333333333333,
+            "ndcg@5": 1.0006290894077652,
+            "questions": 16
+          },
+          "paraphrase": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.41666666666666663,
+            "ndcg@5": 0.7588912804029996,
+            "questions": 2
+          },
+          "version": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.8333333333333334,
+            "ndcg@5": 1.0327324383928644,
+            "questions": 4
+          }
+        },
+        "noise": {
+          "recall@3": 0.55,
+          "recall@5": 0.5833333333333334,
+          "mrr": 0.5186507936507937,
+          "ndcg@5": 0.6856909654027101,
+          "questions": 30,
+          "kind": "2 swapped-letter typos per question",
+          "delta": {
+            "recall@3": -0.33333333333333326,
+            "recall@5": -0.33333333333333326,
+            "mrr": -0.2657936507936508,
+            "ndcg@5": -0.29344447608670843
+          }
+        },
+        "unanswerable_top1_mean": 0.65057851,
+        "unanswerable_top1_max": 0.7179150599999999,
+        "per_question": [
+          {
+            "id": "g01",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.821159,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                48
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                357
+              ]
+            ]
+          },
+          {
+            "id": "g02",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.87263745,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                163
+              ],
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                10
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ]
+            ]
+          },
+          {
+            "id": "g03",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.76093864,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ]
+            ]
+          },
+          {
+            "id": "g04",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.83486718,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ],
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                11
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                13
+              ]
+            ]
+          },
+          {
+            "id": "g05",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.4306765580733931,
+            "top1": 0.7501682000000001,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                13
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                87
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                347
+              ]
+            ]
+          },
+          {
+            "id": "g06",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.83787894,
+            "retrieved": [
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                61
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ]
+            ]
+          },
+          {
+            "id": "g07",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.75601816,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                59
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                236
+              ]
+            ]
+          },
+          {
+            "id": "g08",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.8117503,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                186
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                191
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ]
+            ]
+          },
+          {
+            "id": "g09",
+            "type": "answerable",
+            "tags": [
+              "version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.76008284,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                21
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                203
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                163
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                51
+              ]
+            ]
+          },
+          {
+            "id": "g10",
+            "type": "answerable",
+            "tags": [
+              "version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.7445566699999999,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                184
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ],
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                11
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                189
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ]
+            ]
+          },
+          {
+            "id": "g11",
+            "type": "answerable",
+            "tags": [
+              "version",
+              "older-edition"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7348635800000001,
+            "retrieved": [
+              [
+                "srd-5-1-2014.pdf",
+                358
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                206
+              ]
+            ]
+          },
+          {
+            "id": "g12",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.3868528072345416,
+            "top1": 0.7509503399999999,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                103
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                210
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                234
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ]
+            ]
+          },
+          {
+            "id": "g13",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.3868528072345416,
+            "top1": 0.66765136,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                219
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                103
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                234
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ]
+            ]
+          },
+          {
+            "id": "g16",
+            "type": "hard",
+            "tags": [
+              "injection"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.77683955,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                59
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                163
+              ]
+            ]
+          },
+          {
+            "id": "g17",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.8175293653079347,
+            "top1": 0.78185976,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                149
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                132
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                132
+              ]
+            ]
+          },
+          {
+            "id": "g18",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 0.0,
+            "mrr": 0.0,
+            "ndcg@5": 0.0,
+            "top1": 0.6751157,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                299
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                248
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                248
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                250
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                217
+              ]
+            ]
+          },
+          {
+            "id": "g19",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.80744576,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                220
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                204
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                177
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                254
+              ]
+            ]
+          },
+          {
+            "id": "g20",
+            "type": "answerable",
+            "tags": [
+              "version",
+              "older-edition"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.73757958,
+            "retrieved": [
+              [
+                "srd-5-1-2014.pdf",
+                37
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                94
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                81
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ]
+            ]
+          },
+          {
+            "id": "g24",
+            "type": "hard",
+            "tags": [
+              "paraphrase"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.5,
+            "ndcg@5": 1.0177825608059992,
+            "top1": 0.7652682,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                7
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                25
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                179
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ]
+            ]
+          },
+          {
+            "id": "g25",
+            "type": "hard",
+            "tags": [
+              "paraphrase"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.79942,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ]
+            ]
+          },
+          {
+            "id": "g26",
+            "type": "hard",
+            "tags": [
+              "multi-chunk"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.2371977127692964,
+            "top1": 0.77692902,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                186
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                317
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ]
+            ]
+          },
+          {
+            "id": "g27",
+            "type": "hard",
+            "tags": [
+              "multi-chunk"
+            ],
+            "recall@3": 0.5,
+            "recall@5": 0.5,
+            "mrr": 0.5,
+            "ndcg@5": 0.38685280723454163,
+            "top1": 0.72639567,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                299
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                245
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                246
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ]
+            ]
+          },
+          {
+            "id": "g32",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.4306765580733931,
+            "top1": 0.82978582,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                48
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ]
+            ]
+          },
+          {
+            "id": "g33",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.73043817,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ]
+            ]
+          },
+          {
+            "id": "g34",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7197382999999999,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                278
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                48
+              ]
+            ]
+          },
+          {
+            "id": "g35",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.74908292,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                186
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ]
+            ]
+          },
+          {
+            "id": "g36",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 1.0,
+            "mrr": 0.2,
+            "ndcg@5": 0.38685280723454163,
+            "top1": 0.8213834799999999,
+            "retrieved": [
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                61
+              ]
+            ]
+          },
+          {
+            "id": "g37",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7229821000000001,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                219
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                210
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                234
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                265
+              ]
+            ]
+          },
+          {
+            "id": "g38",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.77917343,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                250
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                24
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                245
+              ]
+            ]
+          },
+          {
+            "id": "g39",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 0.0,
+            "mrr": 0.0,
+            "ndcg@5": 0.0,
+            "top1": 0.81145161,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ]
+            ]
+          }
+        ]
+      },
+      "e2e": {
+        "questions": 35,
+        "citation_validity": 1.0,
+        "citations_checked": 27,
+        "abstention_correctness": 1.0,
+        "false_abstention_rate": 0.26666666666666666,
+        "faithfulness": 0.9545454545454546,
+        "faithfulness_judged": 22,
+        "judge_agreement_with_human": null,
+        "human_labels_used": 0,
+        "answer_contains_expected": 0.5454545454545454,
+        "fallbacks": 0,
+        "latency_p50_s": 9.993,
+        "latency_p95_s": 15.75,
+        "per_question": [
+          {
+            "id": "g01",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g01",
+            "answered": true,
+            "fallback": false,
+            "seconds": 1.278,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g02",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g02",
+            "answered": true,
+            "fallback": false,
+            "seconds": 1.664,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g03",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g03",
+            "answered": true,
+            "fallback": false,
+            "seconds": 1.487,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g04",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g04",
+            "answered": true,
+            "fallback": false,
+            "seconds": 10.942,
+            "citations": 2,
+            "citations_valid": 2,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g05",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g05",
+            "answered": true,
+            "fallback": false,
+            "seconds": 15.54,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g06",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g06",
+            "answered": true,
+            "fallback": false,
+            "seconds": 15.75,
+            "citations": 2,
+            "citations_valid": 2,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g07",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g07",
+            "answered": false,
+            "fallback": false,
+            "seconds": 14.931,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g08",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g08",
+            "answered": true,
+            "fallback": false,
+            "seconds": 5.682,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g09",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g09",
+            "answered": true,
+            "fallback": false,
+            "seconds": 11.823,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g10",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g10",
+            "answered": true,
+            "fallback": false,
+            "seconds": 9.044,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g11",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g11",
+            "answered": false,
+            "fallback": false,
+            "seconds": 11.103,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g12",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g12",
+            "answered": true,
+            "fallback": false,
+            "seconds": 16.776,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g13",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g13",
+            "answered": false,
+            "fallback": false,
+            "seconds": 11.143,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g14",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T060853Z-r1-g14",
+            "answered": false,
+            "fallback": false,
+            "seconds": 8.4,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g15",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T060853Z-r1-g15",
+            "answered": false,
+            "fallback": false,
+            "seconds": 5.255,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g16",
+            "type": "hard",
+            "trace_id": "eval-20261128T060853Z-r1-g16",
+            "answered": true,
+            "fallback": false,
+            "seconds": 8.411,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g17",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g17",
+            "answered": true,
+            "fallback": false,
+            "seconds": 11.91,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g18",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g18",
+            "answered": false,
+            "fallback": false,
+            "seconds": 9.993,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g19",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g19",
+            "answered": true,
+            "fallback": false,
+            "seconds": 7.629,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g20",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g20",
+            "answered": false,
+            "fallback": false,
+            "seconds": 9.675,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g21",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T060853Z-r1-g21",
+            "answered": false,
+            "fallback": false,
+            "seconds": 14.406,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g22",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T060853Z-r1-g22",
+            "answered": false,
+            "fallback": false,
+            "seconds": 7.279,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g23",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T060853Z-r1-g23",
+            "answered": false,
+            "fallback": false,
+            "seconds": 8.102,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g24",
+            "type": "hard",
+            "trace_id": "eval-20261128T060853Z-r1-g24",
+            "answered": true,
+            "fallback": false,
+            "seconds": 5.996,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g25",
+            "type": "hard",
+            "trace_id": "eval-20261128T060853Z-r1-g25",
+            "answered": true,
+            "fallback": false,
+            "seconds": 11.14,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": false,
+            "contains_expected": false
+          },
+          {
+            "id": "g26",
+            "type": "hard",
+            "trace_id": "eval-20261128T060853Z-r1-g26",
+            "answered": true,
+            "fallback": false,
+            "seconds": 11.423,
+            "citations": 2,
+            "citations_valid": 2,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g27",
+            "type": "hard",
+            "trace_id": "eval-20261128T060853Z-r1-g27",
+            "answered": false,
+            "fallback": false,
+            "seconds": 12.574,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g32",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g32",
+            "answered": true,
+            "fallback": false,
+            "seconds": 5.747,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g33",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g33",
+            "answered": true,
+            "fallback": false,
+            "seconds": 10.127,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g34",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g34",
+            "answered": true,
+            "fallback": false,
+            "seconds": 3.314,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g35",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g35",
+            "answered": false,
+            "fallback": false,
+            "seconds": 6.073,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g36",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g36",
+            "answered": true,
+            "fallback": false,
+            "seconds": 14.379,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g37",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g37",
+            "answered": false,
+            "fallback": false,
+            "seconds": 8.951,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g38",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g38",
+            "answered": true,
+            "fallback": false,
+            "seconds": 14.855,
+            "citations": 2,
+            "citations_valid": 2,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g39",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r1-g39",
+            "answered": true,
+            "fallback": false,
+            "seconds": 11.694,
+            "citations": 2,
+            "citations_valid": 2,
+            "faithful": true,
+            "contains_expected": true
+          }
+        ]
+      },
+      "flat": {
+        "module.paraphrase_mean": 0.8674938883455142,
+        "module.unrelated_mean": 0.5851440368089631,
+        "module.gap": 0.2823498515365511,
+        "module.ranked_correctly": 1.0,
+        "module.ms_per_chunk": 333.5816316875011,
+        "module.determinism_max_abs_diff": 0.0,
+        "component.recall@3": 0.8833333333333333,
+        "component.recall@5": 0.9166666666666666,
+        "component.mrr": 0.7844444444444445,
+        "component.ndcg@5": 0.9791354414894186,
+        "component.noise_delta.recall@3": -0.33333333333333326,
+        "component.noise_delta.recall@5": -0.33333333333333326,
+        "component.noise_delta.mrr": -0.2657936507936508,
+        "component.noise_delta.ndcg@5": -0.29344447608670843,
+        "e2e.citation_validity": 1.0,
+        "e2e.abstention_correctness": 1.0,
+        "e2e.false_abstention_rate": 0.26666666666666666,
+        "e2e.faithfulness": 0.9545454545454546,
+        "e2e.answer_contains_expected": 0.5454545454545454,
+        "e2e.latency_p50_s": 9.993,
+        "e2e.latency_p95_s": 15.75
+      }
+    },
+    {
+      "module": {
+        "paraphrase_pairs": 16,
+        "unrelated_pairs": 16,
+        "paraphrase_mean": 0.8674938883455142,
+        "unrelated_mean": 0.5851440368089631,
+        "gap": 0.2823498515365511,
+        "paraphrase_min": 0.7371976067304382,
+        "unrelated_max": 0.6636635342660279,
+        "ranked_correctly": 1.0,
+        "ms_per_chunk": 396.68750837499545,
+        "chunk_words_mean": 142.5625,
+        "determinism_max_abs_diff": 0.0
+      },
+      "component": {
+        "overall": {
+          "recall@3": 0.8833333333333333,
+          "recall@5": 0.9166666666666666,
+          "mrr": 0.7844444444444445,
+          "ndcg@5": 0.9791354414894186,
+          "questions": 30
+        },
+        "by_type": {
+          "answerable": {
+            "recall@3": 0.88,
+            "recall@5": 0.92,
+            "mrr": 0.8079999999999999,
+            "ndcg@5": 1.0092892065549086,
+            "questions": 25
+          },
+          "hard": {
+            "recall@3": 0.9,
+            "recall@5": 0.9,
+            "mrr": 0.6666666666666667,
+            "ndcg@5": 0.8283666161619674,
+            "questions": 5
+          }
+        },
+        "by_tag": {
+          "exact": {
+            "recall@3": 0.8,
+            "recall@5": 0.8,
+            "mrr": 0.6666666666666667,
+            "ndcg@5": 1.0182469959554035,
+            "questions": 5
+          },
+          "injection": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "multi-chunk": {
+            "recall@3": 0.75,
+            "recall@5": 0.75,
+            "mrr": 0.75,
+            "ndcg@5": 0.812025260001919,
+            "questions": 2
+          },
+          "older-edition": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.6666666666666666,
+            "ndcg@5": 0.75,
+            "questions": 2
+          },
+          "ordinary": {
+            "recall@3": 0.875,
+            "recall@5": 0.9375,
+            "mrr": 0.8458333333333333,
+            "ndcg@5": 1.0006290894077652,
+            "questions": 16
+          },
+          "paraphrase": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.41666666666666663,
+            "ndcg@5": 0.7588912804029996,
+            "questions": 2
+          },
+          "version": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.8333333333333334,
+            "ndcg@5": 1.0327324383928644,
+            "questions": 4
+          }
+        },
+        "noise": {
+          "recall@3": 0.55,
+          "recall@5": 0.5833333333333334,
+          "mrr": 0.5186507936507937,
+          "ndcg@5": 0.6856909654027101,
+          "questions": 30,
+          "kind": "2 swapped-letter typos per question",
+          "delta": {
+            "recall@3": -0.33333333333333326,
+            "recall@5": -0.33333333333333326,
+            "mrr": -0.2657936507936508,
+            "ndcg@5": -0.29344447608670843
+          }
+        },
+        "unanswerable_top1_mean": 0.65057851,
+        "unanswerable_top1_max": 0.7179150599999999,
+        "per_question": [
+          {
+            "id": "g01",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.821159,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                48
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                357
+              ]
+            ]
+          },
+          {
+            "id": "g02",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.87263745,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                163
+              ],
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                10
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ]
+            ]
+          },
+          {
+            "id": "g03",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.76093864,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ]
+            ]
+          },
+          {
+            "id": "g04",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.83486718,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ],
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                11
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                13
+              ]
+            ]
+          },
+          {
+            "id": "g05",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.4306765580733931,
+            "top1": 0.7501682000000001,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                13
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                87
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                347
+              ]
+            ]
+          },
+          {
+            "id": "g06",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.83787894,
+            "retrieved": [
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                61
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ]
+            ]
+          },
+          {
+            "id": "g07",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.75601816,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                59
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                236
+              ]
+            ]
+          },
+          {
+            "id": "g08",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.8117503,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                186
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                191
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ]
+            ]
+          },
+          {
+            "id": "g09",
+            "type": "answerable",
+            "tags": [
+              "version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.76008284,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                21
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                203
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                163
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                51
+              ]
+            ]
+          },
+          {
+            "id": "g10",
+            "type": "answerable",
+            "tags": [
+              "version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.7445566699999999,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                184
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ],
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                11
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                189
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ]
+            ]
+          },
+          {
+            "id": "g11",
+            "type": "answerable",
+            "tags": [
+              "version",
+              "older-edition"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7348635800000001,
+            "retrieved": [
+              [
+                "srd-5-1-2014.pdf",
+                358
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                206
+              ]
+            ]
+          },
+          {
+            "id": "g12",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.3868528072345416,
+            "top1": 0.7509503399999999,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                103
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                210
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                234
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ]
+            ]
+          },
+          {
+            "id": "g13",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.3868528072345416,
+            "top1": 0.66765136,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                219
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                103
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                234
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ]
+            ]
+          },
+          {
+            "id": "g16",
+            "type": "hard",
+            "tags": [
+              "injection"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.77683955,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                59
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                163
+              ]
+            ]
+          },
+          {
+            "id": "g17",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.8175293653079347,
+            "top1": 0.78185976,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                149
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                132
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                132
+              ]
+            ]
+          },
+          {
+            "id": "g18",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 0.0,
+            "mrr": 0.0,
+            "ndcg@5": 0.0,
+            "top1": 0.6751157,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                299
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                248
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                248
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                250
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                217
+              ]
+            ]
+          },
+          {
+            "id": "g19",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.80744576,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                220
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                204
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                177
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                254
+              ]
+            ]
+          },
+          {
+            "id": "g20",
+            "type": "answerable",
+            "tags": [
+              "version",
+              "older-edition"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.73757958,
+            "retrieved": [
+              [
+                "srd-5-1-2014.pdf",
+                37
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                94
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                81
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ]
+            ]
+          },
+          {
+            "id": "g24",
+            "type": "hard",
+            "tags": [
+              "paraphrase"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.5,
+            "ndcg@5": 1.0177825608059992,
+            "top1": 0.7652682,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                7
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                25
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                179
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ]
+            ]
+          },
+          {
+            "id": "g25",
+            "type": "hard",
+            "tags": [
+              "paraphrase"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.79942,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ]
+            ]
+          },
+          {
+            "id": "g26",
+            "type": "hard",
+            "tags": [
+              "multi-chunk"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.2371977127692964,
+            "top1": 0.77692902,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                186
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                317
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ]
+            ]
+          },
+          {
+            "id": "g27",
+            "type": "hard",
+            "tags": [
+              "multi-chunk"
+            ],
+            "recall@3": 0.5,
+            "recall@5": 0.5,
+            "mrr": 0.5,
+            "ndcg@5": 0.38685280723454163,
+            "top1": 0.72639567,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                299
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                245
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                246
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ]
+            ]
+          },
+          {
+            "id": "g32",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.4306765580733931,
+            "top1": 0.82978582,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                48
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ]
+            ]
+          },
+          {
+            "id": "g33",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.73043817,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ]
+            ]
+          },
+          {
+            "id": "g34",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7197382999999999,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                278
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                48
+              ]
+            ]
+          },
+          {
+            "id": "g35",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.74908292,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                186
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ]
+            ]
+          },
+          {
+            "id": "g36",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 1.0,
+            "mrr": 0.2,
+            "ndcg@5": 0.38685280723454163,
+            "top1": 0.8213834799999999,
+            "retrieved": [
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                61
+              ]
+            ]
+          },
+          {
+            "id": "g37",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7229821000000001,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                219
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                210
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                234
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                265
+              ]
+            ]
+          },
+          {
+            "id": "g38",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.77917343,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                250
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                24
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                245
+              ]
+            ]
+          },
+          {
+            "id": "g39",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 0.0,
+            "mrr": 0.0,
+            "ndcg@5": 0.0,
+            "top1": 0.81145161,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ]
+            ]
+          }
+        ]
+      },
+      "e2e": {
+        "questions": 35,
+        "citation_validity": 1.0,
+        "citations_checked": 33,
+        "abstention_correctness": 1.0,
+        "false_abstention_rate": 0.2,
+        "faithfulness": 0.9583333333333334,
+        "faithfulness_judged": 24,
+        "judge_agreement_with_human": null,
+        "human_labels_used": 0,
+        "answer_contains_expected": 0.5,
+        "fallbacks": 0,
+        "latency_p50_s": 10.011,
+        "latency_p95_s": 15.715,
+        "per_question": [
+          {
+            "id": "g01",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g01",
+            "answered": true,
+            "fallback": false,
+            "seconds": 1.284,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g02",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g02",
+            "answered": true,
+            "fallback": false,
+            "seconds": 9.19,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g03",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g03",
+            "answered": true,
+            "fallback": false,
+            "seconds": 6.017,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g04",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g04",
+            "answered": true,
+            "fallback": false,
+            "seconds": 14.192,
+            "citations": 2,
+            "citations_valid": 2,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g05",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g05",
+            "answered": true,
+            "fallback": false,
+            "seconds": 12.954,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g06",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g06",
+            "answered": true,
+            "fallback": false,
+            "seconds": 16.254,
+            "citations": 2,
+            "citations_valid": 2,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g07",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g07",
+            "answered": true,
+            "fallback": false,
+            "seconds": 7.175,
+            "citations": 4,
+            "citations_valid": 4,
+            "faithful": false,
+            "contains_expected": true
+          },
+          {
+            "id": "g08",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g08",
+            "answered": true,
+            "fallback": false,
+            "seconds": 11.333,
+            "citations": 2,
+            "citations_valid": 2,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g09",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g09",
+            "answered": true,
+            "fallback": false,
+            "seconds": 12.015,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g10",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g10",
+            "answered": true,
+            "fallback": false,
+            "seconds": 7.8,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g11",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g11",
+            "answered": true,
+            "fallback": false,
+            "seconds": 12.948,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g12",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g12",
+            "answered": true,
+            "fallback": false,
+            "seconds": 12.316,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g13",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g13",
+            "answered": false,
+            "fallback": false,
+            "seconds": 13.453,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g14",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T060853Z-r2-g14",
+            "answered": false,
+            "fallback": false,
+            "seconds": 10.699,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g15",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T060853Z-r2-g15",
+            "answered": false,
+            "fallback": false,
+            "seconds": 3.803,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g16",
+            "type": "hard",
+            "trace_id": "eval-20261128T060853Z-r2-g16",
+            "answered": true,
+            "fallback": false,
+            "seconds": 1.393,
+            "citations": 2,
+            "citations_valid": 2,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g17",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g17",
+            "answered": true,
+            "fallback": false,
+            "seconds": 15.651,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g18",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g18",
+            "answered": false,
+            "fallback": false,
+            "seconds": 10.15,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g19",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g19",
+            "answered": true,
+            "fallback": false,
+            "seconds": 1.095,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g20",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g20",
+            "answered": false,
+            "fallback": false,
+            "seconds": 9.475,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g21",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T060853Z-r2-g21",
+            "answered": false,
+            "fallback": false,
+            "seconds": 15.715,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g22",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T060853Z-r2-g22",
+            "answered": false,
+            "fallback": false,
+            "seconds": 5.578,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g23",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T060853Z-r2-g23",
+            "answered": false,
+            "fallback": false,
+            "seconds": 7.964,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g24",
+            "type": "hard",
+            "trace_id": "eval-20261128T060853Z-r2-g24",
+            "answered": true,
+            "fallback": false,
+            "seconds": 4.181,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g25",
+            "type": "hard",
+            "trace_id": "eval-20261128T060853Z-r2-g25",
+            "answered": true,
+            "fallback": false,
+            "seconds": 11.196,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g26",
+            "type": "hard",
+            "trace_id": "eval-20261128T060853Z-r2-g26",
+            "answered": true,
+            "fallback": false,
+            "seconds": 11.184,
+            "citations": 2,
+            "citations_valid": 2,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g27",
+            "type": "hard",
+            "trace_id": "eval-20261128T060853Z-r2-g27",
+            "answered": true,
+            "fallback": false,
+            "seconds": 11.795,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g32",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g32",
+            "answered": true,
+            "fallback": false,
+            "seconds": 7.67,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g33",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g33",
+            "answered": true,
+            "fallback": false,
+            "seconds": 6.791,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g34",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g34",
+            "answered": true,
+            "fallback": false,
+            "seconds": 3.925,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g35",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g35",
+            "answered": false,
+            "fallback": false,
+            "seconds": 5.916,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g36",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g36",
+            "answered": true,
+            "fallback": false,
+            "seconds": 13.902,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": false
+          },
+          {
+            "id": "g37",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g37",
+            "answered": false,
+            "fallback": false,
+            "seconds": 10.011,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g38",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g38",
+            "answered": false,
+            "fallback": false,
+            "seconds": 7.087,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g39",
+            "type": "answerable",
+            "trace_id": "eval-20261128T060853Z-r2-g39",
+            "answered": true,
+            "fallback": false,
+            "seconds": 13.499,
+            "citations": 2,
+            "citations_valid": 2,
+            "faithful": true,
+            "contains_expected": true
+          }
+        ]
+      },
+      "flat": {
+        "module.paraphrase_mean": 0.8674938883455142,
+        "module.unrelated_mean": 0.5851440368089631,
+        "module.gap": 0.2823498515365511,
+        "module.ranked_correctly": 1.0,
+        "module.ms_per_chunk": 396.68750837499545,
+        "module.determinism_max_abs_diff": 0.0,
+        "component.recall@3": 0.8833333333333333,
+        "component.recall@5": 0.9166666666666666,
+        "component.mrr": 0.7844444444444445,
+        "component.ndcg@5": 0.9791354414894186,
+        "component.noise_delta.recall@3": -0.33333333333333326,
+        "component.noise_delta.recall@5": -0.33333333333333326,
+        "component.noise_delta.mrr": -0.2657936507936508,
+        "component.noise_delta.ndcg@5": -0.29344447608670843,
+        "e2e.citation_validity": 1.0,
+        "e2e.abstention_correctness": 1.0,
+        "e2e.false_abstention_rate": 0.2,
+        "e2e.faithfulness": 0.9583333333333334,
+        "e2e.answer_contains_expected": 0.5,
+        "e2e.latency_p50_s": 10.011,
+        "e2e.latency_p95_s": 15.715
+      }
+    }
+  ],
+  "summary": {
+    "component.mrr": 0.7844444444444445,
+    "component.ndcg@5": 0.9791354414894186,
+    "component.noise_delta.mrr": -0.2657936507936508,
+    "component.noise_delta.ndcg@5": -0.29344447608670843,
+    "component.noise_delta.recall@3": -0.33333333333333326,
+    "component.noise_delta.recall@5": -0.33333333333333326,
+    "component.recall@3": 0.8833333333333333,
+    "component.recall@5": 0.9166666666666666,
+    "e2e.abstention_correctness": 1.0,
+    "e2e.answer_contains_expected": 0.5227272727272727,
+    "e2e.citation_validity": 1.0,
+    "e2e.faithfulness": 0.956439393939394,
+    "e2e.false_abstention_rate": 0.23333333333333334,
+    "e2e.latency_p50_s": 10.001999999999999,
+    "e2e.latency_p95_s": 15.7325,
+    "module.determinism_max_abs_diff": 0.0,
+    "module.gap": 0.2823498515365511,
+    "module.ms_per_chunk": 365.13457003124824,
+    "module.paraphrase_mean": 0.8674938883455142,
+    "module.ranked_correctly": 1.0,
+    "module.unrelated_mean": 0.5851440368089631
+  },
+  "variation": {
+    "component.mrr": 0.0,
+    "component.ndcg@5": 0.0,
+    "component.noise_delta.mrr": 0.0,
+    "component.noise_delta.ndcg@5": 0.0,
+    "component.noise_delta.recall@3": 0.0,
+    "component.noise_delta.recall@5": 0.0,
+    "component.recall@3": 0.0,
+    "component.recall@5": 0.0,
+    "e2e.abstention_correctness": 0.0,
+    "e2e.answer_contains_expected": 0.045454545454545414,
+    "e2e.citation_validity": 0.0,
+    "e2e.faithfulness": 0.0037878787878787845,
+    "e2e.false_abstention_rate": 0.06666666666666665,
+    "e2e.latency_p50_s": 0.017999999999998906,
+    "e2e.latency_p95_s": 0.03500000000000014,
+    "module.determinism_max_abs_diff": 0.0,
+    "module.gap": 0.0,
+    "module.ms_per_chunk": 63.105876687494344,
+    "module.paraphrase_mean": 0.0,
+    "module.ranked_correctly": 0.0,
+    "module.unrelated_mean": 0.0
+  }
+}

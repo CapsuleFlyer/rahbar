@@ -36,6 +36,7 @@ spec:
     - from:
         - namespaceSelector: {matchLabels: {kubernetes.io/metadata.name: ingress-nginx}}
         - podSelector: {matchLabels: {app.kubernetes.io/name: ui}}
+        - podSelector: {matchLabels: {app.kubernetes.io/name: eval}}   # the test-suite Job
       ports: [{port: 8000}]
 ---
 apiVersion: networking.k8s.io/v1
@@ -89,3 +90,19 @@ spec:
       ports: [{port: 8000}]
     - to: [{ipBlock: {cidr: 192.168.49.10/32}}]
       ports: [{port: 11434}]
+---
+# The RAGOps test-suite Job: the API (retrieve and ask), the embedding service, and HTTPS to the
+# judge model. Nothing else, and in particular not Chroma: it measures the system from outside.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata: {name: eval-egress, namespace: rahbar}
+spec:
+  podSelector: {matchLabels: {app.kubernetes.io/name: eval}}
+  policyTypes: [Egress]
+  egress:
+    - to: [{podSelector: {matchLabels: {app.kubernetes.io/name: api}}}]
+      ports: [{port: 8000}]
+    - to: [{ipBlock: {cidr: 192.168.49.10/32}}]
+      ports: [{port: 11434}]
+    - to: [{ipBlock: {cidr: 0.0.0.0/0, except: [10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16]}}]
+      ports: [{port: 443}]
