@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "baseline": "eval/experiments/baseline.json",
+  "candidate": "eval/experiments/top-k-8.json",
+  "failures": [
+    "e2e.faithfulness: missing numeric baseline or candidate value",
+    "e2e.citation_validity: missing numeric baseline or candidate value",
+    "e2e.false_abstention_rate: delta +0.2000 exceeds allowed +0.0500",
+    "e2e.answer_contains_expected: missing numeric baseline or candidate value"
+  ]
+}

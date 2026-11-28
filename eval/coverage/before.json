@@ -1,0 +1,2275 @@
+{
+  "api": "http://127.0.0.1:8000",
+  "k": 5,
+  "query_file": "/home/cap/rahbar/eval/coverage_queries.json",
+  "total": 40,
+  "counts": {
+    "in": 28,
+    "out": 12
+  },
+  "in_domain_covered": 23,
+  "in_domain_coverage": 0.8214,
+  "out_domain_high_similarity": 12,
+  "out_domain_false_positive_rate": 1.0,
+  "thresholds": {
+    "minimum_in_domain_coverage": 0.75,
+    "maximum_out_domain_false_positive_rate": 0.5
+  },
+  "uncovered_topics": {
+    "class-features": [
+      "e11"
+    ],
+    "equipment": [
+      "e17"
+    ],
+    "exploration": [
+      "e18"
+    ],
+    "version": [
+      "e02",
+      "e04"
+    ]
+  },
+  "rows": [
+    {
+      "id": "e01",
+      "question": "What does the Hide action require under the 2024 rules?",
+      "scope": "in",
+      "topic": "version",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.72023988,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1234",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Hide [Action]",
+          "page": 183,
+          "score": 0.72023988,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-1-2014-0612",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Hide",
+          "page": 93,
+          "score": 0.71770555,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "srd-5-1-2014-0259",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Vanish",
+          "page": 37,
+          "score": 0.70824677,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "player-s-handbook-errata-2021-scanned-copy-0017",
+          "source": "player-s-handbook-errata-2021-scanned-copy.pdf",
+          "section": "USING ABILITY SCORES",
+          "page": 3,
+          "score": 0.6686483599999999,
+          "doc_version": "2021",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0050",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Interacting with Objects",
+          "page": 11,
+          "score": 0.66446638,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e02",
+      "question": "Under the 2014 rules, how does a creature hide from someone searching for it?",
+      "scope": "in",
+      "topic": "version",
+      "covered": false,
+      "false_positive": null,
+      "top_score": 0.739258,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-1-2014-0259",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Vanish",
+          "page": 37,
+          "score": 0.739258,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "srd-5-1-2014-0547",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Intelligence Checks",
+          "page": 81,
+          "score": 0.7142216,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0380",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 14: Nature\u2019s Veil",
+          "page": 59,
+          "score": 0.71064103,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0049",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Hiding",
+          "page": 11,
+          "score": 0.7048165200000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-1-2014-1915",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Invisible",
+          "page": 358,
+          "score": 0.70130622,
+          "doc_version": "5.1",
+          "superseded": true
+        }
+      ]
+    },
+    {
+      "id": "e03",
+      "question": "How does the 2024 Exhaustion rule affect D20 Tests?",
+      "scope": "in",
+      "topic": "version",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.73304516,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1198",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "D20 Test",
+          "page": 180,
+          "score": 0.73304516,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1219",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Exhaustion [Condition]",
+          "page": 181,
+          "score": 0.72604913,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0010",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "D20 Tests",
+          "page": 6,
+          "score": 0.7185158700000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1213",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Disadvantage",
+          "page": 181,
+          "score": 0.7052081800000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1160",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Advantage",
+          "page": 176,
+          "score": 0.7007231,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e04",
+      "question": "What penalties apply at exhaustion level three in the 2014 rules?",
+      "scope": "in",
+      "topic": "version",
+      "covered": false,
+      "false_positive": null,
+      "top_score": 0.6887257,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1219",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Exhaustion [Condition]",
+          "page": 181,
+          "score": 0.6887257,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0322",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 13: Deflect Energy",
+          "page": 52,
+          "score": 0.68201578,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "player-s-handbook-errata-2021-scanned-copy-0024",
+          "source": "player-s-handbook-errata-2021-scanned-copy.pdf",
+          "section": "APPENDIX A: CONDITIONS",
+          "page": 5,
+          "score": 0.6749209199999999,
+          "doc_version": "2021",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0323",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 14: Disciplined Survivor",
+          "page": 52,
+          "score": 0.67455953,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-1-2014-1324",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Ring of Evasion",
+          "page": 236,
+          "score": 0.66844636,
+          "doc_version": "5.1",
+          "superseded": true
+        }
+      ]
+    },
+    {
+      "id": "e05",
+      "question": "How many failed Death Saving Throws cause death?",
+      "scope": "in",
+      "topic": "combat",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.7647306899999999,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-0105",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Death Saving Throws",
+          "page": 17,
+          "score": 0.7647306899999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1208",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Death Saving Throw",
+          "page": 181,
+          "score": 0.6975404000000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1780",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Traits",
+          "page": 261,
+          "score": 0.69547653,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0103",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Character Demise",
+          "page": 17,
+          "score": 0.68346983,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1279",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Saving Throw",
+          "page": 187,
+          "score": 0.6805296000000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e06",
+      "question": "What happens when a character succeeds on three Death Saving Throws?",
+      "scope": "in",
+      "topic": "combat",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.81932104,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-0105",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Death Saving Throws",
+          "page": 17,
+          "score": 0.81932104,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1208",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Death Saving Throw",
+          "page": 181,
+          "score": 0.7579618100000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1050",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Prismatic Wall",
+          "page": 155,
+          "score": 0.7477399,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0330",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 6: Wholeness of Body",
+          "page": 52,
+          "score": 0.74763864,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0015",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Saving Throws",
+          "page": 7,
+          "score": 0.7450715299999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e07",
+      "question": "How long is a Long Rest and what does it restore?",
+      "scope": "in",
+      "topic": "rest",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.8520608000000001,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1253",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Long Rest",
+          "page": 185,
+          "score": 0.8520608000000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1282",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Short Rest",
+          "page": 187,
+          "score": 0.73652995,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1334",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Rest and Recuperation",
+          "page": 194,
+          "score": 0.6881766300000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0433",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 5: Sorcerous Restoration",
+          "page": 66,
+          "score": 0.68089616,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0107",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Temporary Hit Points",
+          "page": 18,
+          "score": 0.6790596799999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e08",
+      "question": "What does the Help action allow a character to do?",
+      "scope": "in",
+      "topic": "combat",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.78530729,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1232",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Help [Action]",
+          "page": 182,
+          "score": 0.78530729,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-2265",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Bonus Actions",
+          "page": 316,
+          "score": 0.7481342,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0038",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Bonus Actions",
+          "page": 10,
+          "score": 0.7469908599999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-2268",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Bonus Actions",
+          "page": 316,
+          "score": 0.73833913,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0036",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Actions",
+          "page": 10,
+          "score": 0.73358434,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e09",
+      "question": "What happens to a creature that has the Prone condition?",
+      "scope": "in",
+      "topic": "conditions",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.78668714,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1270",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Prone [Condition]",
+          "page": 186,
+          "score": 0.78668714,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1222",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Falling [Hazard]",
+          "page": 182,
+          "score": 0.7411852999999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0072",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Moving around Other Creatures",
+          "page": 14,
+          "score": 0.73363364,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1307",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Unconscious [Condition]",
+          "page": 191,
+          "score": 0.7328105,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0070",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Dropping Prone",
+          "page": 14,
+          "score": 0.72119212,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e10",
+      "question": "What does the Grappled condition do to a creature's Speed?",
+      "scope": "in",
+      "topic": "conditions",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.8186881,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1227",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Grappled [Condition]",
+          "page": 182,
+          "score": 0.8186881,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0061",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "Combat",
+          "page": 13,
+          "score": 0.7834698,
+          "doc_version": "2.7",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1228",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Grappling",
+          "page": 182,
+          "score": 0.78037435,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-2563",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Actions",
+          "page": 347,
+          "score": 0.7471748,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0577",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Grappler",
+          "page": 87,
+          "score": 0.74051702,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e11",
+      "question": "When can a Rogue deal Sneak Attack damage?",
+      "scope": "in",
+      "topic": "class-features",
+      "covered": false,
+      "false_positive": null,
+      "top_score": 0.83351314,
+      "retrieved": [
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0025",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "Rogue",
+          "page": 5,
+          "score": 0.83351314,
+          "doc_version": "2.7",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0398",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 1: Sneak Attack",
+          "page": 61,
+          "score": 0.79979813,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0405",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 5: Cunning Strike",
+          "page": 63,
+          "score": 0.79155219,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0418",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 9: Supreme Sneak",
+          "page": 64,
+          "score": 0.77207196,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0403",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 3: Steady Aim",
+          "page": 62,
+          "score": 0.76468325,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e12",
+      "question": "How much damage does Fireball deal and what is its area?",
+      "scope": "in",
+      "topic": "spells",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.7434974999999999,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-0924",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Fireball",
+          "page": 131,
+          "score": 0.7434974999999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0876",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Delayed Blast Fireball",
+          "page": 122,
+          "score": 0.72899872,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1019",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Meteor Swarm",
+          "page": 149,
+          "score": 0.7045087800000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0930",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Flaming Sphere",
+          "page": 132,
+          "score": 0.70110202,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0925",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Fire Bolt",
+          "page": 132,
+          "score": 0.69802785,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e13",
+      "question": "What level spell is Fireball?",
+      "scope": "in",
+      "topic": "spells",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.8000952,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-0924",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Fireball",
+          "page": 131,
+          "score": 0.8000952,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0140",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Tier 2 (Levels 5\u201310)",
+          "page": 24,
+          "score": 0.76891524,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0876",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Delayed Blast Fireball",
+          "page": 122,
+          "score": 0.76635575,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1695",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Wand of Fireballs",
+          "page": 250,
+          "score": 0.74119592,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0930",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Flaming Sphere",
+          "page": 132,
+          "score": 0.7322523599999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e14",
+      "question": "How much does Plate Armor cost and what Strength score does it require?",
+      "scope": "in",
+      "topic": "equipment",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.742705,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-0620",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "One at a Time",
+          "page": 92,
+          "score": 0.742705,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0764",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Raw Materials",
+          "page": 103,
+          "score": 0.72640216,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0616",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Armor",
+          "page": 92,
+          "score": 0.68505275,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1440",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Armor of Invulnerability",
+          "page": 210,
+          "score": 0.6567042000000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0618",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Light, Medium, or Heavy Armor",
+          "page": 92,
+          "score": 0.6547841999999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e15",
+      "question": "What is the Armor Class provided by Chain Mail?",
+      "scope": "in",
+      "topic": "equipment",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.8033638,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1504",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Elven Chain",
+          "page": 220,
+          "score": 0.8033638,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1396",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Armor",
+          "page": 204,
+          "score": 0.7507845200000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0616",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Armor",
+          "page": 92,
+          "score": 0.74242127,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1165",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Armor Class",
+          "page": 177,
+          "score": 0.7035234,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1719",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Armor Class",
+          "page": 254,
+          "score": 0.70256853,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e16",
+      "question": "What is the price and weight of Half Plate Armor?",
+      "scope": "in",
+      "topic": "equipment",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.6679967600000001,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-0620",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "One at a Time",
+          "page": 92,
+          "score": 0.6679967600000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1498",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Dwarven Plate",
+          "page": 219,
+          "score": 0.6556811300000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0764",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Raw Materials",
+          "page": 103,
+          "score": 0.6533884999999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1588",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Plate Armor of Etherealness",
+          "page": 234,
+          "score": 0.6360014700000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0616",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Armor",
+          "page": 92,
+          "score": 0.61253238,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e17",
+      "question": "How much does a Longsword cost?",
+      "scope": "in",
+      "topic": "equipment",
+      "covered": false,
+      "false_positive": null,
+      "top_score": 0.6751157,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-2107",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Actions",
+          "page": 299,
+          "score": 0.6751157,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1678",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Sword of Life Stealing",
+          "page": 248,
+          "score": 0.6370020000000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1679",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Sword of Sharpness",
+          "page": 248,
+          "score": 0.63360536,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1691",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Vorpal Sword",
+          "page": 250,
+          "score": 0.6220521999999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1485",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Dancing Sword",
+          "page": 217,
+          "score": 0.62077004,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e18",
+      "question": "How far can a party travel at a fast pace in one day?",
+      "scope": "in",
+      "topic": "exploration",
+      "covered": false,
+      "false_positive": null,
+      "top_score": 0.76482832,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-0058",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Travel Pace",
+          "page": 12,
+          "score": 0.76482832,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0059",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Vehicles",
+          "page": 12,
+          "score": 0.7632671600000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1317",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Special Movement",
+          "page": 192,
+          "score": 0.7522431,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1316",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Extended Travel",
+          "page": 192,
+          "score": 0.7451937200000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1313",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Travel Pace",
+          "page": 192,
+          "score": 0.72771573,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e19",
+      "question": "What happens to travel pace when moving slowly?",
+      "scope": "in",
+      "topic": "exploration",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.79992855,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-0058",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Travel Pace",
+          "page": 12,
+          "score": 0.79992855,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1313",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Travel Pace",
+          "page": 192,
+          "score": 0.75550449,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0067",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Movement and Position",
+          "page": 14,
+          "score": 0.7290877,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0057",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Travel",
+          "page": 12,
+          "score": 0.71444666,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1286",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Speed",
+          "page": 188,
+          "score": 0.71041632,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e20",
+      "question": "What does the Dodge action do until your next turn?",
+      "scope": "in",
+      "topic": "combat",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.84268093,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1215",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Dodge [Action]",
+          "page": 181,
+          "score": 0.84268093,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0036",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Actions",
+          "page": 10,
+          "score": 0.76051742,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0056",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "Combat",
+          "page": 11,
+          "score": 0.73963773,
+          "doc_version": "2.7",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0038",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Bonus Actions",
+          "page": 10,
+          "score": 0.73433924,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1159",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Action",
+          "page": 176,
+          "score": 0.7338465000000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e21",
+      "question": "How can you stabilize another creature?",
+      "scope": "in",
+      "topic": "combat",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.77649462,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-0106",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Stabilizing a Character",
+          "page": 18,
+          "score": 0.77649462,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1239",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Hover",
+          "page": 183,
+          "score": 0.7090068,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0072",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Moving around Other Creatures",
+          "page": 14,
+          "score": 0.69803083,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1291",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Stable",
+          "page": 188,
+          "score": 0.69685793,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1563",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Mirror of Life Trapping",
+          "page": 230,
+          "score": 0.6927173,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e22",
+      "question": "What are the rules for making an ability check?",
+      "scope": "in",
+      "topic": "checks",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.84730214,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-0030",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Skill Proficiencies",
+          "page": 8,
+          "score": 0.84730214,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0011",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Ability Checks",
+          "page": 6,
+          "score": 0.84715515,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1157",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Ability Check",
+          "page": 176,
+          "score": 0.83689636,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0013",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Proficiency Bonus",
+          "page": 6,
+          "score": 0.80780768,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0042",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Ability Checks",
+          "page": 11,
+          "score": 0.80085325,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e23",
+      "question": "What is the DC to hide using the 2024 Hide action?",
+      "scope": "in",
+      "topic": "version",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.7319163,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1234",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Hide [Action]",
+          "page": 183,
+          "score": 0.7319163,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-1-2014-0612",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Hide",
+          "page": 93,
+          "score": 0.66117382,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "srd-5-1-2014-0259",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Vanish",
+          "page": 37,
+          "score": 0.6511402,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "srd-5-1-2014-0258",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Hide in Plain Sight",
+          "page": 37,
+          "score": 0.6254562,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-2329",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Bonus Actions",
+          "page": 323,
+          "score": 0.6225437,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e24",
+      "question": "What does the 2014 rulebook say about opportunity attacks?",
+      "scope": "in",
+      "topic": "combat",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.7303554400000001,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-1-2014-0628",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Opportunity Attacks",
+          "page": 95,
+          "score": 0.7303554400000001,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0080",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Opportunity Attacks",
+          "page": 15,
+          "score": 0.70878804,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1261",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Opportunity Attacks",
+          "page": 185,
+          "score": 0.70143223,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0047",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "Sentinel",
+          "page": 10,
+          "score": 0.6799162599999999,
+          "doc_version": "2.7",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0297",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 7: Additional Fighting Style",
+          "page": 49,
+          "score": 0.6783450799999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e25",
+      "question": "What does the Sage Advice Compendium explain about rules interpretations?",
+      "scope": "in",
+      "topic": "official-rulings",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.77092505,
+      "retrieved": [
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0000",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "SSaaggee AAddvviiccee CCoommppeenn",
+          "page": 1,
+          "score": 0.77092505,
+          "doc_version": "2.7",
+          "superseded": false
+        },
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0006",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "The Role of Rules",
+          "page": 1,
+          "score": 0.76183313,
+          "doc_version": "2.7",
+          "superseded": false
+        },
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0004",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "Official Rulings",
+          "page": 1,
+          "score": 0.7482804000000001,
+          "doc_version": "2.7",
+          "superseded": false
+        },
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0007",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "The Role of Rules",
+          "page": 1,
+          "score": 0.72426587,
+          "doc_version": "2.7",
+          "superseded": false
+        },
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0005",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "Compiled Answers",
+          "page": 1,
+          "score": 0.69825917,
+          "doc_version": "2.7",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e26",
+      "question": "What changes are listed in the Player's Handbook errata?",
+      "scope": "in",
+      "topic": "errata",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.79193234,
+      "retrieved": [
+        {
+          "chunk_id": "player-s-handbook-errata-2021-scanned-copy-0000",
+          "source": "player-s-handbook-errata-2021-scanned-copy.pdf",
+          "section": "PLAYER'S HANDBOOK",
+          "page": 1,
+          "score": 0.79193234,
+          "doc_version": "2021",
+          "superseded": false
+        },
+        {
+          "chunk_id": "monster-manual-errata-2018-0000",
+          "source": "monster-manual-errata-2018.pdf",
+          "section": "Errata: Monster Manual",
+          "page": 1,
+          "score": 0.78306639,
+          "doc_version": "2018",
+          "superseded": false
+        },
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0002",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "Errata",
+          "page": 1,
+          "score": 0.7411932999999999,
+          "doc_version": "2.7",
+          "superseded": false
+        },
+        {
+          "chunk_id": "dungeon-master-s-guide-errata-2021-0000",
+          "source": "dungeon-master-s-guide-errata-2021.pdf",
+          "section": "DDuunnggeeoonn MMaasstteerr\u2019\u2019ss GG",
+          "page": 1,
+          "score": 0.7189045000000001,
+          "doc_version": "2021",
+          "superseded": false
+        },
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0000",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "SSaaggee AAddvviiccee CCoommppeenn",
+          "page": 1,
+          "score": 0.71580708,
+          "doc_version": "2.7",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e27",
+      "question": "What corrections are listed in the Dungeon Master's Guide errata?",
+      "scope": "in",
+      "topic": "errata",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.77394164,
+      "retrieved": [
+        {
+          "chunk_id": "monster-manual-errata-2018-0000",
+          "source": "monster-manual-errata-2018.pdf",
+          "section": "Errata: Monster Manual",
+          "page": 1,
+          "score": 0.77394164,
+          "doc_version": "2018",
+          "superseded": false
+        },
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0002",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "Errata",
+          "page": 1,
+          "score": 0.76294029,
+          "doc_version": "2.7",
+          "superseded": false
+        },
+        {
+          "chunk_id": "dungeon-master-s-guide-errata-2021-0000",
+          "source": "dungeon-master-s-guide-errata-2021.pdf",
+          "section": "DDuunnggeeoonn MMaasstteerr\u2019\u2019ss GG",
+          "page": 1,
+          "score": 0.75460702,
+          "doc_version": "2021",
+          "superseded": false
+        },
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0003",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "iiuumm",
+          "page": 1,
+          "score": 0.72908843,
+          "doc_version": "2.7",
+          "superseded": false
+        },
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0001",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "Rules References",
+          "page": 1,
+          "score": 0.7186572600000001,
+          "doc_version": "2.7",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e28",
+      "question": "What correction does the Monster Manual errata make?",
+      "scope": "in",
+      "topic": "errata",
+      "covered": true,
+      "false_positive": null,
+      "top_score": 0.79057556,
+      "retrieved": [
+        {
+          "chunk_id": "monster-manual-errata-2018-0000",
+          "source": "monster-manual-errata-2018.pdf",
+          "section": "Errata: Monster Manual",
+          "page": 1,
+          "score": 0.79057556,
+          "doc_version": "2018",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1721",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Hit Points",
+          "page": 255,
+          "score": 0.7129217400000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "dungeon-master-s-guide-errata-2021-0011",
+          "source": "dungeon-master-s-guide-errata-2021.pdf",
+          "section": "Chapter 9",
+          "page": 2,
+          "score": 0.7064807399999999,
+          "doc_version": "2021",
+          "superseded": false
+        },
+        {
+          "chunk_id": "dungeon-master-s-guide-errata-2021-0000",
+          "source": "dungeon-master-s-guide-errata-2021.pdf",
+          "section": "DDuunnggeeoonn MMaasstteerr\u2019\u2019ss GG",
+          "page": 1,
+          "score": 0.70437098,
+          "doc_version": "2021",
+          "superseded": false
+        },
+        {
+          "chunk_id": "dungeon-master-s-guide-errata-2021-0013",
+          "source": "dungeon-master-s-guide-errata-2021.pdf",
+          "section": "Appendix B",
+          "page": 2,
+          "score": 0.69271004,
+          "doc_version": "2021",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e29",
+      "question": "What is the save DC for a mind flayer's Mind Blast?",
+      "scope": "out",
+      "topic": "absent-monster",
+      "covered": null,
+      "false_positive": true,
+      "top_score": 0.7082016,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1021",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Mind Spike",
+          "page": 149,
+          "score": 0.7082016,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-2216",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Bonus Actions",
+          "page": 310,
+          "score": 0.7003883,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1642",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Rod of Lordly Might",
+          "page": 242,
+          "score": 0.6856705000000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0920",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Bonus Actions",
+          "page": 131,
+          "score": 0.68156338,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1899",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Bonus Actions",
+          "page": 274,
+          "score": 0.6762209,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e30",
+      "question": "How does the Warlord class's Commanding Strike feature work?",
+      "scope": "out",
+      "topic": "absent-class",
+      "covered": null,
+      "false_positive": true,
+      "top_score": 0.70314062,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-0183",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 13: Improved Brutal Strike",
+          "page": 30,
+          "score": 0.70314062,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0316",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 5: Stunning Strike",
+          "page": 51,
+          "score": 0.6935959,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0181",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 9: Brutal Strike",
+          "page": 29,
+          "score": 0.6876797,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1666",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Staff of Striking",
+          "page": 246,
+          "score": 0.67714584,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0320",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 10: Heightened Focus",
+          "page": 51,
+          "score": 0.67607963,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e31",
+      "question": "What are the official rules for the Kender race's Taunt feature?",
+      "scope": "out",
+      "topic": "absent-race",
+      "covered": null,
+      "false_positive": true,
+      "top_score": 0.66459793,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-0916",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Find Steed",
+          "page": 130,
+          "score": 0.66459793,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0193",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 14: Intimidating Presence",
+          "page": 30,
+          "score": 0.6522659,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0181",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 9: Brutal Strike",
+          "page": 29,
+          "score": 0.6493742499999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-2469",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Bonus Actions",
+          "page": 339,
+          "score": 0.64786327,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "dungeon-master-s-guide-errata-2021-0011",
+          "source": "dungeon-master-s-guide-errata-2021.pdf",
+          "section": "Chapter 9",
+          "page": 2,
+          "score": 0.6478457,
+          "doc_version": "2021",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e32",
+      "question": "What is the capital city of France?",
+      "scope": "out",
+      "topic": "general-knowledge",
+      "covered": null,
+      "false_positive": true,
+      "top_score": 0.5337836,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1906",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Commoner",
+          "page": 275,
+          "score": 0.5337836,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-2072",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Griffon",
+          "page": 295,
+          "score": 0.53092706,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1922",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Couatl",
+          "page": 277,
+          "score": 0.52884573,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0574",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Skilled",
+          "page": 87,
+          "score": 0.5263960400000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1645",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Rod of Security",
+          "page": 242,
+          "score": 0.5255585300000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e33",
+      "question": "Who won the 2022 FIFA World Cup?",
+      "scope": "out",
+      "topic": "general-knowledge",
+      "covered": null,
+      "false_positive": true,
+      "top_score": 0.5282042,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-1-2014-0192",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Perfect Self",
+          "page": 28,
+          "score": 0.5282042,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0574",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Skilled",
+          "page": 87,
+          "score": 0.5220166399999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "dungeon-master-s-guide-errata-2021-0002",
+          "source": "dungeon-master-s-guide-errata-2021.pdf",
+          "section": "Chapter 2",
+          "page": 1,
+          "score": 0.5203589200000001,
+          "doc_version": "2021",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0296",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 3: Remarkable Athlete",
+          "page": 49,
+          "score": 0.5151570400000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1564",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Mirror of Life Trapping",
+          "page": 230,
+          "score": 0.5110745400000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e34",
+      "question": "How do I configure a PostgreSQL replication cluster?",
+      "scope": "out",
+      "topic": "technical-outside-domain",
+      "covered": null,
+      "false_positive": true,
+      "top_score": 0.55056083,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1436",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Amulet of the Planes",
+          "page": 209,
+          "score": 0.55056083,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0480",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Eldritch Smite",
+          "page": 72,
+          "score": 0.5432452,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-2584",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "CR 0 (XP 10; PB +2)",
+          "page": 348,
+          "score": 0.5417812,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-2496",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "CR 3 (XP 700; PB +2)",
+          "page": 342,
+          "score": 0.54044068,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1855",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "CR 2 (XP 450; PB +2)",
+          "page": 269,
+          "score": 0.54041648,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e35",
+      "question": "What is the recipe for Japanese miso ramen broth?",
+      "scope": "out",
+      "topic": "food-outside-domain",
+      "covered": null,
+      "false_positive": true,
+      "top_score": 0.52588117,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-2228",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Ochre Jelly",
+          "page": 312,
+          "score": 0.52588117,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0330",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 6: Wholeness of Body",
+          "page": 52,
+          "score": 0.52310634,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1819",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Black Pudding",
+          "page": 265,
+          "score": 0.52233654,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-2619",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Actions",
+          "page": 351,
+          "score": 0.51917243,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0689",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Holy Water (25 GP)",
+          "page": 97,
+          "score": 0.5126158599999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e36",
+      "question": "Explain the 4th-edition Warlord class's healing mechanic.",
+      "scope": "out",
+      "topic": "absent-edition",
+      "covered": null,
+      "false_positive": true,
+      "top_score": 0.6998061,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-0242",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Level 17: Supreme Healing",
+          "page": 40,
+          "score": 0.6998061,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1042",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Power Word Heal",
+          "page": 154,
+          "score": 0.6988793,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0237",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Cleric Subclass: Life Domain",
+          "page": 40,
+          "score": 0.69486326,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1070",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Revivify",
+          "page": 159,
+          "score": 0.69245172,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1011",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Mass Cure Wounds",
+          "page": 147,
+          "score": 0.6922679,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e37",
+      "question": "What are the statistics of the Beholder's Eye Rays?",
+      "scope": "out",
+      "topic": "absent-monster",
+      "covered": null,
+      "false_positive": true,
+      "top_score": 0.69447517,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1509",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Eyes of the Eagle",
+          "page": 221,
+          "score": 0.69447517,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1508",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Eyes of Minute Seeing",
+          "page": 221,
+          "score": 0.6786915,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1886",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Reactions",
+          "page": 273,
+          "score": 0.65924817,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1633",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Ring of X-ray Vision",
+          "page": 239,
+          "score": 0.65219563,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-2240",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Otyugh",
+          "page": 313,
+          "score": 0.6503018,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e38",
+      "question": "What is the complete lore of the Raven Queen?",
+      "scope": "out",
+      "topic": "absent-lore",
+      "covered": null,
+      "false_positive": true,
+      "top_score": 0.61497498,
+      "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-2727",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Raven",
+          "page": 359,
+          "score": 0.61497498,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-2728",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Traits",
+          "page": 359,
+          "score": 0.60965824,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1436",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Amulet of the Planes",
+          "page": 209,
+          "score": 0.6079675,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0992",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Legend Lore",
+          "page": 144,
+          "score": 0.6078954999999999,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-2763",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Swarm of Ravens",
+          "page": 362,
+          "score": 0.60386682,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e39",
+      "question": "What is the exact wording of the 2025 Unearthed Arcana Monk playtest?",
+      "scope": "out",
+      "topic": "outside-corpus-version",
+      "covered": null,
+      "false_positive": true,
+      "top_score": 0.66048348,
+      "retrieved": [
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0000",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "SSaaggee AAddvviiccee CCoommppeenn",
+          "page": 1,
+          "score": 0.66048348,
+          "doc_version": "2.7",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0123",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Step 3: Ability Scores",
+          "page": 20,
+          "score": 0.6381387700000001,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0010",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "D20 Tests",
+          "page": 6,
+          "score": 0.6358667,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-1-2014-0546",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Intelligence Checks",
+          "page": 81,
+          "score": 0.63210386,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-1156",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Glossary Conventions",
+          "page": 176,
+          "score": 0.62923968,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    },
+    {
+      "id": "e40",
+      "question": "What are the rules for firearms in the 2024 Dungeon Master's Guide?",
+      "scope": "out",
+      "topic": "outside-corpus-book",
+      "covered": null,
+      "false_positive": true,
+      "top_score": 0.7121929499999999,
+      "retrieved": [
+        {
+          "chunk_id": "sage-advice-compendium-v2-7-2021-0001",
+          "source": "sage-advice-compendium-v2-7-2021.pdf",
+          "section": "Rules References",
+          "page": 1,
+          "score": 0.7121929499999999,
+          "doc_version": "2.7",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-1-2014-0469",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Weapon Properties",
+          "page": 64,
+          "score": 0.70933777,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "srd-5-1-2014-0473",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Weapons",
+          "page": 65,
+          "score": 0.70907557,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0000",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Legal Information",
+          "page": 1,
+          "score": 0.70501667,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0006",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Rhythm of Play",
+          "page": 5,
+          "score": 0.70061374,
+          "doc_version": "5.2.1",
+          "superseded": false
+        }
+      ]
+    }
+  ]
+}

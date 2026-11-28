@@ -1,0 +1,18 @@
+{
+  "description": "Top-k experiment release gate. Candidate quality must remain within these limits relative to the freshly measured TOP_K=5 baseline.",
+  "required_levels": ["module", "component", "e2e"],
+  "rules": {
+    "module.gap": {"min_delta": -0.01},
+    "module.ranked_correctly": {"min": 0.95},
+    "module.determinism_max_abs_diff": {"max": 0.001},
+    "component.recall@5": {"min_delta": -0.03},
+    "component.mrr": {"min_delta": -0.03},
+    "component.ndcg@5": {"min_delta": -0.03},
+    "e2e.faithfulness": {"min_delta": -0.03},
+    "e2e.citation_validity": {"min": 0.98},
+    "e2e.abstention_correctness": {"min": 0.95},
+    "e2e.false_abstention_rate": {"max_delta": 0.05},
+    "e2e.answer_contains_expected": {"min_delta": -0.05},
+    "e2e.latency_p95_s": {"max_ratio": 1.25}
+  }
+}

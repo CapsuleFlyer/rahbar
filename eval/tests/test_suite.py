@@ -116,6 +116,23 @@ def config(tmp_path: Path, **kw: Any) -> runner.Config:
     return runner.Config(**base)  # type: ignore[arg-type]
 
 
+
+def test_component_level_uses_configured_top_k(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    cfg = config(tmp_path, levels=("component",), repeat=1, top_k=3)
+    seen: list[int] = []
+
+    def fake_retrieve(http: httpx.Client, settings: runner.Config, question: str,
+                      k: int = 5) -> list[dict[str, Any]]:
+        seen.append(k)
+        return [{**chunk("rule.pdf", 1), "score": 0.9}]
+
+    monkeypatch.setattr(runner, "retrieve", fake_retrieve)
+    question = {"id": "top-k", "question": "What is the rule here?", "type": "answerable",
+                "tags": ["ordinary"], "relevant": [{"doc": "rule.pdf", "pages": [1]}]}
+    runner.run_component(make_cluster(), cfg, [question])
+    assert seen == [3, 3]
+
+
 def test_the_suite_runs_all_three_levels_and_writes_results(tmp_path: Path) -> None:
     cfg = config(tmp_path)
     report = runner.run_suite(cfg, make_cluster())

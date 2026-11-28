@@ -46,6 +46,7 @@ class Config:
     repeat: int = 2
     seed: int = 42
     tolerance: int = 1
+    top_k: int = 5
     batch_b: bool = False
     run_id: str = field(default_factory=lambda: datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ"))
 
@@ -99,7 +100,7 @@ def run_module(http: httpx.Client, cfg: Config) -> dict[str, Any]:
 
 
 # ------------------------------------------------------------------ component level
-def retrieve(http: httpx.Client, cfg: Config, question: str, k: int = 10) -> list[dict[str, Any]]:
+def retrieve(http: httpx.Client, cfg: Config, question: str, k: int = 5) -> list[dict[str, Any]]:
     r = http.post(f"{cfg.api}/api/retrieve", json={"question": question, "k": k})
     r.raise_for_status()
     return list(r.json()["retrieved"])
@@ -118,7 +119,7 @@ def run_component(http: httpx.Client, cfg: Config, questions: list[dict[str, Any
     noisy: list[dict[str, Any]] = []
     absent_top1: list[float] = []
     for q in questions:
-        got = retrieve(http, cfg, q["question"])
+        got = retrieve(http, cfg, q["question"], cfg.top_k)
         if not q["relevant"]:
             absent_top1.append(got[0]["score"] if got else 0.0)
             continue
@@ -127,7 +128,7 @@ def run_component(http: httpx.Client, cfg: Config, questions: list[dict[str, Any
                      "top1": got[0]["score"] if got else None,
                      "retrieved": [(c["source"], c.get("page")) for c in got[:5]]})
         bad = m.typo(q["question"], rng)
-        noisy.append({"id": q["id"], **m.retrieval_scores(retrieve(http, cfg, bad), q["relevant"],
+        noisy.append({"id": q["id"], **m.retrieval_scores(retrieve(http, cfg, bad, cfg.top_k), q["relevant"],
                                                          cfg.tolerance)})
     by_tag: dict[str, Any] = {}
     for tag in sorted({t for r in rows for t in r["tags"]}):
@@ -313,7 +314,7 @@ def run_suite(cfg: Config, http: httpx.Client | None = None) -> dict[str, Any]:
     return {"run_id": cfg.run_id, "started_at": datetime.now(timezone.utc).isoformat(),
             "config": {"api": cfg.api, "embed_model": cfg.model, "llm_model": cfg.llm_model,
                        "judge": bool(cfg.llm_key), "seed": cfg.seed, "repeat": cfg.repeat,
-                       "tolerance": cfg.tolerance, "batch_b": cfg.batch_b,
+                       "tolerance": cfg.tolerance, "top_k": cfg.top_k, "batch_b": cfg.batch_b,
                        "levels": list(cfg.levels), "delay": cfg.delay},
             "golden": {"total": len(questions), "active": len(active(questions, cfg))},
             "runs": runs, "summary": summary, "variation": variation}
@@ -339,6 +340,8 @@ def parse(argv: list[str] | None = None) -> Config:
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--delay", type=float, default=2.0, help="seconds between model calls")
     ap.add_argument("--tolerance", type=int, default=1, help="page tolerance for relevance")
+    ap.add_argument("--top-k", type=int, default=int(os.environ.get("TOP_K", "5")),
+                    help="retrieval top-k used by component-level tests")
     ap.add_argument("--batch-b", action="store_true", help="include the Batch B questions")
     a = ap.parse_args(argv)
     return Config(api=a.api.rstrip("/"), host=a.host, ollama=a.ollama.rstrip("/"),
@@ -347,7 +350,7 @@ def parse(argv: list[str] | None = None) -> Config:
                   llm_model=os.environ.get("LLM_MODEL", ""), llm_key=os.environ.get("LLM_API_KEY", ""),
                   out=a.out, levels=tuple(x for x in a.levels.split(",") if x in LEVELS),
                   repeat=max(1, a.repeat), seed=a.seed, delay=a.delay, tolerance=a.tolerance,
-                  batch_b=a.batch_b)
+                  top_k=max(1, a.top_k), batch_b=a.batch_b)
 
 
 def main(argv: list[str] | None = None) -> int:
