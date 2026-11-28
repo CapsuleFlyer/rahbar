@@ -89,10 +89,28 @@ spell level and slow travel pace. `make golden-check` reported:
 questions=51 answerable=37 unanswerable=5 hard=9 human=20 synthetic_reviewed=8
 ```
 
-The after E2 run improved from 14/28 to 16/28 in-domain coverage. It therefore
-demonstrates an increase after adding at least six questions, but it does **not** meet
-the 85% target. The additional entries' source pages and expected phrases should be
-checked against the cited source documents before submission; the linter verifies
+The after E2 run improved from 14/28 to 16/28 in-domain coverage
+(+2 queries, or +7.1 percentage points). This satisfies the E4 demonstration:
+at least six questions were added and measured coverage increased. It does **not**
+meet the separate E2 85% coverage target.
+
+A reproducible comparison is generated with:
+
+```bash
+make e4-report
+```
+
+The target compares `eval/coverage/live-coverage-before.json` with
+`eval/coverage/live-coverage-after.json`, and compares the preserved 45-question
+snapshot `eval/golden-before-e4.jsonl` with the current
+`eval/golden.jsonl`. It writes `eval/coverage/e4-comparison.json` and
+`eval/coverage/e4-comparison.md`. The script fails if fewer than six questions
+were added, the live-query sets or thresholds differ, or coverage did not increase.
+It reports the E2 85% gate separately so E4 success is not misrepresented as an E2
+gate pass.
+
+The six entries' source pages and expected phrases still require content-level
+verification against the cited source documents; the golden-set linter verifies
 that references are present, not that their contents are factually correct.
 
 ## Errata and official-ruling investigation
@@ -114,5 +132,5 @@ The Role of Rules). It should be treated as covered by the current corpus.
 - [ ] E1: retain `eval/coverage_queries.json` showing 28 in-domain and 12 OOD queries.
 - [ ] E2: retain before/after JSON and Markdown reports and the repair plan.
 - [ ] E3: retain the ingestion verification report and the Batch B-enabled suite JSON/Markdown report.
-- [ ] E4: retain the 51-question golden set, `make golden-check` output and the 57.1% after report.
+- [ ] E4: retain `eval/golden-before-e4.jsonl`, the 51-question `eval/golden.jsonl`, `make golden-check` output, before/after coverage reports and the `make e4-report` comparison.
 - [ ] Include the unresolved 85% E2 gate and errata OCR limitation in the final discussion; do not describe either as passed.

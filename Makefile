@@ -161,3 +161,7 @@ eval-suite-batch-b: ## run Part B suite with Batch B questions enabled (run afte
 	  kubectl apply -f k8s/eval-job-batch-b.yaml >/dev/null && echo "running eval-suite-batch-b ..." && \
 	  (kubectl -n $(NS) wait --for=condition=complete job/eval-suite-batch-b --timeout=$(or $(WAIT),3600s) || true) && \
 	  kubectl -n $(NS) logs job/eval-suite-batch-b | tail -80
+
+.PHONY: e4-report
+e4-report: ## compare E4 golden-set expansion and semantic coverage before/after
+	$(PY) eval/e4_report.py
