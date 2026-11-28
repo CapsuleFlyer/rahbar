@@ -9,6 +9,7 @@ from app.services.intent import is_followup, wants_older_version
     "What was the attendance rule in 2023?",
     "What did the previous version of the rules say about exhaustion?",
     "Is the superseded policy still valid?",
+    "What did the 2014 rules say about hiding?",
 ])
 def test_older_version_is_detected(q: str) -> None:
     assert wants_older_version(q)
@@ -18,6 +19,8 @@ def test_older_version_is_detected(q: str) -> None:
     "What DC does the Hide action need?",
     "How much is the fee per credit hour?",
     "Is attendance mandatory in the current rules?",
+    "How does the Hide action work in the 2024 rules?",
+    "What changed in the 2024 edition?",
 ])
 def test_current_questions_do_not_ask_for_old_versions(q: str) -> None:
     assert not wants_older_version(q)

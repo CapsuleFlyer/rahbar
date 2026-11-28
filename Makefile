@@ -13,7 +13,7 @@ INGRESS_IP ?= $(shell minikube ip 2>/dev/null)
 HOST ?= rahbar.local
 
 .DEFAULT_GOAL := help
-.PHONY: help install test lint dev cluster images apply secret index ask batch-load ingest reports ops eval-suite eval-results golden-check trace trace-report fetch eval eval-fixtures check
+.PHONY: help install test lint dev cluster images apply secret index ask batch-load ingest reports ops eval-suite eval-results golden-check trace trace-report fetch eval eval-fixtures check coverage coverage-compare
 help: ## list the targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  make %-14s %s\n", $$1, $$2}'
 
@@ -127,3 +127,10 @@ reindex: ## re-index with no redeploy
 
 status: ## everything in the namespace
 	kubectl get pods,jobs,svc,hpa,ingress,pvc -n $(NS)
+
+.PHONY: coverage coverage-compare
+coverage: ## run Part E's 40-question retrieval coverage gate
+	$(PY) eval/coverage.py --api "http://$(INGRESS_IP)" --host $(HOST) --out eval/coverage/before.json
+
+coverage-compare: ## compare Part E before/after corpus-drift reports
+	$(PY) eval/coverage.py --compare eval/coverage/before.json eval/coverage/after-drift.json

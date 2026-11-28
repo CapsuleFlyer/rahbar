@@ -1,0 +1,325 @@
+{
+  "description": "Part E live-style corpus coverage set: 28 in-domain and 12 out-of-domain questions.",
+  "queries": [
+    {
+      "id": "e01",
+      "question": "What does the Hide action require under the 2024 rules?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Hide",
+      "topic": "version"
+    },
+    {
+      "id": "e02",
+      "question": "How does the 2014 Hide action work? Stealth check versus passive Perception.",
+      "scope": "in",
+      "source": "srd-5-1-2014.pdf",
+      "section": "Hide",
+      "topic": "version"
+    },
+    {
+      "id": "e03",
+      "question": "How does the 2024 Exhaustion rule affect D20 Tests?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Exhaustion",
+      "topic": "version"
+    },
+    {
+      "id": "e04",
+      "question": "What penalties apply at exhaustion level three in the 2014 rules?",
+      "scope": "in",
+      "source": "srd-5-1-2014.pdf",
+      "section": "Exhaustion",
+      "topic": "version"
+    },
+    {
+      "id": "e05",
+      "question": "How many failed Death Saving Throws cause death?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Death Saving Throws",
+      "topic": "combat"
+    },
+    {
+      "id": "e06",
+      "question": "What happens when a character succeeds on three Death Saving Throws?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Death Saving Throws",
+      "topic": "combat"
+    },
+    {
+      "id": "e07",
+      "question": "How long is a Long Rest and what does it restore?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Long Rest",
+      "topic": "rest"
+    },
+    {
+      "id": "e08",
+      "question": "What does the Help action allow a character to do?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Help",
+      "topic": "combat"
+    },
+    {
+      "id": "e09",
+      "question": "What happens to a creature that has the Prone condition?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Prone",
+      "topic": "conditions"
+    },
+    {
+      "id": "e10",
+      "question": "What does the Grappled condition do to a creature's Speed?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Grappled",
+      "topic": "conditions"
+    },
+    {
+      "id": "e11",
+      "question": "When can a Rogue deal Sneak Attack damage?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Level 1: Sneak Attack",
+      "topic": "class-features"
+    },
+    {
+      "id": "e12",
+      "question": "How much damage does Fireball deal and what is its area?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Fireball",
+      "topic": "spells"
+    },
+    {
+      "id": "e13",
+      "question": "What level spell is Fireball?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Fireball",
+      "topic": "spells"
+    },
+    {
+      "id": "e14",
+      "question": "How much does Plate Armor cost and what Strength score does it require?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Armor",
+      "topic": "equipment"
+    },
+    {
+      "id": "e15",
+      "question": "What is the Armor Class provided by Chain Mail?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Armor",
+      "topic": "equipment"
+    },
+    {
+      "id": "e16",
+      "question": "What is the price and weight of Half Plate Armor?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Armor",
+      "topic": "equipment"
+    },
+    {
+      "id": "e17",
+      "question": "How many GP does a Longsword cost in the equipment weapon table?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Weapons",
+      "topic": "equipment"
+    },
+    {
+      "id": "e18",
+      "question": "How far can a party travel at a fast pace in one day?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Travel Pace",
+      "topic": "exploration"
+    },
+    {
+      "id": "e19",
+      "question": "What happens to travel pace when moving slowly?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Travel Pace",
+      "topic": "exploration"
+    },
+    {
+      "id": "e20",
+      "question": "What does the Dodge action do until your next turn?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Dodge",
+      "topic": "combat"
+    },
+    {
+      "id": "e21",
+      "question": "How can you stabilize another creature?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Stabilizing",
+      "topic": "combat"
+    },
+    {
+      "id": "e22",
+      "question": "What are the rules for making an ability check?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Ability Checks",
+      "topic": "checks"
+    },
+    {
+      "id": "e23",
+      "question": "What is the DC to hide using the 2024 Hide action?",
+      "scope": "in",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Hide",
+      "topic": "version"
+    },
+    {
+      "id": "e24",
+      "question": "What does the 2014 rulebook say about opportunity attacks?",
+      "scope": "in",
+      "source": "srd-5-1-2014.pdf",
+      "section": "Opportunity Attacks",
+      "topic": "combat"
+    },
+    {
+      "id": "e25",
+      "question": "What does the Sage Advice Compendium explain about rules interpretations?",
+      "scope": "in",
+      "source": "sage-advice-compendium-v2-7-2021.pdf",
+      "section": "",
+      "topic": "official-rulings"
+    },
+    {
+      "id": "e26",
+      "question": "What changes are listed in the Player's Handbook errata?",
+      "scope": "in",
+      "source": "player-s-handbook-errata-2021-scanned-copy.pdf",
+      "section": "",
+      "topic": "errata"
+    },
+    {
+      "id": "e27",
+      "question": "What corrections are listed in the Dungeon Master's Guide errata?",
+      "scope": "in",
+      "source": "dungeon-master-s-guide-errata-2021.pdf",
+      "section": "",
+      "topic": "errata"
+    },
+    {
+      "id": "e28",
+      "question": "What correction does the Monster Manual errata make?",
+      "scope": "in",
+      "source": "monster-manual-errata-2018.pdf",
+      "section": "",
+      "topic": "errata"
+    },
+    {
+      "id": "e29",
+      "question": "What is the save DC for a mind flayer's Mind Blast?",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "absent-monster"
+    },
+    {
+      "id": "e30",
+      "question": "How does the Warlord class's Commanding Strike feature work?",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "absent-class"
+    },
+    {
+      "id": "e31",
+      "question": "What are the official rules for the Kender race's Taunt feature?",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "absent-race"
+    },
+    {
+      "id": "e32",
+      "question": "What is the capital city of France?",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "general-knowledge"
+    },
+    {
+      "id": "e33",
+      "question": "Who won the 2022 FIFA World Cup?",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "general-knowledge"
+    },
+    {
+      "id": "e34",
+      "question": "How do I configure a PostgreSQL replication cluster?",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "technical-outside-domain"
+    },
+    {
+      "id": "e35",
+      "question": "What is the recipe for Japanese miso ramen broth?",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "food-outside-domain"
+    },
+    {
+      "id": "e36",
+      "question": "Explain the 4th-edition Warlord class's healing mechanic.",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "absent-edition"
+    },
+    {
+      "id": "e37",
+      "question": "What are the statistics of the Beholder's Eye Rays?",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "absent-monster"
+    },
+    {
+      "id": "e38",
+      "question": "What is the complete lore of the Raven Queen?",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "absent-lore"
+    },
+    {
+      "id": "e39",
+      "question": "What is the exact wording of the 2025 Unearthed Arcana Monk playtest?",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "outside-corpus-version"
+    },
+    {
+      "id": "e40",
+      "question": "What are the rules for firearms in the 2024 Dungeon Master's Guide?",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "outside-corpus-book"
+    }
+  ]
+}

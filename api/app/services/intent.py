@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import re
 
-_OLD_YEAR = re.compile(r"\b(20(?:1\d|2[0-5]))\b")
+# The corpus's current ruleset is 2024. A year only implies an older edition when
+# it predates that ruleset; mentioning 2024 must not expose superseded 2014 chunks.
+_OLD_YEAR = re.compile(r"\b(?:19\d{2}|20(?:0\d|1\d|2[0-3]))\b")
 _OLD_WORD = re.compile(
     r"\b(old(?:er)?|previous(?:ly)?|earlier|prior|superseded|former(?:ly)?|repealed|"
     r"outdated|legacy|replaced)\b",
@@ -20,8 +22,7 @@ _PRONOUN_REF = re.compile(r"\b(it|that|this|those|they|them|these|its|their)\b",
 
 
 def wants_older_version(question: str) -> bool:
-    """True when the user explicitly asks about an older edition, so superseded documents
-    must NOT be filtered out (section 3.2, step 4)."""
+    """True when the user explicitly asks about a pre-2024 edition."""
     if _OLD_YEAR.search(question):
         return True
     return bool(_OLD_WORD.search(question) and _DOC_WORD.search(question))
@@ -29,7 +30,7 @@ def wants_older_version(question: str) -> bool:
 
 def is_followup(question: str) -> bool:
     """Heuristic: a follow-up depends on an earlier turn, so its answer is not a property of
-    the question alone and must never be cached (section 3.3)."""
+    the question alone and must never be cached."""
     if _FOLLOWUP_OPENERS.match(question):
         return True
     words = question.split()
