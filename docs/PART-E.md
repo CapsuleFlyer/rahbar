@@ -57,3 +57,13 @@ and why. Do not overwrite the original baseline report.
 Use uncovered topics from the E2 report to author at least six additional golden
 questions. Re-run E2 after adding them and show that the share of live queries above
 the similarity threshold increases. Keep both before and after reports.
+
+## E4 — added golden questions
+
+The first semantic coverage run found gaps in stabilization, ability checks, opportunity
+attacks, Long Rest benefits, the Fireball spell level, and slow travel pace. Six additional
+human-authored questions (g46–g51) were added to `eval/golden.jsonl`, with supporting
+source documents, page references, and expected answer phrases. The original 45-question
+coverage report is retained as the before snapshot. Re-run `make golden-check` and
+`make live-coverage` after pulling these additions; record the resulting after report
+alongside the original E2 report rather than overwriting the baseline.
