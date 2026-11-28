@@ -13,9 +13,9 @@ INGRESS_IP ?= $(shell minikube ip 2>/dev/null)
 HOST ?= rahbar.local
 
 .DEFAULT_GOAL := help
-.PHONY: help install test lint dev cluster images apply secret index ask batch-load ingest reports ops eval-suite eval-results golden-check trace trace-report fetch eval eval-fixtures check coverage coverage-compare
+.PHONY: help install test lint dev cluster images apply secret index ask batch-load ingest reports ops eval-suite eval-results golden-check trace trace-report fetch eval eval-fixtures check coverage coverage-compare live-coverage
 help: ## list the targets
-	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  make %-14s %s\n", $$1, $$2}'
+	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  make %-14s %s\\n", $$1, $$2}'
 
 install: ## create .venv and install the api, indexer and tool dependencies
 	$(PY) -m venv $(VENV)
@@ -54,7 +54,7 @@ apply: ## apply the dev overlay (needs yours: manifests)
 
 secret: ## create the LLM key Secret from the LLM_API_KEY variable; never from a file
 	@test -n "$$LLM_API_KEY" || { echo "export LLM_API_KEY=... first"; exit 1; }
-	kubectl create secret generic rahbar-secret -n $(NS) \
+	kubectl create secret generic rahbar-secret -n $(NS) \\
 	  --from-literal=LLM_API_KEY="$$LLM_API_KEY" --dry-run=client -o yaml | kubectl apply -f -
 
 index: ## run the indexer once, from the CronJob's template (needs yours: CronJob reindex)
@@ -62,17 +62,17 @@ index: ## run the indexer once, from the CronJob's template (needs yours: CronJo
 	@echo "watch it with: kubectl get jobs -n $(NS) -w"
 
 ask: ## ask through the Ingress: make ask Q="What DC does the Hide action need?" (add RAW=1 for the full JSON)
-	@curl -s -X POST "http://$(INGRESS_IP)/api/ask" -H "Host: $(HOST)" \
-	  -H 'Content-Type: application/json' -d "$$(Q="$(Q)" $(PY) -c 'import json,os; print(json.dumps({"question": os.environ["Q"]}))')" \
+	@curl -s -X POST "http://$(INGRESS_IP)/api/ask" -H "Host: $(HOST)" \\
+	  -H 'Content-Type: application/json' -d "$$(Q="$(Q)" $(PY) -c 'import json,os; print(json.dumps({"question": os.environ["Q"]}))')" \\
 	  | $(if $(RAW),$(PY) -m json.tool,Q="$(Q)" $(PY) scripts/pretty_answer.py)
 
 batch-load: ## put a batch of new documents in the data lake: make batch-load DIR=eval/batch_b/docs
 	scripts/load-corpus.sh $(DIR)
 
 ingest: ## run the ingestion Job now (verify, quarantine, incremental) and print its report
-	@n=ingest-$$(date +%s); kubectl create job --from=cronjob/reindex $$n -n $(NS) >/dev/null && echo "running $$n ..." && \
-	  (kubectl wait --for=condition=complete job/$$n -n $(NS) --timeout=$(or $(WAIT),3600s) || true) && \
-	  kubectl logs job/$$n -n $(NS) | grep -v '^{"ts"'; kubectl logs job/$$n -n $(NS) | grep '"ingest summary"' | cut -c1-700
+	@n=ingest-$$(date +%s); kubectl create job --from=cronjob/reindex $$n -n $(NS) >/dev/null && echo "running $$n ..." && \\
+	  (kubectl wait --for=condition=complete job/$$n -n $(NS) --timeout=$(or $(WAIT),3600s) || true) && \\
+	  kubectl logs job/$$n -n $(NS) | grep -v '^{\"ts\"'; kubectl logs job/$$n -n $(NS) | grep '\"ingest summary\"' | cut -c1-700
 
 reports: ## copy the verification reports from the cluster into eval/results/ (commit them)
 	NS=$(NS) scripts/copy-reports.sh
@@ -81,7 +81,7 @@ ops: ## data-lake commands: make ops ARGS="list" | ARGS="counts --source X" | AR
 	NS=$(NS) TAG=$(TAG) scripts/ops.sh $(ARGS)
 
 eval-suite: ## run the RAGOps test suite as a Job (part B, F2); WAIT=1800s to change the timeout
-	@kubectl -n $(NS) delete job eval-suite --ignore-not-found >/dev/null; kubectl apply -f k8s/eval-job.yaml >/dev/null && echo "running eval-suite ..." && \
+	@kubectl -n $(NS) delete job eval-suite --ignore-not-found >/dev/null; kubectl apply -f k8s/eval-job.yaml >/dev/null && echo "running eval-suite ..." && \\
 	(kubectl -n $(NS) wait --for=condition=complete job/eval-suite --timeout=$(or $(WAIT),3600s) || true) && kubectl -n $(NS) logs job/eval-suite | tail -60
 
 eval-results: ## copy the suite result files from the cluster into eval/results/
@@ -93,7 +93,7 @@ golden-check: ## check eval/golden.jsonl against the handout rules
 trace: ## everything behind one answer (RAGOps D2): make trace ID=<trace id or prefix>
 	@kubectl -n $(NS) exec deploy/api -- sh -c 'cat /traces/*.jsonl' | $(PY) scripts/trace_show.py $(ID) -
 
-trace-report: ## summarise the trace log (RAGOps D3): make trace-report SINCE=1h
+trace-report: ## summarise the trace log (RAGOps D3): cache hit rate, abstentions, top-1 similarity, p50/p95 per stage, injection flags
 	@kubectl -n $(NS) exec deploy/api -- sh -c 'cat /traces/*.jsonl' | $(PY) scripts/trace_report.py - --since $(or $(SINCE),24h)
 
 fetch: ## download the documents listed in corpus/sources.yaml
@@ -129,8 +129,26 @@ status: ## everything in the namespace
 	kubectl get pods,jobs,svc,hpa,ingress,pvc -n $(NS)
 
 .PHONY: coverage coverage-compare
-coverage: ## run Part E's 40-question retrieval coverage gate
+coverage: ## run Part E's retrieval coverage diagnostic (not the E2 semantic query-to-golden metric)
 	$(PY) eval/coverage.py --api "http://$(INGRESS_IP)" --host $(HOST) --out eval/coverage/before.json
 
 coverage-compare: ## compare Part E before/after corpus-drift reports
 	$(PY) eval/coverage.py --compare eval/coverage/before.json eval/coverage/after-drift.json
+
+live-coverage: ## run Part E2 semantic similarity between 40 live queries and golden questions
+	@set -e; \
+	  kubectl -n $(NS) delete job live-coverage --ignore-not-found >/dev/null; \
+	  kubectl apply -f k8s/live-coverage-job.yaml >/dev/null; \
+	  for attempt in $$(seq 1 120); do \
+	    succeeded=$$(kubectl -n $(NS) get job live-coverage -o jsonpath='{.status.succeeded}'); \
+	    failed=$$(kubectl -n $(NS) get job live-coverage -o jsonpath='{.status.failed}'); \
+	    if [ "$$succeeded" = "1" ] || [ "$$failed" = "1" ]; then break; fi; \
+	    sleep 5; \
+	  done; \
+	  if [ "$$succeeded" != "1" ]; then kubectl -n $(NS) logs job/live-coverage || true; exit 1; fi; \
+	  kubectl -n $(NS) logs job/live-coverage; \
+	  mkdir -p eval/coverage; \
+	  pod=$$(kubectl -n $(NS) get pods -l app.kubernetes.io/component=live-coverage -o jsonpath='{.items[0].metadata.name}'); \
+	  kubectl -n $(NS) cp $$pod:/results/live-coverage.json eval/coverage/live-coverage.json; \
+	  kubectl -n $(NS) cp $$pod:/results/live-coverage.md eval/coverage/live-coverage.md; \
+	  test "$$(kubectl -n $(NS) get job live-coverage -o jsonpath='{.status.succeeded}')" = "1"

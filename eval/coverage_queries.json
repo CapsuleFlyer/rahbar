@@ -1,5 +1,5 @@
 {
-  "description": "Part E live-style corpus coverage set: 28 in-domain and 12 out-of-domain questions.",
+  "description": "Part E live-style coverage set: 28 in-domain queries and 12 out-of-domain queries not represented by the current golden questions.",
   "queries": [
     {
       "id": "e01",
@@ -227,46 +227,30 @@
     },
     {
       "id": "e29",
-      "question": "What is the save DC for a mind flayer's Mind Blast?",
+      "question": "How does TCP congestion control prevent network overload?",
       "scope": "out",
       "source": "",
       "section": "",
-      "topic": "absent-monster"
+      "topic": "technical-outside-domain"
     },
     {
       "id": "e30",
-      "question": "How does the Warlord class's Commanding Strike feature work?",
+      "question": "What causes the northern lights?",
       "scope": "out",
       "source": "",
       "section": "",
-      "topic": "absent-class"
+      "topic": "general-science"
     },
     {
       "id": "e31",
-      "question": "What are the official rules for the Kender race's Taunt feature?",
+      "question": "How does photosynthesis convert sunlight into chemical energy?",
       "scope": "out",
       "source": "",
       "section": "",
-      "topic": "absent-race"
+      "topic": "general-science"
     },
     {
       "id": "e32",
-      "question": "What is the capital city of France?",
-      "scope": "out",
-      "source": "",
-      "section": "",
-      "topic": "general-knowledge"
-    },
-    {
-      "id": "e33",
-      "question": "Who won the 2022 FIFA World Cup?",
-      "scope": "out",
-      "source": "",
-      "section": "",
-      "topic": "general-knowledge"
-    },
-    {
-      "id": "e34",
       "question": "How do I configure a PostgreSQL replication cluster?",
       "scope": "out",
       "source": "",
@@ -274,7 +258,7 @@
       "topic": "technical-outside-domain"
     },
     {
-      "id": "e35",
+      "id": "e33",
       "question": "What is the recipe for Japanese miso ramen broth?",
       "scope": "out",
       "source": "",
@@ -282,44 +266,60 @@
       "topic": "food-outside-domain"
     },
     {
-      "id": "e36",
-      "question": "Explain the 4th-edition Warlord class's healing mechanic.",
+      "id": "e34",
+      "question": "Explain the main ideas of Bayesian inference.",
       "scope": "out",
       "source": "",
       "section": "",
-      "topic": "absent-edition"
+      "topic": "mathematics-outside-domain"
+    },
+    {
+      "id": "e35",
+      "question": "How does compound interest work over multiple years?",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "finance-outside-domain"
+    },
+    {
+      "id": "e36",
+      "question": "What were the major causes of the Ming dynasty's decline?",
+      "scope": "out",
+      "source": "",
+      "section": "",
+      "topic": "history-outside-domain"
     },
     {
       "id": "e37",
-      "question": "What are the statistics of the Beholder's Eye Rays?",
+      "question": "How does Python's asyncio event loop schedule coroutines?",
       "scope": "out",
       "source": "",
       "section": "",
-      "topic": "absent-monster"
+      "topic": "technical-outside-domain"
     },
     {
       "id": "e38",
-      "question": "What is the complete lore of the Raven Queen?",
+      "question": "How does a four-stroke diesel engine work?",
       "scope": "out",
       "source": "",
       "section": "",
-      "topic": "absent-lore"
+      "topic": "engineering-outside-domain"
     },
     {
       "id": "e39",
-      "question": "What is the exact wording of the 2025 Unearthed Arcana Monk playtest?",
+      "question": "What are the main differences between mitosis and meiosis?",
       "scope": "out",
       "source": "",
       "section": "",
-      "topic": "outside-corpus-version"
+      "topic": "biology-outside-domain"
     },
     {
       "id": "e40",
-      "question": "What are the rules for firearms in the 2024 Dungeon Master's Guide?",
+      "question": "How do tectonic plates cause earthquakes?",
       "scope": "out",
       "source": "",
       "section": "",
-      "topic": "outside-corpus-book"
+      "topic": "geology-outside-domain"
     }
   ]
 }

@@ -1,0 +1,34 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: live-coverage
+  namespace: rahbar
+  labels: {app.kubernetes.io/name: eval, app.kubernetes.io/component: live-coverage, app.kubernetes.io/part-of: rahbar}
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels: {app.kubernetes.io/name: eval, app.kubernetes.io/component: live-coverage, app.kubernetes.io/part-of: rahbar}
+    spec:
+      restartPolicy: Never
+      serviceAccountName: rahbar-eval
+      automountServiceAccountToken: false
+      securityContext: {runAsNonRoot: true, runAsUser: 10001, runAsGroup: 10001, fsGroup: 10001, seccompProfile: {type: RuntimeDefault}}
+      containers:
+        - name: live-coverage
+          image: rahbar-eval:dev
+          imagePullPolicy: IfNotPresent
+          args: ["python", "eval/live_coverage.py", "--queries", "eval/coverage_queries.json", "--golden", "eval/golden.jsonl", "--out", "/results/live-coverage.json", "--threshold", "0.85", "--min-coverage", "0.85"]
+          envFrom:
+            - configMapRef: {name: rahbar-config}
+          securityContext: {allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: {drop: [ALL]}}
+          resources:
+            requests: {cpu: 50m, memory: 96Mi}
+            limits: {cpu: 500m, memory: 256Mi}
+          volumeMounts:
+            - {name: results, mountPath: /results}
+            - {name: tmp, mountPath: /tmp}
+      volumes:
+        - {name: results, persistentVolumeClaim: {claimName: eval-results}}
+        - {name: tmp, emptyDir: {}}
