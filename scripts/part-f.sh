@@ -475,6 +475,8 @@ spec:
               value: /corpus
             - name: CORPUS_WAIT_SECONDS
               value: "600"
+            - name: EMBED_BATCH_SIZE
+              value: "32"
           resources:
             requests:
               cpu: 250m

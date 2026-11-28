@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import time
 
 import httpx
@@ -52,14 +53,37 @@ def embed(texts: list[str], settings: IndexerSettings, *,
     url = settings.ollama_url.rstrip("/") + "/api/embed"
     batch_size = max(1, settings.embed_batch_size)
     vectors: list[list[float]] = []
+    batch_count = (len(inputs) + batch_size - 1) // batch_size
+    started = time.perf_counter()
+    print(json.dumps({
+        "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "logger": "rahbar.indexer.embed",
+        "msg": "embedding started",
+        "chunks": len(inputs),
+        "batch_size": batch_size,
+        "batches": batch_count,
+        "model": settings.embed_model,
+    }), flush=True)
     with httpx.Client(timeout=TIMEOUT_SECONDS, transport=transport) as client:
-        for start in range(0, len(inputs), batch_size):
+        for batch_number, start in enumerate(range(0, len(inputs), batch_size), start=1):
+            batch_started = time.perf_counter()
             batch = inputs[start:start + batch_size]
             got = _post_batch(client, url, settings.embed_model, batch)
             if len(got) != len(batch):
                 raise RuntimeError(
                     f"embedding count mismatch: sent {len(batch)} texts, got {len(got)} vectors")
             vectors.extend(got)
+            print(json.dumps({
+                "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                "logger": "rahbar.indexer.embed",
+                "msg": "embedding batch complete",
+                "batch": batch_number,
+                "batches": batch_count,
+                "chunks_completed": len(vectors),
+                "chunks_total": len(inputs),
+                "batch_seconds": round(time.perf_counter() - batch_started, 2),
+                "elapsed_seconds": round(time.perf_counter() - started, 2),
+            }), flush=True)
     dim = len(vectors[0])
     if dim == 0 or any(len(v) != dim for v in vectors):
         raise RuntimeError("embedding dimension is inconsistent across vectors")
