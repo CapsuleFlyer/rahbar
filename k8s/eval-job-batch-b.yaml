@@ -1,0 +1,36 @@
+# Part E3: rerun the Part B suite with Batch B questions active.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: eval-suite-batch-b
+  namespace: rahbar
+  labels: {app.kubernetes.io/name: eval, app.kubernetes.io/component: eval-suite-batch-b, app.kubernetes.io/part-of: rahbar}
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels: {app.kubernetes.io/name: eval, app.kubernetes.io/component: eval-suite-batch-b, app.kubernetes.io/part-of: rahbar}
+    spec:
+      restartPolicy: Never
+      serviceAccountName: rahbar-eval
+      automountServiceAccountToken: false
+      securityContext: {runAsNonRoot: true, runAsUser: 10001, runAsGroup: 10001, fsGroup: 10001, seccompProfile: {type: RuntimeDefault}}
+      containers:
+        - name: eval
+          image: rahbar-eval:dev
+          imagePullPolicy: IfNotPresent
+          args: ["python", "-m", "eval.suite", "--api", "http://api:8000", "--out", "/results", "--delay", "3", "--repeat", "2", "--batch-b"]
+          envFrom:
+            - configMapRef: {name: rahbar-config}
+            - secretRef: {name: rahbar-secret, optional: true}
+          securityContext: {allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: {drop: [ALL]}}
+          resources:
+            requests: {cpu: 50m, memory: 96Mi}
+            limits: {cpu: 500m, memory: 256Mi}
+          volumeMounts:
+            - {name: results, mountPath: /results}
+            - {name: tmp, mountPath: /tmp}
+      volumes:
+        - {name: results, persistentVolumeClaim: {claimName: eval-results}}
+        - {name: tmp, emptyDir: {}}

@@ -156,3 +156,10 @@ live-coverage: ## run Part E2 semantic similarity between 40 live queries and go
 .PHONY: coverage-repair
 coverage-repair: ## build a source-aware repair plan from the latest E2 report
 	$(PY) eval/coverage_repair.py --report eval/coverage/live-coverage-after.json
+
+.PHONY: eval-suite-batch-b
+eval-suite-batch-b: ## run Part B suite with Batch B questions enabled (run after Batch B ingestion)
+	@kubectl -n $(NS) delete job eval-suite-batch-b --ignore-not-found >/dev/null; \
+	  kubectl apply -f k8s/eval-job-batch-b.yaml >/dev/null && echo "running eval-suite-batch-b ..." && \
+	  (kubectl -n $(NS) wait --for=condition=complete job/eval-suite-batch-b --timeout=$(or $(WAIT),3600s) || true) && \
+	  kubectl -n $(NS) logs job/eval-suite-batch-b | tail -80
