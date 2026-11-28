@@ -1,5 +1,6 @@
 # The RAGOps test suite as an image: runs as a Kubernetes Job (k8s/eval-job.yaml).
 FROM python:3.12-slim
+RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
 ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
 RUN pip install --no-cache-dir httpx==0.28.1
 WORKDIR /app

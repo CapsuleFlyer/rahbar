@@ -22,6 +22,8 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: "3.12", cache: pip}
       - run: pip install -r api/requirements-dev.txt -r indexer/requirements-dev.txt
+      # The application uses the HTTP-only client; integration tests need embedded Chroma.
+      - run: pip uninstall -y chromadb-client && pip install chromadb==1.0.12
       # stub provider only: no network, no model
       - run: cd api && pytest -q --cov=app --cov-fail-under=60
       - run: cd indexer && pytest -q

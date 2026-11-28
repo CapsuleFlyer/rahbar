@@ -120,7 +120,7 @@ def test_the_suite_runs_all_three_levels_and_writes_results(tmp_path: Path) -> N
     cfg = config(tmp_path)
     report = runner.run_suite(cfg, make_cluster())
     s = report["summary"]
-    assert report["golden"] == {"total": 31, "active": 27}            # Batch B waits for --batch-b
+    assert report["golden"] == {"total": 39, "active": 35}            # Batch B waits for --batch-b
     assert s["component.recall@5"] == pytest.approx(1.0) and s["component.mrr"] == pytest.approx(1.0)
     assert s["e2e.abstention_correctness"] == 1.0 and s["e2e.citation_validity"] == 1.0
     assert s["e2e.faithfulness"] == 1.0 and s["e2e.latency_p95_s"] >= s["e2e.latency_p50_s"]
@@ -136,7 +136,7 @@ def test_the_suite_runs_all_three_levels_and_writes_results(tmp_path: Path) -> N
 
 def test_batch_b_questions_are_included_only_when_asked(tmp_path: Path) -> None:
     report = runner.run_suite(config(tmp_path, batch_b=True, levels=("component",)), make_cluster())
-    assert report["golden"]["active"] == 31
+    assert report["golden"]["active"] == 39
     kinds = report["runs"][0]["component"]["by_tag"]
     assert "batch-b" in kinds and kinds["batch-b"]["questions"] == 4
 
