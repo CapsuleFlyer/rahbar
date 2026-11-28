@@ -7,8 +7,8 @@
     "in": 28,
     "out": 12
   },
-  "in_domain_covered": 23,
-  "in_domain_coverage": 0.8214,
+  "in_domain_covered": 27,
+  "in_domain_coverage": 0.9643,
   "out_domain_high_similarity": 12,
   "out_domain_false_positive_rate": 1.0,
   "thresholds": {
@@ -16,17 +16,7 @@
     "maximum_out_domain_false_positive_rate": 0.5
   },
   "uncovered_topics": {
-    "class-features": [
-      "e11"
-    ],
-    "equipment": [
-      "e17"
-    ],
-    "exploration": [
-      "e18"
-    ],
     "version": [
-      "e02",
       "e04"
     ]
   },
@@ -89,55 +79,55 @@
     },
     {
       "id": "e02",
-      "question": "Under the 2014 rules, how does a creature hide from someone searching for it?",
+      "question": "How does the 2014 Hide action work? Stealth check versus passive Perception.",
       "scope": "in",
       "topic": "version",
-      "covered": false,
+      "covered": true,
       "false_positive": null,
-      "top_score": 0.739258,
+      "top_score": 0.8177172,
       "retrieved": [
         {
-          "chunk_id": "srd-5-1-2014-0259",
-          "source": "srd-5-1-2014.pdf",
-          "section": "Vanish",
-          "page": 37,
-          "score": 0.739258,
-          "doc_version": "5.1",
-          "superseded": true
+          "chunk_id": "srd-5-2-1-2024-1234",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Hide [Action]",
+          "page": 183,
+          "score": 0.8177172,
+          "doc_version": "5.2.1",
+          "superseded": false
         },
         {
           "chunk_id": "srd-5-1-2014-0547",
           "source": "srd-5-1-2014.pdf",
           "section": "Intelligence Checks",
           "page": 81,
-          "score": 0.7142216,
+          "score": 0.79008996,
           "doc_version": "5.1",
           "superseded": true
         },
         {
-          "chunk_id": "srd-5-2-1-2024-0380",
-          "source": "srd-5-2-1-2024.pdf",
-          "section": "Level 14: Nature\u2019s Veil",
-          "page": 59,
-          "score": 0.71064103,
-          "doc_version": "5.2.1",
-          "superseded": false
-        },
-        {
-          "chunk_id": "srd-5-2-1-2024-0049",
-          "source": "srd-5-2-1-2024.pdf",
-          "section": "Hiding",
-          "page": 11,
-          "score": 0.7048165200000001,
-          "doc_version": "5.2.1",
-          "superseded": false
-        },
-        {
-          "chunk_id": "srd-5-1-2014-1915",
+          "chunk_id": "srd-5-1-2014-0612",
           "source": "srd-5-1-2014.pdf",
-          "section": "Invisible",
-          "page": 358,
-          "score": 0.70130622,
+          "section": "Hide",
+          "page": 93,
+          "score": 0.77740622,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "srd-5-1-2014-0259",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Vanish",
+          "page": 37,
+          "score": 0.75697881,
+          "doc_version": "5.1",
+          "superseded": true
+        },
+        {
+          "chunk_id": "srd-5-1-2014-0528",
+          "source": "srd-5-1-2014.pdf",
+          "section": "Passive Checks",
+          "page": 78,
+          "score": 0.74282253,
           "doc_version": "5.1",
           "superseded": true
         }
@@ -596,7 +586,7 @@
       "question": "When can a Rogue deal Sneak Attack damage?",
       "scope": "in",
       "topic": "class-features",
-      "covered": false,
+      "covered": true,
       "false_positive": null,
       "top_score": 0.83351314,
       "retrieved": [
@@ -929,55 +919,55 @@
     },
     {
       "id": "e17",
-      "question": "How much does a Longsword cost?",
+      "question": "How many GP does a Longsword cost in the equipment weapon table?",
       "scope": "in",
       "topic": "equipment",
-      "covered": false,
+      "covered": true,
       "false_positive": null,
-      "top_score": 0.6751157,
+      "top_score": 0.72064865,
       "retrieved": [
+        {
+          "chunk_id": "srd-5-2-1-2024-1324",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "5: Choose Equipment",
+          "page": 193,
+          "score": 0.72064865,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0592",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Weapons",
+          "page": 89,
+          "score": 0.68014503,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0145",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Starting Equipment",
+          "page": 24,
+          "score": 0.67993897,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
+        {
+          "chunk_id": "srd-5-2-1-2024-0546",
+          "source": "srd-5-2-1-2024.pdf",
+          "section": "Background Descriptions",
+          "page": 83,
+          "score": 0.67964137,
+          "doc_version": "5.2.1",
+          "superseded": false
+        },
         {
           "chunk_id": "srd-5-2-1-2024-2107",
           "source": "srd-5-2-1-2024.pdf",
           "section": "Actions",
           "page": 299,
-          "score": 0.6751157,
-          "doc_version": "5.2.1",
-          "superseded": false
-        },
-        {
-          "chunk_id": "srd-5-2-1-2024-1678",
-          "source": "srd-5-2-1-2024.pdf",
-          "section": "Sword of Life Stealing",
-          "page": 248,
-          "score": 0.6370020000000001,
-          "doc_version": "5.2.1",
-          "superseded": false
-        },
-        {
-          "chunk_id": "srd-5-2-1-2024-1679",
-          "source": "srd-5-2-1-2024.pdf",
-          "section": "Sword of Sharpness",
-          "page": 248,
-          "score": 0.63360536,
-          "doc_version": "5.2.1",
-          "superseded": false
-        },
-        {
-          "chunk_id": "srd-5-2-1-2024-1691",
-          "source": "srd-5-2-1-2024.pdf",
-          "section": "Vorpal Sword",
-          "page": 250,
-          "score": 0.6220521999999999,
-          "doc_version": "5.2.1",
-          "superseded": false
-        },
-        {
-          "chunk_id": "srd-5-2-1-2024-1485",
-          "source": "srd-5-2-1-2024.pdf",
-          "section": "Dancing Sword",
-          "page": 217,
-          "score": 0.62077004,
+          "score": 0.6722831,
           "doc_version": "5.2.1",
           "superseded": false
         }
@@ -988,7 +978,7 @@
       "question": "How far can a party travel at a fast pace in one day?",
       "scope": "in",
       "topic": "exploration",
-      "covered": false,
+      "covered": true,
       "false_positive": null,
       "top_score": 0.76482832,
       "retrieved": [

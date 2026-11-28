@@ -1,0 +1,4862 @@
+{
+  "run_id": "20261128T114157Z",
+  "started_at": "2026-11-28T11:49:38.830618+00:00",
+  "config": {
+    "api": "http://api:8000",
+    "embed_model": "nomic-embed-text",
+    "llm_model": "openai/gpt-oss-20b",
+    "judge": true,
+    "seed": 42,
+    "repeat": 2,
+    "tolerance": 1,
+    "top_k": 5,
+    "batch_b": true,
+    "levels": [
+      "module",
+      "component",
+      "e2e"
+    ],
+    "delay": 3.0
+  },
+  "golden": {
+    "total": 51,
+    "active": 51
+  },
+  "runs": [
+    {
+      "module": {
+        "paraphrase_pairs": 16,
+        "unrelated_pairs": 16,
+        "paraphrase_mean": 0.8674938883455142,
+        "unrelated_mean": 0.5851440368089631,
+        "gap": 0.2823498515365511,
+        "paraphrase_min": 0.7371976067304382,
+        "unrelated_max": 0.6636635342660279,
+        "ranked_correctly": 1.0,
+        "ms_per_chunk": 344.78865131245584,
+        "chunk_words_mean": 142.5625,
+        "determinism_max_abs_diff": 0.0
+      },
+      "component": {
+        "overall": {
+          "recall@3": 0.8804347826086957,
+          "recall@5": 0.9021739130434783,
+          "mrr": 0.8097826086956522,
+          "ndcg@5": 0.9623228805521071,
+          "questions": 46
+        },
+        "by_type": {
+          "answerable": {
+            "recall@3": 0.8648648648648649,
+            "recall@5": 0.8918918918918919,
+            "mrr": 0.8085585585585586,
+            "ndcg@5": 0.9763518763401917,
+            "questions": 37
+          },
+          "hard": {
+            "recall@3": 0.9444444444444444,
+            "recall@5": 0.9444444444444444,
+            "mrr": 0.8148148148148148,
+            "ndcg@5": 0.9046481200899819,
+            "questions": 9
+          }
+        },
+        "by_tag": {
+          "batch-b": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 4
+          },
+          "checks": {
+            "recall@3": 0.5,
+            "recall@5": 0.5,
+            "mrr": 0.5,
+            "ndcg@5": 0.8154648767857288,
+            "questions": 2
+          },
+          "combat": {
+            "recall@3": 0.75,
+            "recall@5": 0.75,
+            "mrr": 0.75,
+            "ndcg@5": 0.9077324383928644,
+            "questions": 4
+          },
+          "equipment": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "exact": {
+            "recall@3": 0.8333333333333334,
+            "recall@5": 0.8333333333333334,
+            "mrr": 0.7222222222222222,
+            "ndcg@5": 1.0152058299628364,
+            "questions": 6
+          },
+          "exploration": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "injection": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "injection-document": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "multi-chunk": {
+            "recall@3": 0.75,
+            "recall@5": 0.75,
+            "mrr": 0.75,
+            "ndcg@5": 0.812025260001919,
+            "questions": 2
+          },
+          "newer-version": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "older-edition": {
+            "recall@3": 0.75,
+            "recall@5": 0.75,
+            "mrr": 0.4583333333333333,
+            "ndcg@5": 0.5327324383928644,
+            "questions": 4
+          },
+          "ordinary": {
+            "recall@3": 0.875,
+            "recall@5": 0.9375,
+            "mrr": 0.859375,
+            "ndcg@5": 1.0158838985538223,
+            "questions": 16
+          },
+          "paraphrase": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.41666666666666663,
+            "ndcg@5": 0.7588912804029996,
+            "questions": 2
+          },
+          "rest": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "spells": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.3868528072345416,
+            "questions": 1
+          },
+          "version": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.8333333333333333,
+            "ndcg@5": 0.9659799295918451,
+            "questions": 7
+          }
+        },
+        "noise": {
+          "recall@3": 0.6195652173913043,
+          "recall@5": 0.6413043478260869,
+          "mrr": 0.5695652173913043,
+          "ndcg@5": 0.7070679246617506,
+          "questions": 46,
+          "kind": "2 swapped-letter typos per question",
+          "delta": {
+            "recall@3": -0.26086956521739135,
+            "recall@5": -0.26086956521739135,
+            "mrr": -0.24021739130434794,
+            "ndcg@5": -0.2552549558903565
+          }
+        },
+        "unanswerable_top1_mean": 0.65057851,
+        "unanswerable_top1_max": 0.7179150599999999,
+        "per_question": [
+          {
+            "id": "g01",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.821159,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                48
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                357
+              ]
+            ]
+          },
+          {
+            "id": "g02",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.87263745,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                163
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                194
+              ]
+            ]
+          },
+          {
+            "id": "g03",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.76093864,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ]
+            ]
+          },
+          {
+            "id": "g04",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.83486718,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                13
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ]
+            ]
+          },
+          {
+            "id": "g05",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.5,
+            "top1": 0.7501682000000001,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                87
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                347
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                259
+              ]
+            ]
+          },
+          {
+            "id": "g06",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.5,
+            "ndcg@5": 0.6309297535714575,
+            "top1": 0.79891807,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                61
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ]
+            ]
+          },
+          {
+            "id": "g07",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.75601816,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                59
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                236
+              ]
+            ]
+          },
+          {
+            "id": "g08",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.8117503,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                186
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                191
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ]
+            ]
+          },
+          {
+            "id": "g09",
+            "type": "answerable",
+            "tags": [
+              "version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.76008284,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                203
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                163
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                51
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                194
+              ]
+            ]
+          },
+          {
+            "id": "g10",
+            "type": "answerable",
+            "tags": [
+              "version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.7445566,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                184
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                189
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                259
+              ]
+            ]
+          },
+          {
+            "id": "g11",
+            "type": "answerable",
+            "tags": [
+              "version",
+              "older-edition"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7348635800000001,
+            "retrieved": [
+              [
+                "srd-5-1-2014.pdf",
+                358
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                206
+              ]
+            ]
+          },
+          {
+            "id": "g12",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.3868528072345416,
+            "top1": 0.7509503399999999,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                103
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                210
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                234
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ]
+            ]
+          },
+          {
+            "id": "g13",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.3868528072345416,
+            "top1": 0.66765136,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                219
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                103
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                234
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ]
+            ]
+          },
+          {
+            "id": "g16",
+            "type": "hard",
+            "tags": [
+              "injection"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.77683955,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                59
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                163
+              ]
+            ]
+          },
+          {
+            "id": "g17",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.8175293653079347,
+            "top1": 0.78185976,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                149
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                132
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                132
+              ]
+            ]
+          },
+          {
+            "id": "g18",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 0.0,
+            "mrr": 0.0,
+            "ndcg@5": 0.0,
+            "top1": 0.6751157,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                299
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                248
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                248
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                250
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                217
+              ]
+            ]
+          },
+          {
+            "id": "g19",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.80744576,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                220
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                204
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                177
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                254
+              ]
+            ]
+          },
+          {
+            "id": "g20",
+            "type": "answerable",
+            "tags": [
+              "version",
+              "older-edition"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.73757958,
+            "retrieved": [
+              [
+                "srd-5-1-2014.pdf",
+                37
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                94
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                81
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ]
+            ]
+          },
+          {
+            "id": "g24",
+            "type": "hard",
+            "tags": [
+              "paraphrase"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.5,
+            "ndcg@5": 1.0177825608059992,
+            "top1": 0.7652682,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                7
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                25
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                179
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ]
+            ]
+          },
+          {
+            "id": "g25",
+            "type": "hard",
+            "tags": [
+              "paraphrase"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.79942,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ]
+            ]
+          },
+          {
+            "id": "g26",
+            "type": "hard",
+            "tags": [
+              "multi-chunk"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.2371977127692964,
+            "top1": 0.77692902,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                186
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                317
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ]
+            ]
+          },
+          {
+            "id": "g27",
+            "type": "hard",
+            "tags": [
+              "multi-chunk"
+            ],
+            "recall@3": 0.5,
+            "recall@5": 0.5,
+            "mrr": 0.5,
+            "ndcg@5": 0.38685280723454163,
+            "top1": 0.72639567,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                299
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                245
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                246
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ]
+            ]
+          },
+          {
+            "id": "g28",
+            "type": "hard",
+            "tags": [
+              "batch-b"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7796534900000001,
+            "retrieved": [
+              [
+                "hirelings-and-mercenaries.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                102
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                103
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                100
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                322
+              ]
+            ]
+          },
+          {
+            "id": "g29",
+            "type": "hard",
+            "tags": [
+              "batch-b",
+              "newer-version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.80310017,
+            "retrieved": [
+              [
+                "sage-advice-compendium-v2-8.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                59
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                328
+              ],
+              [
+                "monster-manual-errata-2018.pdf",
+                1
+              ]
+            ]
+          },
+          {
+            "id": "g30",
+            "type": "hard",
+            "tags": [
+              "batch-b"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.8452797,
+            "retrieved": [
+              [
+                "travel-pace-table.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "homebrew-optional-rules.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ]
+            ]
+          },
+          {
+            "id": "g31",
+            "type": "hard",
+            "tags": [
+              "batch-b",
+              "injection-document"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.85257429,
+            "retrieved": [
+              [
+                "homebrew-optional-rules.md",
+                1
+              ],
+              [
+                "travel-pace-table.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ]
+            ]
+          },
+          {
+            "id": "g32",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.4306765580733931,
+            "top1": 0.82978588,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                48
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ]
+            ]
+          },
+          {
+            "id": "g33",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.73043817,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ]
+            ]
+          },
+          {
+            "id": "g34",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7197382999999999,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                278
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                48
+              ]
+            ]
+          },
+          {
+            "id": "g35",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.74908292,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                186
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ]
+            ]
+          },
+          {
+            "id": "g36",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 1.0,
+            "mrr": 0.25,
+            "ndcg@5": 0.43067655807339306,
+            "top1": 0.78702617,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                61
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                25
+              ]
+            ]
+          },
+          {
+            "id": "g37",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7229821000000001,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                219
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                210
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                234
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                265
+              ]
+            ]
+          },
+          {
+            "id": "g38",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.77917343,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                250
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                24
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                245
+              ]
+            ]
+          },
+          {
+            "id": "g39",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 0.0,
+            "mrr": 0.0,
+            "ndcg@5": 0.0,
+            "top1": 0.81145161,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ]
+            ]
+          },
+          {
+            "id": "g40",
+            "type": "answerable",
+            "tags": [
+              "version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.72023988,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                93
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                37
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                3
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ]
+            ]
+          },
+          {
+            "id": "g41",
+            "type": "answerable",
+            "tags": [
+              "version",
+              "older-edition"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.5,
+            "ndcg@5": 0.6309297535714575,
+            "top1": 0.73925805,
+            "retrieved": [
+              [
+                "srd-5-1-2014.pdf",
+                37
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                81
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                59
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                358
+              ]
+            ]
+          },
+          {
+            "id": "g42",
+            "type": "answerable",
+            "tags": [
+              "version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.76463526,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                358
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                87
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                189
+              ]
+            ]
+          },
+          {
+            "id": "g43",
+            "type": "answerable",
+            "tags": [
+              "combat"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.84309876,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                176
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ]
+            ]
+          },
+          {
+            "id": "g44",
+            "type": "answerable",
+            "tags": [
+              "equipment",
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.76158082,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                219
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                254
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                204
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                177
+              ]
+            ]
+          },
+          {
+            "id": "g45",
+            "type": "answerable",
+            "tags": [
+              "combat"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.79464817,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                317
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                332
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                307
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                263
+              ]
+            ]
+          },
+          {
+            "id": "g46",
+            "type": "answerable",
+            "tags": [
+              "combat",
+              "checks"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.81289798,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                184
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                188
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                76
+              ]
+            ]
+          },
+          {
+            "id": "g47",
+            "type": "answerable",
+            "tags": [
+              "checks"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 0.0,
+            "mrr": 0.0,
+            "ndcg@5": 0.0,
+            "top1": 0.84730214,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                8
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                6
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                176
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                6
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ]
+            ]
+          },
+          {
+            "id": "g48",
+            "type": "answerable",
+            "tags": [
+              "combat",
+              "older-edition"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 0.0,
+            "mrr": 0.0,
+            "ndcg@5": 0.0,
+            "top1": 0.7706993799999999,
+            "retrieved": [
+              [
+                "srd-5-1-2014.pdf",
+                95
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                15
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                13
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                30
+              ]
+            ]
+          },
+          {
+            "id": "g49",
+            "type": "answerable",
+            "tags": [
+              "rest"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.84651762,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                196
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                84
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ]
+            ]
+          },
+          {
+            "id": "g50",
+            "type": "answerable",
+            "tags": [
+              "spells"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.3868528072345416,
+            "top1": 0.8000952,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                24
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                250
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                132
+              ]
+            ]
+          },
+          {
+            "id": "g51",
+            "type": "answerable",
+            "tags": [
+              "exploration"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.8273556200000001,
+            "retrieved": [
+              [
+                "travel-pace-table.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "homebrew-optional-rules.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ]
+            ]
+          }
+        ]
+      },
+      "e2e": {
+        "questions": 51,
+        "citation_validity": 1.0,
+        "citations_checked": 3,
+        "abstention_correctness": 1.0,
+        "false_abstention_rate": 0.9347826086956522,
+        "faithfulness": 1.0,
+        "faithfulness_judged": 2,
+        "judge_agreement_with_human": null,
+        "human_labels_used": 0,
+        "answer_contains_expected": 0.6666666666666666,
+        "fallbacks": 0,
+        "latency_p50_s": 0.518,
+        "latency_p95_s": 1.264,
+        "per_question": [
+          {
+            "id": "g01",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g01",
+            "answered": true,
+            "fallback": false,
+            "seconds": 1.494,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g02",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g02",
+            "answered": true,
+            "fallback": false,
+            "seconds": 1.324,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": true,
+            "contains_expected": true
+          },
+          {
+            "id": "g03",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g03",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.495,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g04",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g04",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.532,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g05",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g05",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.507,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g06",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g06",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.523,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g07",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g07",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.493,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g08",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g08",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.519,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g09",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g09",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.509,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g10",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g10",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.511,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g11",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g11",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.498,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g12",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g12",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.497,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g13",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g13",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.532,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g14",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T114157Z-r1-g14",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.568,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g15",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T114157Z-r1-g15",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.589,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g16",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r1-g16",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.512,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g17",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g17",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.521,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g18",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g18",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.514,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g19",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g19",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.58,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g20",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g20",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.518,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g21",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T114157Z-r1-g21",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.652,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g22",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T114157Z-r1-g22",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.67,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g23",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T114157Z-r1-g23",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.612,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g24",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r1-g24",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.659,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g25",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r1-g25",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.569,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g26",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r1-g26",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.546,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g27",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r1-g27",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.536,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g28",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r1-g28",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.503,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g29",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r1-g29",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.514,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g30",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r1-g30",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.515,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g31",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r1-g31",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.513,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g32",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g32",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.517,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g33",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g33",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.513,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g34",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g34",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.512,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g35",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g35",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.518,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g36",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g36",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.581,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g37",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g37",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.508,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g38",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g38",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.508,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g39",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g39",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.528,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g40",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g40",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.504,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g41",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g41",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.487,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g42",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g42",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.508,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g43",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g43",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.521,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g44",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g44",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.51,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g45",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g45",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.535,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g46",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g46",
+            "answered": true,
+            "fallback": false,
+            "seconds": 1.264,
+            "citations": 1,
+            "citations_valid": 1,
+            "faithful": null,
+            "contains_expected": false
+          },
+          {
+            "id": "g47",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g47",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.535,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g48",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g48",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.51,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g49",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g49",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.512,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g50",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g50",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.535,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g51",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r1-g51",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.543,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          }
+        ]
+      },
+      "flat": {
+        "module.paraphrase_mean": 0.8674938883455142,
+        "module.unrelated_mean": 0.5851440368089631,
+        "module.gap": 0.2823498515365511,
+        "module.ranked_correctly": 1.0,
+        "module.ms_per_chunk": 344.78865131245584,
+        "module.determinism_max_abs_diff": 0.0,
+        "component.recall@3": 0.8804347826086957,
+        "component.recall@5": 0.9021739130434783,
+        "component.mrr": 0.8097826086956522,
+        "component.ndcg@5": 0.9623228805521071,
+        "component.noise_delta.recall@3": -0.26086956521739135,
+        "component.noise_delta.recall@5": -0.26086956521739135,
+        "component.noise_delta.mrr": -0.24021739130434794,
+        "component.noise_delta.ndcg@5": -0.2552549558903565,
+        "e2e.citation_validity": 1.0,
+        "e2e.abstention_correctness": 1.0,
+        "e2e.false_abstention_rate": 0.9347826086956522,
+        "e2e.faithfulness": 1.0,
+        "e2e.answer_contains_expected": 0.6666666666666666,
+        "e2e.latency_p50_s": 0.518,
+        "e2e.latency_p95_s": 1.264
+      }
+    },
+    {
+      "module": {
+        "paraphrase_pairs": 16,
+        "unrelated_pairs": 16,
+        "paraphrase_mean": 0.8674938883455142,
+        "unrelated_mean": 0.5851440368089631,
+        "gap": 0.2823498515365511,
+        "paraphrase_min": 0.7371976067304382,
+        "unrelated_max": 0.6636635342660279,
+        "ranked_correctly": 1.0,
+        "ms_per_chunk": 345.8900706248187,
+        "chunk_words_mean": 142.5625,
+        "determinism_max_abs_diff": 0.0
+      },
+      "component": {
+        "overall": {
+          "recall@3": 0.8804347826086957,
+          "recall@5": 0.9021739130434783,
+          "mrr": 0.8097826086956522,
+          "ndcg@5": 0.9623228805521071,
+          "questions": 46
+        },
+        "by_type": {
+          "answerable": {
+            "recall@3": 0.8648648648648649,
+            "recall@5": 0.8918918918918919,
+            "mrr": 0.8085585585585586,
+            "ndcg@5": 0.9763518763401917,
+            "questions": 37
+          },
+          "hard": {
+            "recall@3": 0.9444444444444444,
+            "recall@5": 0.9444444444444444,
+            "mrr": 0.8148148148148148,
+            "ndcg@5": 0.9046481200899819,
+            "questions": 9
+          }
+        },
+        "by_tag": {
+          "batch-b": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 4
+          },
+          "checks": {
+            "recall@3": 0.5,
+            "recall@5": 0.5,
+            "mrr": 0.5,
+            "ndcg@5": 0.8154648767857288,
+            "questions": 2
+          },
+          "combat": {
+            "recall@3": 0.75,
+            "recall@5": 0.75,
+            "mrr": 0.75,
+            "ndcg@5": 0.9077324383928644,
+            "questions": 4
+          },
+          "equipment": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "exact": {
+            "recall@3": 0.8333333333333334,
+            "recall@5": 0.8333333333333334,
+            "mrr": 0.7222222222222222,
+            "ndcg@5": 1.0152058299628364,
+            "questions": 6
+          },
+          "exploration": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "injection": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "injection-document": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "multi-chunk": {
+            "recall@3": 0.75,
+            "recall@5": 0.75,
+            "mrr": 0.75,
+            "ndcg@5": 0.812025260001919,
+            "questions": 2
+          },
+          "newer-version": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "older-edition": {
+            "recall@3": 0.75,
+            "recall@5": 0.75,
+            "mrr": 0.4583333333333333,
+            "ndcg@5": 0.5327324383928644,
+            "questions": 4
+          },
+          "ordinary": {
+            "recall@3": 0.875,
+            "recall@5": 0.9375,
+            "mrr": 0.859375,
+            "ndcg@5": 1.0158838985538223,
+            "questions": 16
+          },
+          "paraphrase": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.41666666666666663,
+            "ndcg@5": 0.7588912804029996,
+            "questions": 2
+          },
+          "rest": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "questions": 1
+          },
+          "spells": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.3868528072345416,
+            "questions": 1
+          },
+          "version": {
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.8333333333333333,
+            "ndcg@5": 0.9659799295918451,
+            "questions": 7
+          }
+        },
+        "noise": {
+          "recall@3": 0.6195652173913043,
+          "recall@5": 0.6413043478260869,
+          "mrr": 0.5695652173913043,
+          "ndcg@5": 0.7070679246617506,
+          "questions": 46,
+          "kind": "2 swapped-letter typos per question",
+          "delta": {
+            "recall@3": -0.26086956521739135,
+            "recall@5": -0.26086956521739135,
+            "mrr": -0.24021739130434794,
+            "ndcg@5": -0.2552549558903565
+          }
+        },
+        "unanswerable_top1_mean": 0.65057851,
+        "unanswerable_top1_max": 0.7179150599999999,
+        "per_question": [
+          {
+            "id": "g01",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.821159,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                48
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                357
+              ]
+            ]
+          },
+          {
+            "id": "g02",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.87263745,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                163
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                194
+              ]
+            ]
+          },
+          {
+            "id": "g03",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.76093864,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ]
+            ]
+          },
+          {
+            "id": "g04",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.83486718,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                13
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ]
+            ]
+          },
+          {
+            "id": "g05",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.5,
+            "top1": 0.7501682000000001,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                87
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                347
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                259
+              ]
+            ]
+          },
+          {
+            "id": "g06",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.5,
+            "ndcg@5": 0.6309297535714575,
+            "top1": 0.79891807,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                61
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ]
+            ]
+          },
+          {
+            "id": "g07",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.75601816,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                59
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                236
+              ]
+            ]
+          },
+          {
+            "id": "g08",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.8117503,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                186
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                191
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ]
+            ]
+          },
+          {
+            "id": "g09",
+            "type": "answerable",
+            "tags": [
+              "version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.76008284,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                203
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                163
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                51
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                194
+              ]
+            ]
+          },
+          {
+            "id": "g10",
+            "type": "answerable",
+            "tags": [
+              "version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.7445566,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                184
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                189
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                259
+              ]
+            ]
+          },
+          {
+            "id": "g11",
+            "type": "answerable",
+            "tags": [
+              "version",
+              "older-edition"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7348635800000001,
+            "retrieved": [
+              [
+                "srd-5-1-2014.pdf",
+                358
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                206
+              ]
+            ]
+          },
+          {
+            "id": "g12",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.3868528072345416,
+            "top1": 0.7509503399999999,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                103
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                210
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                234
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ]
+            ]
+          },
+          {
+            "id": "g13",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.3868528072345416,
+            "top1": 0.66765136,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                219
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                103
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                234
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ]
+            ]
+          },
+          {
+            "id": "g16",
+            "type": "hard",
+            "tags": [
+              "injection"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.77683955,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                59
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                163
+              ]
+            ]
+          },
+          {
+            "id": "g17",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.8175293653079347,
+            "top1": 0.78185976,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                149
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                132
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                132
+              ]
+            ]
+          },
+          {
+            "id": "g18",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 0.0,
+            "mrr": 0.0,
+            "ndcg@5": 0.0,
+            "top1": 0.6751157,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                299
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                248
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                248
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                250
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                217
+              ]
+            ]
+          },
+          {
+            "id": "g19",
+            "type": "answerable",
+            "tags": [
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.80744576,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                220
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                204
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                177
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                254
+              ]
+            ]
+          },
+          {
+            "id": "g20",
+            "type": "answerable",
+            "tags": [
+              "version",
+              "older-edition"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.73757958,
+            "retrieved": [
+              [
+                "srd-5-1-2014.pdf",
+                37
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                94
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                81
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ]
+            ]
+          },
+          {
+            "id": "g24",
+            "type": "hard",
+            "tags": [
+              "paraphrase"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.5,
+            "ndcg@5": 1.0177825608059992,
+            "top1": 0.7652682,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                7
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                25
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                179
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ]
+            ]
+          },
+          {
+            "id": "g25",
+            "type": "hard",
+            "tags": [
+              "paraphrase"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@5": 0.5,
+            "top1": 0.79942,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ]
+            ]
+          },
+          {
+            "id": "g26",
+            "type": "hard",
+            "tags": [
+              "multi-chunk"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.2371977127692964,
+            "top1": 0.77692902,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                186
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                317
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ]
+            ]
+          },
+          {
+            "id": "g27",
+            "type": "hard",
+            "tags": [
+              "multi-chunk"
+            ],
+            "recall@3": 0.5,
+            "recall@5": 0.5,
+            "mrr": 0.5,
+            "ndcg@5": 0.38685280723454163,
+            "top1": 0.72639567,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                299
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                245
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                246
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ]
+            ]
+          },
+          {
+            "id": "g28",
+            "type": "hard",
+            "tags": [
+              "batch-b"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7796534900000001,
+            "retrieved": [
+              [
+                "hirelings-and-mercenaries.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                102
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                103
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                100
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                322
+              ]
+            ]
+          },
+          {
+            "id": "g29",
+            "type": "hard",
+            "tags": [
+              "batch-b",
+              "newer-version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.80310017,
+            "retrieved": [
+              [
+                "sage-advice-compendium-v2-8.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                59
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                328
+              ],
+              [
+                "monster-manual-errata-2018.pdf",
+                1
+              ]
+            ]
+          },
+          {
+            "id": "g30",
+            "type": "hard",
+            "tags": [
+              "batch-b"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.8452797,
+            "retrieved": [
+              [
+                "travel-pace-table.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "homebrew-optional-rules.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ]
+            ]
+          },
+          {
+            "id": "g31",
+            "type": "hard",
+            "tags": [
+              "batch-b",
+              "injection-document"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.85257429,
+            "retrieved": [
+              [
+                "homebrew-optional-rules.md",
+                1
+              ],
+              [
+                "travel-pace-table.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ]
+            ]
+          },
+          {
+            "id": "g32",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.4306765580733931,
+            "top1": 0.82978588,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                48
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                52
+              ]
+            ]
+          },
+          {
+            "id": "g33",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.73043817,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ]
+            ]
+          },
+          {
+            "id": "g34",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7197382999999999,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                182
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                316
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                278
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                48
+              ]
+            ]
+          },
+          {
+            "id": "g35",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.74908292,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                186
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                14
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ]
+            ]
+          },
+          {
+            "id": "g36",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 1.0,
+            "mrr": 0.25,
+            "ndcg@5": 0.43067655807339306,
+            "top1": 0.78702617,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                64
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                16
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                61
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                25
+              ]
+            ]
+          },
+          {
+            "id": "g37",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.7229821000000001,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                219
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                210
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                234
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                265
+              ]
+            ]
+          },
+          {
+            "id": "g38",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.77917343,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                250
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                24
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                245
+              ]
+            ]
+          },
+          {
+            "id": "g39",
+            "type": "answerable",
+            "tags": [
+              "ordinary"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 0.0,
+            "mrr": 0.0,
+            "ndcg@5": 0.0,
+            "top1": 0.81145161,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ]
+            ]
+          },
+          {
+            "id": "g40",
+            "type": "answerable",
+            "tags": [
+              "version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.72023988,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                183
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                93
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                37
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                3
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ]
+            ]
+          },
+          {
+            "id": "g41",
+            "type": "answerable",
+            "tags": [
+              "version",
+              "older-edition"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 0.5,
+            "ndcg@5": 0.6309297535714575,
+            "top1": 0.73925805,
+            "retrieved": [
+              [
+                "srd-5-1-2014.pdf",
+                37
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                81
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                59
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                358
+              ]
+            ]
+          },
+          {
+            "id": "g42",
+            "type": "answerable",
+            "tags": [
+              "version"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.76463526,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                358
+              ],
+              [
+                "player-s-handbook-errata-2021-scanned-copy.pdf",
+                5
+              ],
+              [
+                "srd-5-1-2014.pdf",
+                87
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                189
+              ]
+            ]
+          },
+          {
+            "id": "g43",
+            "type": "answerable",
+            "tags": [
+              "combat"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.84309876,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                181
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                176
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                63
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                10
+              ]
+            ]
+          },
+          {
+            "id": "g44",
+            "type": "answerable",
+            "tags": [
+              "equipment",
+              "exact"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.76158082,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                92
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                219
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                254
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                204
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                177
+              ]
+            ]
+          },
+          {
+            "id": "g45",
+            "type": "answerable",
+            "tags": [
+              "combat"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.79464817,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                317
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                332
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                307
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                263
+              ]
+            ]
+          },
+          {
+            "id": "g46",
+            "type": "answerable",
+            "tags": [
+              "combat",
+              "checks"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.6309297535714575,
+            "top1": 0.81289798,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                18
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                17
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                184
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                188
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                76
+              ]
+            ]
+          },
+          {
+            "id": "g47",
+            "type": "answerable",
+            "tags": [
+              "checks"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 0.0,
+            "mrr": 0.0,
+            "ndcg@5": 0.0,
+            "top1": 0.84730214,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                8
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                6
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                176
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                6
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                11
+              ]
+            ]
+          },
+          {
+            "id": "g48",
+            "type": "answerable",
+            "tags": [
+              "combat",
+              "older-edition"
+            ],
+            "recall@3": 0.0,
+            "recall@5": 0.0,
+            "mrr": 0.0,
+            "ndcg@5": 0.0,
+            "top1": 0.7706993799999999,
+            "retrieved": [
+              [
+                "srd-5-1-2014.pdf",
+                95
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                15
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "sage-advice-compendium-v2-7-2021.pdf",
+                13
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                30
+              ]
+            ]
+          },
+          {
+            "id": "g49",
+            "type": "answerable",
+            "tags": [
+              "rest"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.84651762,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                185
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                187
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                196
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                84
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ]
+            ]
+          },
+          {
+            "id": "g50",
+            "type": "answerable",
+            "tags": [
+              "spells"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.3868528072345416,
+            "top1": 0.8000952,
+            "retrieved": [
+              [
+                "srd-5-2-1-2024.pdf",
+                131
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                24
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                122
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                250
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                132
+              ]
+            ]
+          },
+          {
+            "id": "g51",
+            "type": "answerable",
+            "tags": [
+              "exploration"
+            ],
+            "recall@3": 1.0,
+            "recall@5": 1.0,
+            "mrr": 1.0,
+            "ndcg@5": 1.0,
+            "top1": 0.8273556200000001,
+            "retrieved": [
+              [
+                "travel-pace-table.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                12
+              ],
+              [
+                "homebrew-optional-rules.md",
+                1
+              ],
+              [
+                "srd-5-2-1-2024.pdf",
+                192
+              ]
+            ]
+          }
+        ]
+      },
+      "e2e": {
+        "questions": 51,
+        "citation_validity": null,
+        "citations_checked": 0,
+        "abstention_correctness": 1.0,
+        "false_abstention_rate": 1.0,
+        "faithfulness": null,
+        "faithfulness_judged": 0,
+        "judge_agreement_with_human": null,
+        "human_labels_used": 0,
+        "answer_contains_expected": null,
+        "fallbacks": 0,
+        "latency_p50_s": 0.518,
+        "latency_p95_s": 0.559,
+        "per_question": [
+          {
+            "id": "g01",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g01",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.583,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g02",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g02",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.527,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g03",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g03",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.505,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g04",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g04",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.515,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g05",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g05",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.533,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g06",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g06",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.516,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g07",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g07",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.516,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g08",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g08",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.498,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g09",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g09",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.525,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g10",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g10",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.513,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g11",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g11",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.502,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g12",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g12",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.518,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g13",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g13",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.505,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g14",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T114157Z-r2-g14",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.503,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g15",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T114157Z-r2-g15",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.521,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g16",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r2-g16",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.525,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g17",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g17",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.515,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g18",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g18",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.514,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g19",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g19",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.558,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g20",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g20",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.559,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g21",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T114157Z-r2-g21",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.55,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g22",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T114157Z-r2-g22",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.496,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g23",
+            "type": "unanswerable",
+            "trace_id": "eval-20261128T114157Z-r2-g23",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.519,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g24",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r2-g24",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.522,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g25",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r2-g25",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.52,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g26",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r2-g26",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.547,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g27",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r2-g27",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.532,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g28",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r2-g28",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.543,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g29",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r2-g29",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.543,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g30",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r2-g30",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.557,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g31",
+            "type": "hard",
+            "trace_id": "eval-20261128T114157Z-r2-g31",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.537,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g32",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g32",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.498,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g33",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g33",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.536,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g34",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g34",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.492,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g35",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g35",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.502,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g36",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g36",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.513,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g37",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g37",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.542,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g38",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g38",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.509,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g39",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g39",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.495,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g40",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g40",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.489,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g41",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g41",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.499,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g42",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g42",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.497,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g43",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g43",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.523,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g44",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g44",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.511,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g45",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g45",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.504,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g46",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g46",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.512,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g47",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g47",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.571,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g48",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g48",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.52,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g49",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g49",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.547,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g50",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g50",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.502,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          },
+          {
+            "id": "g51",
+            "type": "answerable",
+            "trace_id": "eval-20261128T114157Z-r2-g51",
+            "answered": false,
+            "fallback": false,
+            "seconds": 0.535,
+            "citations": 0,
+            "citations_valid": 0,
+            "faithful": null,
+            "contains_expected": null
+          }
+        ]
+      },
+      "flat": {
+        "module.paraphrase_mean": 0.8674938883455142,
+        "module.unrelated_mean": 0.5851440368089631,
+        "module.gap": 0.2823498515365511,
+        "module.ranked_correctly": 1.0,
+        "module.ms_per_chunk": 345.8900706248187,
+        "module.determinism_max_abs_diff": 0.0,
+        "component.recall@3": 0.8804347826086957,
+        "component.recall@5": 0.9021739130434783,
+        "component.mrr": 0.8097826086956522,
+        "component.ndcg@5": 0.9623228805521071,
+        "component.noise_delta.recall@3": -0.26086956521739135,
+        "component.noise_delta.recall@5": -0.26086956521739135,
+        "component.noise_delta.mrr": -0.24021739130434794,
+        "component.noise_delta.ndcg@5": -0.2552549558903565,
+        "e2e.abstention_correctness": 1.0,
+        "e2e.false_abstention_rate": 1.0,
+        "e2e.latency_p50_s": 0.518,
+        "e2e.latency_p95_s": 0.559
+      }
+    }
+  ],
+  "summary": {
+    "component.mrr": 0.8097826086956522,
+    "component.ndcg@5": 0.9623228805521071,
+    "component.noise_delta.mrr": -0.24021739130434794,
+    "component.noise_delta.ndcg@5": -0.2552549558903565,
+    "component.noise_delta.recall@3": -0.26086956521739135,
+    "component.noise_delta.recall@5": -0.26086956521739135,
+    "component.recall@3": 0.8804347826086957,
+    "component.recall@5": 0.9021739130434783,
+    "e2e.abstention_correctness": 1.0,
+    "e2e.answer_contains_expected": 0.6666666666666666,
+    "e2e.citation_validity": 1.0,
+    "e2e.faithfulness": 1.0,
+    "e2e.false_abstention_rate": 0.9673913043478262,
+    "e2e.latency_p50_s": 0.518,
+    "e2e.latency_p95_s": 0.9115,
+    "module.determinism_max_abs_diff": 0.0,
+    "module.gap": 0.2823498515365511,
+    "module.ms_per_chunk": 345.33936096863727,
+    "module.paraphrase_mean": 0.8674938883455142,
+    "module.ranked_correctly": 1.0,
+    "module.unrelated_mean": 0.5851440368089631
+  },
+  "variation": {
+    "component.mrr": 0.0,
+    "component.ndcg@5": 0.0,
+    "component.noise_delta.mrr": 0.0,
+    "component.noise_delta.ndcg@5": 0.0,
+    "component.noise_delta.recall@3": 0.0,
+    "component.noise_delta.recall@5": 0.0,
+    "component.recall@3": 0.0,
+    "component.recall@5": 0.0,
+    "e2e.abstention_correctness": 0.0,
+    "e2e.answer_contains_expected": 0.0,
+    "e2e.citation_validity": 0.0,
+    "e2e.faithfulness": 0.0,
+    "e2e.false_abstention_rate": 0.06521739130434778,
+    "e2e.latency_p50_s": 0.0,
+    "e2e.latency_p95_s": 0.705,
+    "module.determinism_max_abs_diff": 0.0,
+    "module.gap": 0.0,
+    "module.ms_per_chunk": 1.1014193123628502,
+    "module.paraphrase_mean": 0.0,
+    "module.ranked_correctly": 0.0,
+    "module.unrelated_mean": 0.0
+  }
+}

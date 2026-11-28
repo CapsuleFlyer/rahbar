@@ -1,0 +1,215 @@
+{
+  "threshold": 0.85,
+  "minimum_in_domain_coverage": 0.85,
+  "current_coverage": 0.5714285714285714,
+  "covered": 16,
+  "in_domain_total": 28,
+  "golden_count": 51,
+  "candidate_count": 12,
+  "uncovered_topics": {
+    "errata": [
+      "e28",
+      "e27",
+      "e26"
+    ],
+    "official-rulings": [
+      "e25"
+    ],
+    "exploration": [
+      "e19"
+    ],
+    "version": [
+      "e02",
+      "e03"
+    ],
+    "rest": [
+      "e07"
+    ],
+    "combat": [
+      "e24",
+      "e21"
+    ],
+    "equipment": [
+      "e17"
+    ],
+    "conditions": [
+      "e10"
+    ]
+  },
+  "candidates": [
+    {
+      "live_id": "e28",
+      "topic": "errata",
+      "question": "What correction does the Monster Manual errata make?",
+      "source": "monster-manual-errata-2018.pdf",
+      "section": "",
+      "nearest_golden_id": "g47",
+      "nearest_golden_question": "What are the rules for making an ability check?",
+      "similarity": 0.582132,
+      "exact_duplicate": false,
+      "relevant": [],
+      "expected": [],
+      "status": "needs_source_page_and_expected_answer_review"
+    },
+    {
+      "live_id": "e27",
+      "topic": "errata",
+      "question": "What corrections are listed in the Dungeon Master's Guide errata?",
+      "source": "dungeon-master-s-guide-errata-2021.pdf",
+      "section": "",
+      "nearest_golden_id": "g47",
+      "nearest_golden_question": "What are the rules for making an ability check?",
+      "similarity": 0.615672,
+      "exact_duplicate": false,
+      "relevant": [],
+      "expected": [],
+      "status": "needs_source_page_and_expected_answer_review"
+    },
+    {
+      "live_id": "e26",
+      "topic": "errata",
+      "question": "What changes are listed in the Player's Handbook errata?",
+      "source": "player-s-handbook-errata-2021-scanned-copy.pdf",
+      "section": "",
+      "nearest_golden_id": "g47",
+      "nearest_golden_question": "What are the rules for making an ability check?",
+      "similarity": 0.619637,
+      "exact_duplicate": false,
+      "relevant": [],
+      "expected": [],
+      "status": "needs_source_page_and_expected_answer_review"
+    },
+    {
+      "live_id": "e25",
+      "topic": "official-rulings",
+      "question": "What does the Sage Advice Compendium explain about rules interpretations?",
+      "source": "sage-advice-compendium-v2-7-2021.pdf",
+      "section": "",
+      "nearest_golden_id": "g29",
+      "nearest_golden_question": "In the newest Sage Advice rulings, does a creature that attacks from hiding stay hidden afterward?",
+      "similarity": 0.671975,
+      "exact_duplicate": false,
+      "relevant": [],
+      "expected": [],
+      "status": "needs_source_page_and_expected_answer_review"
+    },
+    {
+      "live_id": "e19",
+      "topic": "exploration",
+      "question": "What happens to travel pace when moving slowly?",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Travel Pace",
+      "nearest_golden_id": "g39",
+      "nearest_golden_question": "How can a character increase their travel pace?",
+      "similarity": 0.727533,
+      "exact_duplicate": false,
+      "relevant": [],
+      "expected": [],
+      "status": "needs_source_page_and_expected_answer_review"
+    },
+    {
+      "live_id": "e02",
+      "topic": "version",
+      "question": "How does the 2014 Hide action work? Stealth check versus passive Perception.",
+      "source": "srd-5-1-2014.pdf",
+      "section": "Hide",
+      "nearest_golden_id": "g20",
+      "nearest_golden_question": "Under the 2014 rules, how does hiding work against a creature that is searching for you?",
+      "similarity": 0.750053,
+      "exact_duplicate": false,
+      "relevant": [],
+      "expected": [],
+      "status": "needs_source_page_and_expected_answer_review"
+    },
+    {
+      "live_id": "e03",
+      "topic": "version",
+      "question": "How does the 2024 Exhaustion rule affect D20 Tests?",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Exhaustion",
+      "nearest_golden_id": "g42",
+      "nearest_golden_question": "What happens when a creature reaches six levels of Exhaustion under the 2024 rules?",
+      "similarity": 0.771675,
+      "exact_duplicate": false,
+      "relevant": [],
+      "expected": [],
+      "status": "needs_source_page_and_expected_answer_review"
+    },
+    {
+      "live_id": "e07",
+      "topic": "rest",
+      "question": "How long is a Long Rest and what does it restore?",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Long Rest",
+      "nearest_golden_id": "g49",
+      "nearest_golden_question": "How long is a Long Rest, and what benefits does a character gain from it?",
+      "similarity": 0.813663,
+      "exact_duplicate": false,
+      "relevant": [],
+      "expected": [],
+      "status": "needs_source_page_and_expected_answer_review"
+    },
+    {
+      "live_id": "e24",
+      "topic": "combat",
+      "question": "What does the 2014 rulebook say about opportunity attacks?",
+      "source": "srd-5-1-2014.pdf",
+      "section": "Opportunity Attacks",
+      "nearest_golden_id": "g48",
+      "nearest_golden_question": "When does a creature provoke an opportunity attack under the 2014 rules?",
+      "similarity": 0.844172,
+      "exact_duplicate": false,
+      "relevant": [],
+      "expected": [],
+      "status": "needs_source_page_and_expected_answer_review"
+    },
+    {
+      "live_id": "e17",
+      "topic": "equipment",
+      "question": "How many GP does a Longsword cost in the equipment weapon table?",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Weapons",
+      "nearest_golden_id": "g18",
+      "nearest_golden_question": "How much does a Longsword cost?",
+      "similarity": 0.846664,
+      "exact_duplicate": false,
+      "relevant": [],
+      "expected": [],
+      "status": "needs_source_page_and_expected_answer_review"
+    },
+    {
+      "live_id": "e21",
+      "topic": "combat",
+      "question": "How can you stabilize another creature?",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Stabilizing",
+      "nearest_golden_id": "g46",
+      "nearest_golden_question": "How can you stabilize another creature that has 0 Hit Points?",
+      "similarity": 0.848524,
+      "exact_duplicate": false,
+      "relevant": [],
+      "expected": [],
+      "status": "needs_source_page_and_expected_answer_review"
+    },
+    {
+      "live_id": "e10",
+      "topic": "conditions",
+      "question": "What does the Grappled condition do to a creature's Speed?",
+      "source": "srd-5-2-1-2024.pdf",
+      "section": "Grappled",
+      "nearest_golden_id": "g05",
+      "nearest_golden_question": "What effects does the Grappled condition have?",
+      "similarity": 0.849507,
+      "exact_duplicate": false,
+      "relevant": [],
+      "expected": [],
+      "status": "needs_source_page_and_expected_answer_review"
+    }
+  ],
+  "limitations": [
+    "A semantic miss is not automatically a missing knowledge topic; inspect its nearest golden question.",
+    "The live-query dataset supplies a source filename and section, but not a verified page number.",
+    "Expected answer phrases must be checked against the cited source passage.",
+    "Do not add candidates marked as duplicates without a distinct information need."
+  ]
+}

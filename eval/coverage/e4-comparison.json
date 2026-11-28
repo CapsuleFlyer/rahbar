@@ -1,0 +1,57 @@
+{
+  "requirement": "E4",
+  "added_question_count": 6,
+  "added_question_ids": [
+    "g46",
+    "g47",
+    "g48",
+    "g49",
+    "g50",
+    "g51"
+  ],
+  "added_questions": [
+    {
+      "id": "g46",
+      "question": "How can you stabilize another creature that has 0 Hit Points?"
+    },
+    {
+      "id": "g47",
+      "question": "What are the rules for making an ability check?"
+    },
+    {
+      "id": "g48",
+      "question": "When does a creature provoke an opportunity attack under the 2014 rules?"
+    },
+    {
+      "id": "g49",
+      "question": "How long is a Long Rest, and what benefits does a character gain from it?"
+    },
+    {
+      "id": "g50",
+      "question": "What level spell is Fireball?"
+    },
+    {
+      "id": "g51",
+      "question": "How far can a party travel in one day at a slow pace?"
+    }
+  ],
+  "before": {
+    "golden_questions": 45,
+    "covered": 14,
+    "total": 28,
+    "coverage": 0.5
+  },
+  "after": {
+    "golden_questions": 51,
+    "covered": 16,
+    "total": 28,
+    "coverage": 0.5714285714285714
+  },
+  "coverage_increase_queries": 2,
+  "coverage_increase_percentage_points": 7.142857142857142,
+  "threshold": 0.85,
+  "e4_six_questions_requirement_met": true,
+  "coverage_increased": true,
+  "e2_coverage_gate_passed_after_e4": false,
+  "e4_demonstration_passed": true
+}

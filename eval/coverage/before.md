@@ -1,23 +1,20 @@
 # Part E corpus coverage
 
 - Questions: 40 (28 in-domain, 12 out-of-domain)
-- In-domain coverage: 23/28 (82.1%)
+- In-domain coverage: 27/28 (96.4%)
 - Out-of-domain high-similarity rate: 12/12 (100.0%)
 - Thresholds: coverage >= 75%; false positives <= 50%
 
 ## Uncovered topics
 
-- **class-features**: e11
-- **equipment**: e17
-- **exploration**: e18
-- **version**: e02, e04
+- **version**: e04
 
 ## Query results
 
 | ID | Scope | Topic | Result | Top score |
 |---|---|---|---|---:|
 | e01 | in | version | covered | 0.720 |
-| e02 | in | version | no high hit | 0.739 |
+| e02 | in | version | covered | 0.818 |
 | e03 | in | version | covered | 0.733 |
 | e04 | in | version | no high hit | 0.689 |
 | e05 | in | combat | covered | 0.765 |
@@ -26,14 +23,14 @@
 | e08 | in | combat | covered | 0.785 |
 | e09 | in | conditions | covered | 0.787 |
 | e10 | in | conditions | covered | 0.819 |
-| e11 | in | class-features | no high hit | 0.834 |
+| e11 | in | class-features | covered | 0.834 |
 | e12 | in | spells | covered | 0.743 |
 | e13 | in | spells | covered | 0.800 |
 | e14 | in | equipment | covered | 0.743 |
 | e15 | in | equipment | covered | 0.803 |
 | e16 | in | equipment | covered | 0.668 |
-| e17 | in | equipment | no high hit | 0.675 |
-| e18 | in | exploration | no high hit | 0.765 |
+| e17 | in | equipment | covered | 0.721 |
+| e18 | in | exploration | covered | 0.765 |
 | e19 | in | exploration | covered | 0.800 |
 | e20 | in | combat | covered | 0.843 |
 | e21 | in | combat | covered | 0.776 |
