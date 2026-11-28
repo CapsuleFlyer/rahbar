@@ -152,3 +152,7 @@ live-coverage: ## run Part E2 semantic similarity between 40 live queries and go
 	  kubectl -n $(NS) cp $$pod:/results/live-coverage.json eval/coverage/live-coverage.json; \
 	  kubectl -n $(NS) cp $$pod:/results/live-coverage.md eval/coverage/live-coverage.md; \
 	  test "$$(kubectl -n $(NS) get job live-coverage -o jsonpath='{.status.succeeded}')" = "1"
+
+.PHONY: coverage-repair
+coverage-repair: ## build a source-aware repair plan from the latest E2 report
+	$(PY) eval/coverage_repair.py --report eval/coverage/live-coverage-after.json

@@ -67,3 +67,22 @@ source documents, page references, and expected answer phrases. The original 45-
 coverage report is retained as the before snapshot. Re-run `make golden-check` and
 `make live-coverage` after pulling these additions; record the resulting after report
 alongside the original E2 report rather than overwriting the baseline.
+
+## E2 repair workflow
+
+Preserve the original report and copy the latest E2 report to
+eval/coverage/live-coverage-after.json. Then run:
+
+```bash
+make coverage-repair
+```
+
+This creates eval/coverage/repair-plan.md and repair-plan.json. It prioritizes
+uncovered in-domain queries, groups them by topic, shows the nearest existing
+golden question, flags exact duplicates, and carries forward the source filename
+and section from the live-query dataset.
+
+The tool does not invent page numbers or expected answer phrases and does not
+append unverified entries to golden.jsonl. Verify each candidate against its source
+passage, add only distinct information needs, then rerun make golden-check and
+make live-coverage.
